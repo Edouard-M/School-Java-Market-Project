@@ -128,6 +128,8 @@ public class Window3 extends javax.swing.JFrame
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
+        dispose();
+        EmployeeConnection wind = new EmployeeConnection();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -135,8 +137,12 @@ public class Window3 extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButton1ActionPerformed
         try
         {
-            System.out.println( searchCustomer(jTextField2.getText(),jTextField1.getText() ) );
-            
+           
+            if(searchCustomer(jTextField2.getText(),jTextField1.getText())==true)
+            {
+                dispose();
+                Window wind =new Window();
+            }
         } catch (Exception ex)
         {
             Logger.getLogger(Window3.class.getName()).log(Level.SEVERE, null, ex);
@@ -145,7 +151,9 @@ public class Window3 extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        CreateCustomer wind = new CreateCustomer();
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

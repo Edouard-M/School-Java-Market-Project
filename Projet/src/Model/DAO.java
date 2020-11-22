@@ -105,11 +105,8 @@ public class DAO
         else 
             return null;
     }
-        public static String searchCustomer(String enteredemail,String enteredpassword) throws Exception
+        public static boolean searchCustomer(String enteredemail,String enteredpassword) throws Exception
     {
-        String password="";
-      
-        
         Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '"+enteredemail+"'");
         ResultSet result = statement.executeQuery();
@@ -117,16 +114,33 @@ public class DAO
         {
             System.out.println(enteredpassword);
             System.out.println(result.getString("password"));
-            if(enteredpassword == null ? result.getString("password") == null : enteredpassword.equals(result.getString("password")))
+            if( enteredpassword.equals(result.getString("password")))
             {
-                return ("Connected");
+                System.out.println("connectr");
+                return true;
             }
+            else return false;
           
         }
-        
-        return ("Wrong email or password");
-       
-       
+        else 
+        return false;
+    }
+                public static boolean searchEmployee(String enteredemail,String enteredpassword) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '"+enteredemail+"'");
+        ResultSet result = statement.executeQuery();
+        if(result.next())
+        {
+            if( enteredpassword.equals(result.getString("password")))
+            {
+                return true;
+            }
+            else return false;
+          
+        }
+        else 
+        return false;
     }
     
     public static ArrayList<String> selectAllProduct() throws Exception

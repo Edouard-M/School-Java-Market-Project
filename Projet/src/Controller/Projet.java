@@ -24,9 +24,9 @@ public class Projet
         
         //selectAllProduct();
         
-        Window wind = new Window();
-        //Window3 wind2 = new Window3();
-        //CreateCustomer wind = new CreateCustomer();
+       // Window wind = new Window();
+        Window3 wind2 = new Window3();
+        //CreateCustomer wind3 = new CreateCustomer();
     }
     
     public static void testDB() throws Exception
