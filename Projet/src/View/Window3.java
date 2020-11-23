@@ -141,7 +141,7 @@ public class Window3 extends javax.swing.JFrame
             if(searchCustomer(jTextField2.getText(),jTextField1.getText())==true)
             {
                 dispose();
-                Window wind =new Window();
+                Window wind =new Window(jTextField2.getText());
             }
         } catch (Exception ex)
         {

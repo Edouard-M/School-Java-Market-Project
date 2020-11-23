@@ -56,13 +56,13 @@ public class Window extends javax.swing.JFrame
     /**
      * Creates new form Window
      */
-    public Window() throws Exception
+    public Window( String email) throws Exception
     {
         initComponents();
         
-        order = new Order(1, "marc.damp@gmail.com", null);
+        order = new Order(1, email, null);
         
-        setTitle("Table Products");
+        setTitle("Nyan Shop");
         setVisible(true);
         
         jLabel1.setIcon(new ImageIcon("src/Image/path.gif"));
@@ -569,7 +569,7 @@ public class Window extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        System.out.println("PURCHASE");
+
         int quantity= jComboBox1.getSelectedIndex();
         if(quantity > 0)
         {
@@ -584,11 +584,7 @@ public class Window extends javax.swing.JFrame
             if((quantity + order.getProduct(name).getQuantity()) > Integer.parseInt((String) table.getValueAt(table.getSelectedRow(), 3)))
                 quantity = Integer.parseInt((String) table.getValueAt(table.getSelectedRow(), 3)) - order.getProduct(name).getQuantity();
         
-        System.out.println("\n\norderID = " + orderID);
-        System.out.println("id = " + id);
-        System.out.println("name = " + name);
-        System.out.println("quantity = " + quantity);
-        System.out.println("cost = " + cost);
+        
         if(quantity != 0)
         {
         try
@@ -631,7 +627,7 @@ public class Window extends javax.swing.JFrame
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox1ActionPerformed
     {//GEN-HEADEREND:event_jComboBox1ActionPerformed
-        System.out.println(jComboBox1.getSelectedIndex());
+
         
         if(jComboBox1.getSelectedIndex() >= 0)
         {
@@ -663,7 +659,7 @@ public class Window extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        System.out.println("Removed");
+
         if(order.getOrderedProducts().size() > 0 && cartTable.getSelectedRow() >= 0)
         {
         int viewRow = cartTable.getSelectedRow();
@@ -735,7 +731,7 @@ public class Window extends javax.swing.JFrame
             {
                 try
                 {
-                    new Window().setVisible(true);
+                    new Window("").setVisible(true);
                 } catch (Exception ex)
                 {
                     Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);

@@ -97,6 +97,11 @@ public class Order
     {
         return orderedProducts;
     }
+
+    public String getEmail()
+    {
+        return email;
+    }
     
     
     

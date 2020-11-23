@@ -53,6 +53,7 @@ public class OrderedProduct
         
         return total;
     }
+    
     public void addQuantity(int quantityToAdd) throws Exception
     {
         quantity += quantityToAdd;

@@ -100,7 +100,7 @@ public class DAO
                 stock = result.getInt("stock");
                 price = result.getDouble("price");
         
-        System.out.println("Result = " + name + " " + category + " " + description + " " + price + " " + stock + " " + image);
+        //System.out.println("Result = " + name + " " + category + " " + description + " " + price + " " + stock + " " + image);
         
         Product product = new Product(name, category, description, price, stock, null, image);
         return product;
@@ -124,7 +124,7 @@ public class DAO
                 quantity = result.getInt("quantity");
                 price = result.getDouble("price");
         
-        System.out.println("Result = " + name + " " + quantity + " " + price);
+        //System.out.println("Result = " + name + " " + quantity + " " + price);
         
         Discount discount = new Discount(name, quantity, price);
         return discount;
@@ -139,11 +139,10 @@ public class DAO
         ResultSet result = statement.executeQuery();
         if(result.next())
         {
-            System.out.println(enteredpassword);
-            System.out.println(result.getString("password"));
+            //System.out.println(enteredpassword);
+            //System.out.println(result.getString("password"));
             if( enteredpassword.equals(result.getString("password")))
             {
-                System.out.println("connectr");
                 return true;
             }
             else return false;
