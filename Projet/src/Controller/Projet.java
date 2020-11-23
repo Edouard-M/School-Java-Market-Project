@@ -24,7 +24,7 @@ public class Projet
         
         
         //Window wind = new Window();
-        Window3 wind2 = new Window3();
+        Window2 wind2 = new Window2();
         //CreateCustomer wind3 = new CreateCustomer();
     }
     

@@ -5,18 +5,23 @@
  */
 package View;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author dwans
  */
 public class EmployeePanel extends javax.swing.JFrame
 {
+    private final String email;
 
     /**
      * Creates new form EmployeePanel
      */
-    public EmployeePanel()
+    public EmployeePanel(String email)
     {
+        this.email=email;
         initComponents();
         setTitle("Nyan Shop");
         setVisible(true);
@@ -42,6 +47,13 @@ public class EmployeePanel extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Disconnect");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Create New Employee");
 
@@ -52,6 +64,13 @@ public class EmployeePanel extends javax.swing.JFrame
         jButton5.setText("Add a new discount");
 
         jButton6.setText("edit profile");
+        jButton6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Employee Panel");
 
@@ -105,6 +124,26 @@ public class EmployeePanel extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
+    {//GEN-HEADEREND:event_jButton6ActionPerformed
+        dispose();
+        EditEmployeeProfile wind = new EditEmployeeProfile(email);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        try
+        {
+            dispose();
+            Window3 wind =new Window3();
+            // TODO add your handling code here:
+        } catch (Exception ex)
+        {
+            Logger.getLogger(EmployeePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -143,7 +182,7 @@ public class EmployeePanel extends javax.swing.JFrame
         {
             public void run()
             {
-                new EmployeePanel().setVisible(true);
+                new EmployeePanel("").setVisible(true);
             }
         });
     }
