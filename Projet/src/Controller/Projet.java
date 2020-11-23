@@ -22,18 +22,20 @@ public class Projet
         
         testDB();
         
-        //selectAllProduct();
         
-       // Window wind = new Window();
-        Window3 wind2 = new Window3();
+        Window wind = new Window();
+        //Window3 wind2 = new Window3();
         //CreateCustomer wind3 = new CreateCustomer();
     }
     
     public static void testDB() throws Exception
     {
         Product banane = new Product("Banane", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        banane.insertProduct();
         Product banane2 = new Product("Banane1", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        banane2.insertProduct();
         Product banane3 = new Product("Banane2", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        banane3.insertProduct();
         //Product banane4 = new Product("Banane3", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane5 = new Product("Banane4", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
@@ -41,7 +43,9 @@ public class Projet
         //Product banane8 = new Product("Banane7", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane9 = new Product("Banane8", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         Product kiwi = new Product("Kiwi", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
+        kiwi.insertProduct();
         Product kiwi2 = new Product("Kiwi2", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
+        kiwi2.insertProduct();
         Customer Marc = new Customer("Marc", "Dampierre", 23, "0640787637", " 6 rue jean mermoz rueil-malmaison 92500", "marc.damp@gmail.com", "pass123");
         Employee Fred =new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "fredbla@laposte.net", "pass123");
         OrderedProduct OrderedBanane= new OrderedProduct(1,1,"Banane", 10,12);

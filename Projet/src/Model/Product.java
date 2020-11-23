@@ -29,7 +29,6 @@ public class Product
         stock = Stock;
         discount = Discount;
         image = Image;
-        insertProduct();
     }
     
     public void addDiscount(int discountQuantity, double discountPrice) throws Exception
@@ -70,6 +69,10 @@ public class Product
     public Discount getDiscount()
     {
         return discount;
+    }
+    public String getImage()
+    {
+        return image;
     }
     
     

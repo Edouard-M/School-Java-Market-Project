@@ -39,14 +39,58 @@ public class Order
         }
     }
     
-    public void addOrderedProduct(OrderedProduct orderedProduct)
+    public void addOrderedProduct(OrderedProduct orderedProduct) throws Exception
     {
-        orderedProducts.add(orderedProduct);
+        boolean ordered = false;
+        for(int i =0 ; i < orderedProducts.size() ; i++)
+        {
+            if(orderedProduct.getProductName().equals(orderedProducts.get(i).getProductName()))
+            {
+                orderedProducts.get(i).addQuantity(orderedProduct.getQuantity());
+                ordered = true;
+            }
+        }
+        if(ordered == false)
+            orderedProducts.add(orderedProduct);
     }
+    
+    public void removeOrderedProduct(String name)
+    {
+        for(int i=0 ; i < orderedProducts.size() ; i++)
+        {
+            if(name.equals(orderedProducts.get(i).getProductName()))
+                orderedProducts.remove(i);
+        }
+    }
+    
+    public double totalCost()
+    {
+        double cost=0;
+        
+        for(int i =0 ; i < orderedProducts.size() ; i++)
+        {
+            cost += orderedProducts.get(i).getPrice();
+        }
+        
+        return cost;
+    }
+    
 
     public int getId()
     {
         return id;
+    }
+    
+    public OrderedProduct getProduct(String name)
+    {
+        OrderedProduct product = null;
+        
+        for(int i = 0 ; i < orderedProducts.size() ; i++)
+        {
+            if(name.equals(orderedProducts.get(i).getProductName()))
+                product = orderedProducts.get(i);
+        }
+        return product;
     }
 
     public ArrayList<OrderedProduct> getOrderedProducts()

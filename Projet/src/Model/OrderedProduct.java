@@ -21,23 +21,43 @@ public class OrderedProduct
     private String productName;
     private int quantity;
     private double price;
+    private double unitPrice;
  
 
-    public OrderedProduct(int OrderID, int ID, String ProductName, int Quantity, double Price) throws Exception
+    public OrderedProduct(int OrderID, int ID, String ProductName, int Quantity, double UnitPrice) throws Exception
     {
         this.orderID = OrderID;
         this.id= ID;
         this.productName = ProductName;
         this.quantity = Quantity;
-        this.price = Price;
-        //price=findprice();
-        insertOrderedProduct();
+        this.unitPrice = UnitPrice;
+        price = calculatePrice();
+        //insertOrderedProduct();
     }
-    /*public double findprice()
+    
+    public double calculatePrice() throws Exception
+    {   
+        Discount discount = searchDiscount(productName);
+        double total;
+        
+        if(discount != null && discount.getQuantity() <= quantity)
+        {
+            
+            int dQuantity = discount.getQuantity();
+            double dPrice = discount.getPrice();
+            total = ((quantity%dQuantity)*unitPrice) + ((quantity-(quantity%dQuantity)) / dQuantity * dPrice); 
+        }
+        else
+            total = quantity * unitPrice;
+        
+        
+        return total;
+    }
+    public void addQuantity(int quantityToAdd) throws Exception
     {
-        // A FAIRE
-        return 0;
-    }*/
+        quantity += quantityToAdd;
+        price = calculatePrice();
+    }
     
     public void insertOrderedProduct() throws Exception
     {

@@ -82,6 +82,33 @@ public class DAO
         }
     }
     
+    public static Product searchProduct(String search) throws Exception
+    {
+        String name, category, description, image;
+        double price;
+        int stock;
+        
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Product WHERE name = '"+search+"'");
+        ResultSet result = statement.executeQuery();
+        if(result.next())
+        {
+                name = result.getString("name");
+                category = result.getString("category");
+                description = result.getString("description");
+                image = result.getString("image");
+                stock = result.getInt("stock");
+                price = result.getDouble("price");
+        
+        System.out.println("Result = " + name + " " + category + " " + description + " " + price + " " + stock + " " + image);
+        
+        Product product = new Product(name, category, description, price, stock, null, image);
+        return product;
+        }
+        else 
+            return null;
+    }
+    
     public static Discount searchDiscount(String search) throws Exception
     {
         String name="";
@@ -143,22 +170,22 @@ public class DAO
         return false;
     }
     
-    public static ArrayList<String> selectAllProduct() throws Exception
+    public static ArrayList<Product> selectAllProducts() throws Exception
     {
         try{
+            Product product;
             Connection con = getConnection();
             PreparedStatement statement = con.prepareStatement("SELECT * FROM Product ORDER BY name");
             
             ResultSet result = statement.executeQuery();
             
-            ArrayList<String> array = new ArrayList<String>();
+            ArrayList<Product> array = new ArrayList<Product>();
             while(result.next())
             {
-                System.out.println(result.getString("name") + " | " + result.getString("category") + " | " + result.getString("description") + " | " + result.getString("price") + "€ | " + result.getString("stock") + " | " + result.getString("discountId"));
                 
-                array.add(result.getString("name"));
+                product = new Product(result.getString("name"), result.getString("category"), result.getString("description"), result.getDouble("price"), result.getInt("stock"), null, result.getString("image"));
+                array.add(product);
             }
-            System.out.println("All records have been selected!");
             return array;
             
         }catch(Exception e){System.out.println(e);}
