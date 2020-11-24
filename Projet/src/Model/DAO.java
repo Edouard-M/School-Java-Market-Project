@@ -163,6 +163,27 @@ public class DAO
         else
             return false;
     }
+    
+    public static Employee getEmployee(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
+        String name, firstName, phone, adress, mail, password;
+        int age;
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {   
+            name = result.getString("name");
+            firstName = result.getString("firstname");
+            phone = result.getString("phone");
+            adress = result.getString("address");
+            password = result.getString("password");
+            mail = result.getString("email");
+            age = result.getInt("age");
+         return new Employee(name, firstName, age, phone, adress, email, password);
+        }
+        return null;
+    }
 
     public static String getEmployeeName(String email) throws Exception
     {
