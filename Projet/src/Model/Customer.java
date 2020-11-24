@@ -31,5 +31,8 @@ public class Customer extends Person
             query("INSERT INTO Customer (name, firstName, age, phone, address, email, password, fidelityPoint) VALUES ('"+name+"', '"+firstName+"', '"+age+"', '"+phone+"', '"+address+"', '"+email+"', '"+password+"', '"+fidelityPoint+"')");
         } catch(Exception e){System.out.println(e);}
     }
-    
+     public String getEmail()
+    {
+        return email;
+    }
 }

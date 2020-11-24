@@ -44,7 +44,7 @@ public class Projet
         kiwi.insertProduct();
         Product kiwi2 = new Product("Kiwi2", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
         kiwi2.insertProduct();
-        Customer Marc = new Customer("Marc", "Dampierre", 23, "0640787637", " 6 rue jean mermoz rueil-malmaison 92500", "marc.damp@gmail.com", "pass123");
+        Customer Marc = new Customer("Marc", "Dampierre", 23, "0640787637", " 6 rue jean mermoz rueil-malmaison 92500", "", "");
         Employee Fred =new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "", "");
         OrderedProduct OrderedBanane= new OrderedProduct(1,1,"Banane", 10,12);
         OrderedProduct OrderedKiwi= new OrderedProduct(1,2,"Kiwi", 5,12);

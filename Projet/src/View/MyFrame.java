@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.Customer;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,11 +19,12 @@ import javax.swing.JPanel;
  */
 public class MyFrame extends javax.swing.JFrame
 {
-   
+   private Customer customer;
    private GridBagLayout layout = new GridBagLayout();
    private NewCustomer panel0; 
    private Connection panel1; 
    private Home panel2;
+   private EditCustomer panel3;
    
    //private Test2 panel2;
     
@@ -46,19 +48,26 @@ public class MyFrame extends javax.swing.JFrame
         panel1 = new Connection(this);
         panel0 = new NewCustomer(this, panel1);
         panel2 = new Home();
+        panel3=new EditCustomer(this);
 
         panel0.setVisible(false);
         panel1.setVisible(false);
         panel2.setVisible(false);
+        panel3.setVisible(false);
         
         panel.add(panel0, c);
         panel.add(panel1, c);
         panel.add(panel2, c);
+        panel.add(panel3, c);
         
         panel1.setVisible(true);
         
     }
-    
+    public void setCustomer(Customer customer)
+    {
+        this.customer=customer;
+    }
+            
     public void createAccount()
     {
         panel0.setVisible(true);
@@ -435,6 +444,7 @@ public class MyFrame extends javax.swing.JFrame
             panel1.disconnect();
             
             panel2.setVisible(false);
+            panel3.setVisible(false);
         }
         
     }//GEN-LAST:event_button1MousePressed
@@ -448,6 +458,7 @@ public class MyFrame extends javax.swing.JFrame
         
             panel1.setVisible(false);
             panel2.setVisible(true);
+            panel3.setVisible(false);
         }
         
     }//GEN-LAST:event_button2MousePressed
@@ -461,6 +472,8 @@ public class MyFrame extends javax.swing.JFrame
         
             panel1.setVisible(false);
             panel2.setVisible(false);
+            panel3.setEmail(customer.getEmail());
+            panel3.setVisible(true);
         }
         
     }//GEN-LAST:event_button3MousePressed
@@ -474,6 +487,7 @@ public class MyFrame extends javax.swing.JFrame
         
             panel1.setVisible(false);
             panel2.setVisible(false);
+            panel3.setVisible(false);
         }
         
     }//GEN-LAST:event_button4MousePressed

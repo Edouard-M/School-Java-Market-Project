@@ -271,6 +271,115 @@ public class DAO
         statement = con.prepareStatement("UPDATE Employee SET firstname = '"+firstname+"' ,name='"+name+"', address = '"+address+"', phone = '"+phone+"', age= "+age+" ,password = '"+password+"' WHERE email = '"+email+"'");
         statement.executeUpdate();
     }
+    
+    
+    
+     public static Customer getCustomer(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
+        String name, firstName, phone, adress, mail, password;
+        int age;
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {   
+            name = result.getString("name");
+            firstName = result.getString("firstname");
+            phone = result.getString("phone");
+            adress = result.getString("address");
+            password = result.getString("password");
+            mail = result.getString("email");
+            age = result.getInt("age");
+         return new Customer(name, firstName, age, phone, adress, email, password);
+        }
+        return null;
+    }
+    public static String getCustomerName(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
+        String name;
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {   name = result.getString("name");
+         return name;
+        }
+        return "";
+    }
+
+    public static String getCustomerFirstName(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
+       String name;
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {   name = result.getString("firstname");
+         return name;
+        }
+        return "";
+    }
+
+    public static String getCustomerAddress(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
+          String name;
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {   name = result.getString("address");
+         return name;
+        }
+        return "";
+    }
+
+    public static String getCustomerPhone(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
+         String name;
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {   name = result.getString("phone");
+         return name;
+        }
+        return "";
+    }
+
+    public static String getCustomPassword(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
+        String name;
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {   name = result.getString("password");
+         return name;
+        }
+        return "";
+    }
+
+    public static int getCustomerAge(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
+         int name;
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {   name = result.getInt("age");
+         return name;
+        }
+        return 0;
+    }
+    public static void EditCustomerdata(String email,String firstname, String name,String address,String phone,int age,String password) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement;
+        statement = con.prepareStatement("SELECT firstname, name,address,phone,age,password FROM Customer WHERE email= '" + email + "'");
+        statement.executeQuery();
+        statement = con.prepareStatement("UPDATE Customer SET firstname = '"+firstname+"' ,name='"+name+"', address = '"+address+"', phone = '"+phone+"', age= "+age+" ,password = '"+password+"' WHERE email = '"+email+"'");
+        statement.executeUpdate();
+    }
     public static ArrayList<Product> selectAllProducts() throws Exception
     {
         try

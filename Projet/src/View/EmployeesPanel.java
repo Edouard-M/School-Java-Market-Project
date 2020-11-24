@@ -31,9 +31,7 @@ public class EmployeesPanel extends javax.swing.JPanel
     private void initComponents()
     {
 
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -41,58 +39,24 @@ public class EmployeesPanel extends javax.swing.JPanel
         setBackground(new java.awt.Color(53, 63, 74));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Disconnect");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
-
         jLabel1.setText("Employee Panel");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, -1, -1));
-
-        jButton6.setText("edit profile");
-        jButton6.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 40, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 100, 30));
 
         jButton3.setText("Add stock");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, -1, -1));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, -1, -1));
 
         jButton4.setText("Add a new product");
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, -1, -1));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, -1, -1));
 
         jButton5.setText("Add a new discount");
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
-    {//GEN-HEADEREND:event_jButton6ActionPerformed
-
-        
-    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

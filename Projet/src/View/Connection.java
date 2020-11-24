@@ -7,6 +7,7 @@
 package View;
 
 import Model.DAO;
+import static Model.DAO.getCustomer;
 import static Model.DAO.searchCustomer;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -253,6 +254,7 @@ public class Connection extends javax.swing.JPanel {
             {
                 connected = true;
                 myframe.connection();
+                myframe.setCustomer(getCustomer(jTextField2.getText()));
                 System.out.println("Connection Accepted");
                 //Window wind =new Window(jTextField2.getText());
             }
