@@ -2,10 +2,8 @@
 package Controller;
 import static Model.DAO.*;
 import Model.*;
-import View.CreateCustomer;
-import View.Window;
 import View.Window2;
-import View.Window3;
+import View.MyFrame;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -22,9 +20,9 @@ public class Projet
         
         testDB();
         
-        
-        //Window wind = new Window();
-        Window2 wind2 = new Window2();
+        MyFrame frame = new MyFrame();
+        //Window wind = new Window("marc.damp@gmail.com");
+        //Window2 wind2 = new Window2();
         //CreateCustomer wind3 = new CreateCustomer();
     }
     

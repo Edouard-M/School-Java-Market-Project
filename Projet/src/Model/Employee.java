@@ -28,5 +28,12 @@ public class Employee extends Person
             query("INSERT INTO Employee (name, firstName, age, phone, address, email, password) VALUES ('"+name+"', '"+firstName+"', '"+age+"', '"+phone+"', '"+address+"', '"+email+"', '"+password+"')");
         } catch(Exception e){System.out.println(e);}
     }
+
+    public String getEmail()
+    {
+        return email;
+    }
+        
+    
     
 }
