@@ -88,6 +88,7 @@ public class MyFrame extends javax.swing.JFrame
         button2.setBackground(new Color(23,35,55));
         button3.setBackground(new Color(23,35,55));
         button4.setBackground(new Color(23,35,55));
+        
         bt1.setBackground(new Color(23,35,55));
         bt2.setBackground(new Color(23,35,55));
         bt3.setBackground(new Color(23,35,55));
@@ -122,6 +123,8 @@ public class MyFrame extends javax.swing.JFrame
         button4 = new javax.swing.JPanel();
         bt4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -180,7 +183,7 @@ public class MyFrame extends javax.swing.JFrame
                 .addComponent(bt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         button1Layout.setVerticalGroup(
             button1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +231,7 @@ public class MyFrame extends javax.swing.JFrame
                 .addComponent(bt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
-                .addGap(0, 79, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         button2Layout.setVerticalGroup(
             button2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +242,7 @@ public class MyFrame extends javax.swing.JFrame
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        menu.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, -1));
+        menu.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 150, -1));
 
         button3.setBackground(new java.awt.Color(39, 57, 82));
         button3.addMouseListener(new java.awt.event.MouseAdapter()
@@ -276,7 +279,7 @@ public class MyFrame extends javax.swing.JFrame
                 .addComponent(bt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
-                .addGap(0, 79, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         button3Layout.setVerticalGroup(
             button3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +290,7 @@ public class MyFrame extends javax.swing.JFrame
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        menu.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+        menu.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 150, -1));
 
         button4.setBackground(new java.awt.Color(39, 57, 82));
         button4.addMouseListener(new java.awt.event.MouseAdapter()
@@ -324,7 +327,7 @@ public class MyFrame extends javax.swing.JFrame
                 .addComponent(bt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
-                .addGap(0, 79, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         button4Layout.setVerticalGroup(
             button4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,7 +338,54 @@ public class MyFrame extends javax.swing.JFrame
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        menu.add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
+        menu.add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 150, -1));
+
+        jPanel1.setBackground(new java.awt.Color(23, 35, 55));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseMoved(java.awt.event.MouseEvent evt)
+            {
+                jPanel1MouseMoved(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jPanel1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jPanel1MousePressed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Employee");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel5)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        menu.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 150, 30));
 
         getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 650));
 
@@ -428,6 +478,26 @@ public class MyFrame extends javax.swing.JFrame
         
     }//GEN-LAST:event_button4MousePressed
 
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel1MousePressed
+    {//GEN-HEADEREND:event_jPanel1MousePressed
+        FrameEmployee wind =new FrameEmployee();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel1MouseMoved
+    {//GEN-HEADEREND:event_jPanel1MouseMoved
+       //  jPanel1.setBackground(new Color(39,57,82)); // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MouseMoved
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel1MouseEntered
+    {//GEN-HEADEREND:event_jPanel1MouseEntered
+       jPanel1.setBackground(new Color(39,57,82)); // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel1MouseExited
+    {//GEN-HEADEREND:event_jPanel1MouseExited
+        jPanel1.setBackground(new Color(23,35,55)); // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -491,6 +561,8 @@ public class MyFrame extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables

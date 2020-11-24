@@ -8,6 +8,7 @@ package View;
 import static Model.DAO.getEmployee;
 import static Model.DAO.searchCustomer;
 import static Model.DAO.searchEmployee;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -46,25 +47,18 @@ public class EmployeesConnection extends javax.swing.JPanel
     private void initComponents()
     {
 
-        jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(53, 63, 74));
+        setPreferredSize(new java.awt.Dimension(360, 360));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 90, 50));
-
-        jTextField1.setText("Email");
+        jTextField1.setBorder(null);
         jTextField1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -72,8 +66,9 @@ public class EmployeesConnection extends javax.swing.JPanel
                 jTextField1ActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 140, -1));
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 140, 30));
 
+        jPasswordField1.setBorder(null);
         jPasswordField1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -81,23 +76,67 @@ public class EmployeesConnection extends javax.swing.JPanel
                 jPasswordField1ActionPerformed(evt);
             }
         });
-        add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 140, -1));
+        add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 140, 30));
 
-        jButton1.setText("Connect");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Email");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 40, -1));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Password");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(23, 35, 55));
+        jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
+            public void mouseMoved(java.awt.event.MouseEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                jPanel3MouseMoved(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, -1));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jPanel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jPanel3MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jPanel3MousePressed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Connect");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel6)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 100, 30));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
-    {//GEN-HEADEREND:event_jButton2ActionPerformed
-
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1ActionPerformed
     {//GEN-HEADEREND:event_jTextField1ActionPerformed
@@ -110,8 +149,23 @@ public class EmployeesConnection extends javax.swing.JPanel
         
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void jPanel3MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseMoved
+    {//GEN-HEADEREND:event_jPanel3MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3MouseMoved
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseEntered
+    {//GEN-HEADEREND:event_jPanel3MouseEntered
+        jPanel3.setBackground(new Color(39,57,82));
+    }//GEN-LAST:event_jPanel3MouseEntered
+
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseExited
+    {//GEN-HEADEREND:event_jPanel3MouseExited
+        jPanel3.setBackground(new Color(23,35,55));
+    }//GEN-LAST:event_jPanel3MouseExited
+
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MousePressed
+    {//GEN-HEADEREND:event_jPanel3MousePressed
         try
         {
 
@@ -127,12 +181,14 @@ public class EmployeesConnection extends javax.swing.JPanel
         {
             System.out.println(ex.getMessage());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jPanel3MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
