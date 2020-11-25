@@ -72,32 +72,38 @@ public class Connection extends javax.swing.JPanel {
     {
 
         jPanel1 = new javax.swing.JPanel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1130, 650));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(62, 120, 207));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1130, 650));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1130, 650));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPasswordField1.setBorder(null);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 200, 30));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logoGifHermes.gif"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 890, 520));
 
-        jPanel2.setBackground(new java.awt.Color(23, 35, 55));
+        jPanel4.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(0, 51, 102));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
             public void mouseMoved(java.awt.event.MouseEvent evt)
@@ -120,34 +126,37 @@ public class Connection extends javax.swing.JPanel {
                 jPanel2MousePressed(evt);
             }
         });
+        jPanel2.setLayout(null);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("New Account");
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(20, 10, 105, 25);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel9MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel9MousePressed(evt);
+            }
+        });
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(0, 0, 160, 50);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 90, 30));
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 150, 50));
 
-        jTextField2.setBorder(null);
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 200, 30));
-
-        jPanel3.setBackground(new java.awt.Color(23, 35, 55));
+        jPanel3.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel3.setPreferredSize(new java.awt.Dimension(170, 40));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
             public void mouseMoved(java.awt.event.MouseEvent evt)
@@ -170,55 +179,120 @@ public class Connection extends javax.swing.JPanel {
                 jPanel3MousePressed(evt);
             }
         });
+        jPanel3.setLayout(null);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Connect");
+        jPanel3.add(jLabel6);
+        jLabel6.setBounds(40, 10, 65, 25);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel6)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel10MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel10MousePressed(evt);
+            }
+        });
+        jPanel3.add(jLabel10);
+        jLabel10.setBounds(0, 0, 160, 50);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 100, 30));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 600, 460));
+        jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 150, 50));
 
+        jPasswordField1.setBackground(new java.awt.Color(0, 51, 102));
+        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setText("supermotdepasse");
+        jPasswordField1.setBorder(null);
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jPasswordField1MousePressed(evt);
+            }
+        });
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 360, 40));
+
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 370, 10));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 60, -1));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 80, -1));
 
+        jTextField2.setBackground(new java.awt.Color(0, 51, 102));
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setText("Enter your email");
+        jTextField2.setBorder(null);
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jTextField2MousePressed(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 370, 40));
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 370, 10));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Email");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 40, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 60, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 540));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Wondershop");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 530, 510));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/testFond.png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1130, 650));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel2MousePressed
     {//GEN-HEADEREND:event_jPanel2MousePressed
-        myframe.createAccount();
+        //myframe.createAccount();
+       
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jPanel2MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel2MouseExited
     {//GEN-HEADEREND:event_jPanel2MouseExited
-        jPanel2.setBackground(new Color(23,35,55)); // TODO add your handling code here:
+      // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel2MouseEntered
     {//GEN-HEADEREND:event_jPanel2MouseEntered
-        jPanel2.setBackground(new Color(39,57,82)); // TODO add your handling code here:
+      // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MouseEntered
 
     private void jPanel2MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel2MouseMoved
@@ -248,6 +322,52 @@ public class Connection extends javax.swing.JPanel {
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MousePressed
     {//GEN-HEADEREND:event_jPanel3MousePressed
+       
+    }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPasswordField1MousePressed
+    {//GEN-HEADEREND:event_jPasswordField1MousePressed
+        jPasswordField1.setText("");
+// TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1MousePressed
+
+    private void jTextField2MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jTextField2MousePressed
+    {//GEN-HEADEREND:event_jTextField2MousePressed
+jTextField2.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2MousePressed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField2ActionPerformed
+    {//GEN-HEADEREND:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel9MouseEntered
+    {//GEN-HEADEREND:event_jLabel9MouseEntered
+       jLabel9.setIcon(new ImageIcon("src/Image/buttonClicked.png")); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel9MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel9MouseExited
+    {//GEN-HEADEREND:event_jLabel9MouseExited
+ jLabel9.setIcon(new ImageIcon("src/Image/button.png"));        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseExited
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel10MouseEntered
+    {//GEN-HEADEREND:event_jLabel10MouseEntered
+jLabel10.setIcon(new ImageIcon("src/Image/buttonClicked.png"));        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void jLabel10MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel10MouseExited
+    {//GEN-HEADEREND:event_jLabel10MouseExited
+jLabel10.setIcon(new ImageIcon("src/Image/button.png"));        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseExited
+
+    private void jLabel9MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel9MousePressed
+    {//GEN-HEADEREND:event_jLabel9MousePressed
+  myframe.createAccount();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MousePressed
+
+    private void jLabel10MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel10MousePressed
+    {//GEN-HEADEREND:event_jLabel10MousePressed
           try
         {
             if(searchCustomer(jTextField2.getText(),jPasswordField1.getText())==true)
@@ -261,20 +381,27 @@ public class Connection extends javax.swing.JPanel {
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
-        }
-    }//GEN-LAST:event_jPanel3MousePressed
+        } // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 

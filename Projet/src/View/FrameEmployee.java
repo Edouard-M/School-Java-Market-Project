@@ -105,10 +105,12 @@ public class FrameEmployee extends javax.swing.JFrame
         button2.setBackground(new Color(32,41,50));
         button3.setBackground(new Color(32,41,50));
         button4.setBackground(new Color(32,41,50));
+        button5.setBackground(new Color(32,41,50));
         bt1.setBackground(new Color(32,41,50));
         bt2.setBackground(new Color(32,41,50));
         bt3.setBackground(new Color(32,41,50));
         bt4.setBackground(new Color(32,41,50));
+        bt5.setBackground(new Color(32,41,50));
     }
 
     public EmployeesConnection getPanel1()
@@ -137,6 +139,9 @@ public class FrameEmployee extends javax.swing.JFrame
         button4 = new javax.swing.JPanel();
         bt4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        button5 = new javax.swing.JPanel();
+        bt5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -302,7 +307,7 @@ public class FrameEmployee extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        menu.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+        menu.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
 
         button4.setBackground(new java.awt.Color(49, 91, 111));
         button4.addMouseListener(new java.awt.event.MouseAdapter()
@@ -350,7 +355,55 @@ public class FrameEmployee extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        menu.add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
+        menu.add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
+
+        button5.setBackground(new java.awt.Color(49, 91, 111));
+        button5.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                button5MousePressed(evt);
+            }
+        });
+
+        bt5.setBackground(new java.awt.Color(250, 250, 250));
+
+        javax.swing.GroupLayout bt5Layout = new javax.swing.GroupLayout(bt5);
+        bt5.setLayout(bt5Layout);
+        bt5Layout.setHorizontalGroup(
+            bt5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+        bt5Layout.setVerticalGroup(
+            bt5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabel5.setBackground(new java.awt.Color(250, 250, 250));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(250, 250, 250));
+        jLabel5.setText("Manage Discount");
+
+        javax.swing.GroupLayout button5Layout = new javax.swing.GroupLayout(button5);
+        button5.setLayout(button5Layout);
+        button5Layout.setHorizontalGroup(
+            button5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(button5Layout.createSequentialGroup()
+                .addComponent(bt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(0, 87, Short.MAX_VALUE))
+        );
+        button5Layout.setVerticalGroup(
+            button5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bt5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(button5Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel5)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        menu.add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
 
         getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 650));
 
@@ -461,6 +514,21 @@ public class FrameEmployee extends javax.swing.JFrame
 
     }//GEN-LAST:event_button4MousePressed
 
+    private void button5MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_button5MousePressed
+    {//GEN-HEADEREND:event_button5MousePressed
+        if(panel1.isConnected())
+        {
+            resetColor();
+            setColor(button5, bt5);
+
+            panel1.setVisible(false);
+            panel2.setVisible(false);
+            panel3.setVisible(false);
+            panel4.setVisible(false);
+            
+        } // TODO add your handling code here:
+    }//GEN-LAST:event_button5MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -509,14 +577,17 @@ public class FrameEmployee extends javax.swing.JFrame
     private javax.swing.JPanel bt2;
     private javax.swing.JPanel bt3;
     private javax.swing.JPanel bt4;
+    private javax.swing.JPanel bt5;
     private javax.swing.JPanel button1;
     private javax.swing.JPanel button2;
     private javax.swing.JPanel button3;
     private javax.swing.JPanel button4;
+    private javax.swing.JPanel button5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
