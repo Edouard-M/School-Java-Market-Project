@@ -118,6 +118,12 @@ public class DAO
         PreparedStatement statement = con.prepareStatement("DELETE FROM Product WHERE name = '" +name+ "'");
          statement.executeUpdate();
     }
+    public static void discountDelete(String name) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("DELETE FROM Discount WHERE name = '" +name+ "'");
+         statement.executeUpdate();
+    }
     public static void employeeDelete(String email) throws Exception
     {
         Connection con = getConnection();

@@ -52,9 +52,9 @@ public class Window2 extends JFrame
     {
         panel = new JPanel();
         
-        String [] colNames = getCol("Product");
+        String [] colNames = getCol("Discount");
         System.out.println("test 1");
-        String [][] data = getLines("Product");
+        String [][] data = getLines("Discount");
         System.out.println("test 2");
         
 

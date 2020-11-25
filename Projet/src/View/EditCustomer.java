@@ -226,6 +226,13 @@ private void buildPanel()
         jLabel6.setBounds(30, 20, 90, 25);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
+        {
+            public void mouseMoved(java.awt.event.MouseEvent evt)
+            {
+                jLabel3MouseMoved(evt);
+            }
+        });
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
@@ -359,6 +366,11 @@ private void buildPanel()
     {//GEN-HEADEREND:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jLabel3MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseMoved
+    {//GEN-HEADEREND:event_jLabel3MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.DAO;
+import static Model.DAO.discountDelete;
 import static Model.DAO.getCol;
 import static Model.DAO.getLines;
 import static Model.DAO.selectAllDiscount;
@@ -15,7 +17,10 @@ import Model.Product;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
@@ -187,7 +192,7 @@ private String discountName;
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 120, 453, 310);
+        jScrollPane1.setBounds(610, 140, 453, 310);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,8 +210,23 @@ private String discountName;
         jLabel4.setBounds(10, 20, 130, 25);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel5MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel5MousePressed(evt);
+            }
+        });
         jPanel3.add(jLabel5);
-        jLabel5.setBounds(0, 0, 160, 60);
+        jLabel5.setBounds(0, 0, 150, 60);
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(880, 490, 150, 60);
@@ -222,6 +242,21 @@ private String discountName;
 
         jLabel3.setBackground(new java.awt.Color(49, 91, 111));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel3MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel3MousePressed(evt);
+            }
+        });
         jPanel2.add(jLabel3);
         jLabel3.setBounds(0, 0, 150, 60);
 
@@ -251,7 +286,7 @@ private String discountName;
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(720, 538, 80, 10);
+        jSeparator1.setBounds(720, 538, 80, 2);
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator2);
@@ -285,7 +320,7 @@ private String discountName;
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(590, 120, 453, 320);
+        jScrollPane2.setBounds(30, 140, 453, 320);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -316,6 +351,51 @@ private String discountName;
     {//GEN-HEADEREND:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseEntered
+    {//GEN-HEADEREND:event_jLabel3MouseEntered
+        jLabel3.setIcon(new ImageIcon("src/Image/buttonClicked.png"));// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseExited
+    {//GEN-HEADEREND:event_jLabel3MouseExited
+        jLabel3.setIcon(new ImageIcon("src/Image/button.png")); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MousePressed
+    {//GEN-HEADEREND:event_jLabel3MousePressed
+    try
+    {
+        discountDelete(discountName);// TODO add your handling code here:
+    } catch (Exception ex)
+    {
+        Logger.getLogger(ManageDiscount.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_jLabel3MousePressed
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MouseEntered
+    {//GEN-HEADEREND:event_jLabel5MouseEntered
+        jLabel5.setIcon(new ImageIcon("src/Image/buttonClicked.png"));// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MouseExited
+    {//GEN-HEADEREND:event_jLabel5MouseExited
+         jLabel5.setIcon(new ImageIcon("src/Image/button.png"));
+    }//GEN-LAST:event_jLabel5MouseExited
+
+    private void jLabel5MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MousePressed
+    {//GEN-HEADEREND:event_jLabel5MousePressed
+    try
+    {
+        Discount discount=new Discount(productName, Integer.parseInt(jTextField2.getText()),Double.parseDouble(jTextField3.getText()));
+    discount.insertDiscount();
+    Window2 wind = new Window2();
+// TODO add your handling code here:
+    } catch (Exception ex)
+    {
+        Logger.getLogger(ManageDiscount.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_jLabel5MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
