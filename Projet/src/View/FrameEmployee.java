@@ -7,6 +7,7 @@ package View;
 
 import Model.Employee;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.logging.Level;
@@ -25,6 +26,7 @@ public class FrameEmployee extends javax.swing.JFrame
    private EmployeesPanel panel2; 
    private CreateEmployee panel3; 
    private EditEmployeesProfile panel4;
+   private ManageDiscount panel5;
    
    
 
@@ -50,17 +52,20 @@ public class FrameEmployee extends javax.swing.JFrame
         panel2 = new EmployeesPanel();
         panel3 = new CreateEmployee();
         panel4 = new EditEmployeesProfile("", this);
+        panel5 = new ManageDiscount();
         
 
         panel1.setVisible(false);
         panel2.setVisible(false);
         panel3.setVisible(false);
         panel4.setVisible(false);
+        panel5.setVisible(false);
         
         panel.add(panel1, c);
         panel.add(panel2, c);
         panel.add(panel3,c);
         panel.add(panel4, c);
+        panel.add(panel5, c);
         
         panel1.setVisible(true);
     }
@@ -87,9 +92,10 @@ public class FrameEmployee extends javax.swing.JFrame
         panel2.setVisible(true);
         panel3.setVisible(false);
         panel4.setVisible(false);
+        panel5.setVisible(false);
         
         jLabel1.setText("Disconnect");
-        System.out.println("a");
+        
         
     }
     
@@ -286,7 +292,7 @@ public class FrameEmployee extends javax.swing.JFrame
         jLabel3.setBackground(new java.awt.Color(250, 250, 250));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(250, 250, 250));
-        jLabel3.setText("Add Employee");
+        jLabel3.setText("Manage Employee");
 
         javax.swing.GroupLayout button3Layout = new javax.swing.GroupLayout(button3);
         button3.setLayout(button3Layout);
@@ -449,6 +455,7 @@ public class FrameEmployee extends javax.swing.JFrame
         panel2.setVisible(false);
         panel3.setVisible(false);
         panel4.setVisible(false);
+        panel5.setVisible(false);
 
         if(panel1.isConnected())
         {
@@ -478,6 +485,7 @@ public class FrameEmployee extends javax.swing.JFrame
             panel2.setVisible(true);
             panel3.setVisible(false);
             panel4.setVisible(false);
+            panel5.setVisible(false);
         }
 
     }//GEN-LAST:event_button2MousePressed
@@ -491,8 +499,16 @@ public class FrameEmployee extends javax.swing.JFrame
 
             panel1.setVisible(false);
             panel2.setVisible(false);
+            try
+            {
+                panel3.buildPanel();
+            } catch (Exception ex)
+            {
+                Logger.getLogger(FrameEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            }
             panel3.setVisible(true);
             panel4.setVisible(false);
+            panel5.setVisible(false);
         }
 
     }//GEN-LAST:event_button3MousePressed
@@ -509,6 +525,7 @@ public class FrameEmployee extends javax.swing.JFrame
             panel3.setVisible(false);
             panel4.setEmail(employee.getEmail());
             panel4.setVisible(true);
+            panel5.setVisible(false);
             
         }
 
@@ -525,6 +542,16 @@ public class FrameEmployee extends javax.swing.JFrame
             panel2.setVisible(false);
             panel3.setVisible(false);
             panel4.setVisible(false);
+            try
+            {
+                panel5.buildPanel();
+                
+            } catch (Exception ex)
+            {
+                Logger.getLogger(FrameEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            panel5.setSize(new Dimension(1130, 650));
+            panel5.setVisible(true);
             
         } // TODO add your handling code here:
     }//GEN-LAST:event_button5MousePressed

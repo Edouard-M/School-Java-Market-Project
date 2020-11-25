@@ -5,6 +5,7 @@
  */
 package Model;
 
+import com.sun.beans.editors.IntegerEditor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -115,6 +116,12 @@ public class DAO
     {
         Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("DELETE FROM Product WHERE name = '" +name+ "'");
+         statement.executeUpdate();
+    }
+    public static void employeeDelete(String email) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("DELETE FROM Employee WHERE email = '" +email+ "'");
          statement.executeUpdate();
     }
      public static void productAddStock(String name,int addToStock) throws Exception
@@ -417,6 +424,56 @@ public class DAO
 
                 product = new Product(result.getString("name"), result.getString("category"), result.getString("description"), result.getDouble("price"), result.getInt("stock"), null, result.getString("image"));
                 array.add(product);
+            }
+            return array;
+
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+        public static ArrayList<Discount> selectAllDiscount() throws Exception
+    {
+        try
+        {
+            Discount discount;
+            Connection con = getConnection();
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Discount ORDER BY name");
+
+            ResultSet result = statement.executeQuery();
+
+            ArrayList<Discount> array = new ArrayList<>();
+            while (result.next())
+            {
+
+                discount = new Discount( result.getString("name"), result.getInt("quantity"), result.getDouble("price"));
+                array.add(discount);
+            }
+            return array;
+
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+    public static ArrayList<Employee> selectAllEmployees() throws Exception
+    {
+        try
+        {
+            Employee employee;
+            Connection con = getConnection();
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee ORDER BY email");
+
+            ResultSet result = statement.executeQuery();
+
+            ArrayList<Employee> array = new ArrayList<>();
+            while (result.next())
+            {
+
+                employee = new Employee(result.getString("name"), result.getString("firstName"), result.getInt("age"), result.getString("phone"), result.getString("address"), result.getString("email"), result.getString("password"));
+                array.add(employee);
             }
             return array;
 

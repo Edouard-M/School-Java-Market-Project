@@ -603,6 +603,7 @@ public class EmployeesPanel extends javax.swing.JPanel
                Product product = new Product(newProductName.getText(), newProductCategory.getText(), newProductDescription.getText(), Double.parseDouble(newProductPrice.getText()), Integer.parseInt(newProductStock.getText()), null, newProductImage.getText());
            
            product.insertProduct();
+           this.buildPanel();
            
            } catch (Exception ex)
            {
