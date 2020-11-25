@@ -244,7 +244,7 @@ public class CreateEmployee extends javax.swing.JPanel
         {
          
             Employee createdEmployee = new Employee(jTextField3.getText(),jTextField1.getText(),jComboBox1.getSelectedIndex()+18  ,jTextField2.getText(),jTextField6.getText(),jTextField4.getText(),jPasswordField1.getText());
-           
+           createdEmployee.insertEmployee();
      
         } catch (Exception ex)
         {

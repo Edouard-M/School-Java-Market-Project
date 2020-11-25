@@ -20,7 +20,7 @@ public class Employee extends Person
     public Employee(String name, String firstName, int age, String phone, String address, String email, String password) throws Exception
     {
         super(name, firstName, age, phone, address, email, password);
-        insertEmployee();
+        
     }
         public void insertEmployee() throws Exception
     {
