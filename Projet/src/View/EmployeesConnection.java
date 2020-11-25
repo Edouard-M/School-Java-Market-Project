@@ -161,6 +161,10 @@ public class EmployeesConnection extends javax.swing.JPanel
             {
                 jLabel4MouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel4MousePressed(evt);
+            }
         });
         jPanel3.add(jLabel4);
         jLabel4.setBounds(0, 0, 150, 50);
@@ -195,31 +199,17 @@ public class EmployeesConnection extends javax.swing.JPanel
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseEntered
     {//GEN-HEADEREND:event_jPanel3MouseEntered
-        jPanel3.setBackground(new Color(39,57,82));
+   
     }//GEN-LAST:event_jPanel3MouseEntered
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseExited
     {//GEN-HEADEREND:event_jPanel3MouseExited
-        jPanel3.setBackground(new Color(23,35,55));
+     
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MousePressed
     {//GEN-HEADEREND:event_jPanel3MousePressed
-        try
-        {
-
-            if(searchEmployee(jTextField1.getText(),jPasswordField1.getText())==true)
-            {
-                connected=true;
-                eFrame.connection();
-                eFrame.setEmployee(getEmployee(jTextField1.getText()));
-                System.out.println("Get EMployee");
-                System.out.println("Employee Connection Accepted");
-            }
-        } catch (Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
+      
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jTextField1MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jTextField1MousePressed
@@ -241,6 +231,25 @@ public class EmployeesConnection extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jLabel4MouseExited
           jLabel4.setIcon(new ImageIcon("src/Image/button.png"));// TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel4MousePressed
+    {//GEN-HEADEREND:event_jLabel4MousePressed
+      try
+        {
+
+            if(searchEmployee(jTextField1.getText(),jPasswordField1.getText())==true)
+            {
+                connected=true;
+                eFrame.connection();
+                eFrame.setEmployee(getEmployee(jTextField1.getText()));
+                System.out.println("Get EMployee");
+                System.out.println("Employee Connection Accepted");
+            }
+        } catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }    // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.Border;
@@ -115,15 +116,16 @@ public class EmployeesPanel extends javax.swing.JPanel
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         quantityRestock = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -137,20 +139,26 @@ public class EmployeesPanel extends javax.swing.JPanel
         newProductPrice = new javax.swing.JTextField();
         newProductName = new javax.swing.JTextField();
         newProductCategory = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel18 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(53, 63, 74));
+        setBackground(new java.awt.Color(49, 91, 111));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Image file");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 560, 70, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 540, 90, 30));
 
-        jPanel3.setBackground(new java.awt.Color(23, 35, 55));
+        jPanel3.setBackground(new java.awt.Color(53, 63, 74));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
             public void mouseMoved(java.awt.event.MouseEvent evt)
@@ -173,31 +181,36 @@ public class EmployeesPanel extends javax.swing.JPanel
                 jPanel3MousePressed(evt);
             }
         });
+        jPanel3.setLayout(null);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Add Product");
+        jPanel3.add(jLabel6);
+        jLabel6.setBounds(20, 10, 101, 25);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(20, 20, 20))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addContainerGap())
-        );
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel15MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel15MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel15MousePressed(evt);
+            }
+        });
+        jPanel3.add(jLabel15);
+        jLabel15.setBounds(0, 0, 150, 50);
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 580, 110, 30));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 570, 150, 50));
 
-        jPanel5.setBackground(new java.awt.Color(23, 35, 55));
+        jPanel5.setBackground(new java.awt.Color(53, 63, 74));
         jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
             public void mouseMoved(java.awt.event.MouseEvent evt)
@@ -220,34 +233,48 @@ public class EmployeesPanel extends javax.swing.JPanel
                 jPanel5MousePressed(evt);
             }
         });
+        jPanel5.setLayout(null);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Add Stock");
+        jPanel5.add(jLabel8);
+        jLabel8.setBounds(30, 20, 83, 25);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(27, 27, 27))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel16MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel16MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel16MousePressed(evt);
+            }
+        });
+        jPanel5.add(jLabel16);
+        jLabel16.setBounds(0, 0, 160, 70);
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, 110, 30));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 130, 150, 60));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        quantityRestock.setBackground(new java.awt.Color(255, 255, 255));
+        quantityRestock.setBackground(new java.awt.Color(53, 63, 74));
         quantityRestock.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        quantityRestock.setForeground(new java.awt.Color(51, 51, 51));
+        quantityRestock.setForeground(new java.awt.Color(255, 255, 255));
+        quantityRestock.setText("0");
         quantityRestock.setBorder(null);
+        quantityRestock.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                quantityRestockMousePressed(evt);
+            }
+        });
         quantityRestock.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -255,17 +282,17 @@ public class EmployeesPanel extends javax.swing.JPanel
                 quantityRestockActionPerformed(evt);
             }
         });
-        add(quantityRestock, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 210, 70, 30));
+        add(quantityRestock, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 70, 30));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Product Management");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 240, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 360, 60));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Create A New Product ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 190, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 260, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
@@ -282,47 +309,41 @@ public class EmployeesPanel extends javax.swing.JPanel
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 430));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 410, 390));
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 420, 10));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Delete Product");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 130, 30));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Quantity");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 60, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 70, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Name");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 60, 30));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 60, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Description");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 80, 30));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 100, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Price");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 350, 60, 30));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, 60, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Stock");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 560, 60, 30));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, 60, 30));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Category");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 60, 30));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 300, 90, 30));
 
-        newProductImage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        newProductImage.setBackground(new java.awt.Color(53, 63, 74));
+        newProductImage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        newProductImage.setForeground(new java.awt.Color(255, 255, 255));
         newProductImage.setBorder(null);
         newProductImage.addActionListener(new java.awt.event.ActionListener()
         {
@@ -331,9 +352,11 @@ public class EmployeesPanel extends javax.swing.JPanel
                 newProductImageActionPerformed(evt);
             }
         });
-        add(newProductImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 170, -1));
+        add(newProductImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 570, 160, -1));
 
-        newProductStock.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        newProductStock.setBackground(new java.awt.Color(53, 63, 74));
+        newProductStock.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        newProductStock.setForeground(new java.awt.Color(255, 255, 255));
         newProductStock.setBorder(null);
         newProductStock.addActionListener(new java.awt.event.ActionListener()
         {
@@ -342,17 +365,21 @@ public class EmployeesPanel extends javax.swing.JPanel
                 newProductStockActionPerformed(evt);
             }
         });
-        add(newProductStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 590, 80, 20));
+        add(newProductStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 570, 80, 20));
 
+        newProductDescription.setBackground(new java.awt.Color(53, 63, 74));
         newProductDescription.setColumns(20);
         newProductDescription.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        newProductDescription.setForeground(new java.awt.Color(255, 255, 255));
         newProductDescription.setRows(5);
-        newProductDescription.setBorder(null);
+        newProductDescription.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         jScrollPane2.setViewportView(newProductDescription);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 420, 110));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 470, 110));
 
-        newProductPrice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        newProductPrice.setBackground(new java.awt.Color(53, 63, 74));
+        newProductPrice.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        newProductPrice.setForeground(new java.awt.Color(255, 255, 255));
         newProductPrice.setBorder(null);
         newProductPrice.addActionListener(new java.awt.event.ActionListener()
         {
@@ -361,9 +388,11 @@ public class EmployeesPanel extends javax.swing.JPanel
                 newProductPriceActionPerformed(evt);
             }
         });
-        add(newProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 380, 80, -1));
+        add(newProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, 80, -1));
 
-        newProductName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        newProductName.setBackground(new java.awt.Color(53, 63, 74));
+        newProductName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        newProductName.setForeground(new java.awt.Color(255, 255, 255));
         newProductName.setBorder(null);
         newProductName.addActionListener(new java.awt.event.ActionListener()
         {
@@ -372,9 +401,11 @@ public class EmployeesPanel extends javax.swing.JPanel
                 newProductNameActionPerformed(evt);
             }
         });
-        add(newProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 140, -1));
+        add(newProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, 140, -1));
 
-        newProductCategory.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        newProductCategory.setBackground(new java.awt.Color(53, 63, 74));
+        newProductCategory.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        newProductCategory.setForeground(new java.awt.Color(255, 255, 255));
         newProductCategory.setBorder(null);
         newProductCategory.addActionListener(new java.awt.event.ActionListener()
         {
@@ -383,17 +414,9 @@ public class EmployeesPanel extends javax.swing.JPanel
                 newProductCategoryActionPerformed(evt);
             }
         });
-        add(newProductCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 170, -1));
+        add(newProductCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 330, 170, -1));
 
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 420, 10));
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Add Stock");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, 90, 30));
-
-        jPanel4.setBackground(new java.awt.Color(23, 35, 55));
+        jPanel4.setBackground(new java.awt.Color(53, 63, 74));
         jPanel4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
             public void mouseMoved(java.awt.event.MouseEvent evt)
@@ -416,29 +439,55 @@ public class EmployeesPanel extends javax.swing.JPanel
                 jPanel4MousePressed(evt);
             }
         });
+        jPanel4.setLayout(null);
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Delete Product");
+        jPanel4.add(jLabel14);
+        jLabel14.setBounds(10, 10, 120, 30);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addContainerGap())
-        );
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel17MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel17MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel17MousePressed(evt);
+            }
+        });
+        jPanel4.add(jLabel17);
+        jLabel17.setBounds(0, 0, 160, 50);
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 270, 110, 30));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 140, 160, 50));
+
+        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 170, 20));
+
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 70, 20));
+
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 90, 20));
+
+        jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
+        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 600, 80, 20));
+
+        jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
+        add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, 80, 20));
+
+        jSeparator9.setForeground(new java.awt.Color(255, 255, 255));
+        add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 160, 20));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fondEmployee.png"))); // NOI18N
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1130, 660));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel3MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseMoved
@@ -448,26 +497,17 @@ public class EmployeesPanel extends javax.swing.JPanel
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseEntered
     {//GEN-HEADEREND:event_jPanel3MouseEntered
-        jPanel3.setBackground(new Color(39,57,82));
+      
     }//GEN-LAST:event_jPanel3MouseEntered
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseExited
     {//GEN-HEADEREND:event_jPanel3MouseExited
-        jPanel3.setBackground(new Color(23,35,55));
+    
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MousePressed
     {//GEN-HEADEREND:event_jPanel3MousePressed
-           try
-           {
-               Product product = new Product(newProductName.getText(), newProductCategory.getText(), newProductDescription.getText(), Double.parseDouble(newProductPrice.getText()), Integer.parseInt(newProductStock.getText()), null, newProductImage.getText());
-           
-           product.insertProduct();
-           
-           } catch (Exception ex)
-           {
-               Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
-           }
+          
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jPanel5MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel5MouseMoved
@@ -477,23 +517,17 @@ public class EmployeesPanel extends javax.swing.JPanel
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel5MouseEntered
     {//GEN-HEADEREND:event_jPanel5MouseEntered
-        jPanel5.setBackground(new Color(39,57,82));
+       
     }//GEN-LAST:event_jPanel5MouseEntered
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel5MouseExited
     {//GEN-HEADEREND:event_jPanel5MouseExited
-        jPanel5.setBackground(new Color(23,35,55));
+       
     }//GEN-LAST:event_jPanel5MouseExited
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel5MousePressed
     {//GEN-HEADEREND:event_jPanel5MousePressed
-           try
-           {
-               productAddStock(currentName, Integer.parseInt(quantityRestock.getText()));
-           } catch (Exception ex)
-           {
-               Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
-           }
+          
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void quantityRestockActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_quantityRestockActionPerformed
@@ -533,25 +567,90 @@ public class EmployeesPanel extends javax.swing.JPanel
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel4MouseEntered
     {//GEN-HEADEREND:event_jPanel4MouseEntered
-       jPanel4.setBackground(new Color(39,57,82));
+     
     }//GEN-LAST:event_jPanel4MouseEntered
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel4MouseExited
     {//GEN-HEADEREND:event_jPanel4MouseExited
-       jPanel4.setBackground(new Color(23,35,55));
+      
     }//GEN-LAST:event_jPanel4MouseExited
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel4MousePressed
     {//GEN-HEADEREND:event_jPanel4MousePressed
-           try
+          
+          
+    }//GEN-LAST:event_jPanel4MousePressed
+
+    private void quantityRestockMousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_quantityRestockMousePressed
+    {//GEN-HEADEREND:event_quantityRestockMousePressed
+      quantityRestock.setText("");  // TODO add your handling code here:
+    }//GEN-LAST:event_quantityRestockMousePressed
+
+    private void jLabel15MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel15MouseEntered
+    {//GEN-HEADEREND:event_jLabel15MouseEntered
+        jLabel15.setIcon(new ImageIcon("src/Image/buttonClicked.png"));// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel15MouseEntered
+
+    private void jLabel15MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel15MouseExited
+    {//GEN-HEADEREND:event_jLabel15MouseExited
+        jLabel15.setIcon(new ImageIcon("src/Image/button.png"));   // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel15MouseExited
+
+    private void jLabel15MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel15MousePressed
+    {//GEN-HEADEREND:event_jLabel15MousePressed
+       try
+           {
+               Product product = new Product(newProductName.getText(), newProductCategory.getText(), newProductDescription.getText(), Double.parseDouble(newProductPrice.getText()), Integer.parseInt(newProductStock.getText()), null, newProductImage.getText());
+           
+           product.insertProduct();
+           
+           } catch (Exception ex)
+           {
+               Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
+           }  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel15MousePressed
+
+    private void jLabel16MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel16MouseEntered
+    {//GEN-HEADEREND:event_jLabel16MouseEntered
+       jLabel16.setIcon(new ImageIcon("src/Image/buttonClicked.png")); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel16MouseEntered
+
+    private void jLabel16MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel16MouseExited
+    {//GEN-HEADEREND:event_jLabel16MouseExited
+        jLabel16.setIcon(new ImageIcon("src/Image/button.png"));// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel16MouseExited
+
+    private void jLabel16MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel16MousePressed
+    {//GEN-HEADEREND:event_jLabel16MousePressed
+       try
+           {
+               productAddStock(currentName, Integer.parseInt(quantityRestock.getText()));
+           } catch (Exception ex)
+           {
+               Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
+           }  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel16MousePressed
+
+    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel17MouseEntered
+    {//GEN-HEADEREND:event_jLabel17MouseEntered
+        jLabel17.setIcon(new ImageIcon("src/Image/buttonClicked.png"));// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel17MouseEntered
+
+    private void jLabel17MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel17MouseExited
+    {//GEN-HEADEREND:event_jLabel17MouseExited
+        jLabel17.setIcon(new ImageIcon("src/Image/button.png"));// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel17MouseExited
+
+    private void jLabel17MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel17MousePressed
+    {//GEN-HEADEREND:event_jLabel17MousePressed
+       try
            {
                productDelete(currentName);
            } catch (Exception ex)
            {
                Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
-           }  
-          
-    }//GEN-LAST:event_jPanel4MousePressed
+           }    // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel17MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -559,11 +658,13 @@ public class EmployeesPanel extends javax.swing.JPanel
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -574,8 +675,13 @@ public class EmployeesPanel extends javax.swing.JPanel
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField newProductCategory;
     private javax.swing.JTextArea newProductDescription;
