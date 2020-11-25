@@ -60,10 +60,13 @@ public class NewCustomer extends javax.swing.JPanel
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel.setBackground(new java.awt.Color(62, 120, 207));
+        panel.setMinimumSize(new java.awt.Dimension(1130, 650));
+        panel.setPreferredSize(new java.awt.Dimension(1130, 650));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -204,7 +207,12 @@ public class NewCustomer extends javax.swing.JPanel
 
         panel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, 100, 30));
 
-        add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 650));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("New Profile");
+        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
+
+        add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 660));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -269,6 +277,7 @@ public class NewCustomer extends javax.swing.JPanel
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;

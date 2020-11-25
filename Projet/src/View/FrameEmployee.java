@@ -23,7 +23,7 @@ public class FrameEmployee extends javax.swing.JFrame
    private GridBagLayout layout = new GridBagLayout();
    private EmployeesConnection panel1;
    private EmployeesPanel panel2; 
-   
+   private CreateEmployee panel3; 
    private EditEmployeesProfile panel4;
    
    
@@ -47,15 +47,19 @@ public class FrameEmployee extends javax.swing.JFrame
         c.gridy = 0;
         
         panel1 = new EmployeesConnection(this);
-        panel2 = new EmployeesPanel("");
+        panel2 = new EmployeesPanel();
+        panel3 = new CreateEmployee();
         panel4 = new EditEmployeesProfile("", this);
+        
 
         panel1.setVisible(false);
         panel2.setVisible(false);
+        panel3.setVisible(false);
         panel4.setVisible(false);
         
         panel.add(panel1, c);
         panel.add(panel2, c);
+        panel.add(panel3,c);
         panel.add(panel4, c);
         
         panel1.setVisible(true);
@@ -68,12 +72,24 @@ public class FrameEmployee extends javax.swing.JFrame
     
     public void connection()
     {
+        
         resetColor();
         setColor(button2,bt2);
         panel1.setVisible(false);
-        panel4.setVisible(false);
+       try
+       {
+           panel2.buildPanel();
+       } catch (Exception ex)
+       {
+           Logger.getLogger(FrameEmployee.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
         panel2.setVisible(true);
+        panel3.setVisible(false);
+        panel4.setVisible(false);
+        
         jLabel1.setText("Disconnect");
+        System.out.println("a");
         
     }
     
@@ -163,7 +179,7 @@ public class FrameEmployee extends javax.swing.JFrame
         );
         bt1Layout.setVerticalGroup(
             bt1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 64, Short.MAX_VALUE)
         );
 
         jLabel1.setBackground(new java.awt.Color(250, 250, 250));
@@ -177,17 +193,17 @@ public class FrameEmployee extends javax.swing.JFrame
             button1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(button1Layout.createSequentialGroup()
                 .addComponent(bt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
         button1Layout.setVerticalGroup(
             button1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bt1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(button1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, button1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         menu.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 150, -1));
@@ -211,13 +227,13 @@ public class FrameEmployee extends javax.swing.JFrame
         );
         bt2Layout.setVerticalGroup(
             bt2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 64, Short.MAX_VALUE)
         );
 
         jLabel2.setBackground(new java.awt.Color(250, 250, 250));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(250, 250, 250));
-        jLabel2.setText("Panel");
+        jLabel2.setText("Manage Product");
 
         javax.swing.GroupLayout button2Layout = new javax.swing.GroupLayout(button2);
         button2.setLayout(button2Layout);
@@ -225,17 +241,17 @@ public class FrameEmployee extends javax.swing.JFrame
             button2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(button2Layout.createSequentialGroup()
                 .addComponent(bt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(0, 83, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
         button2Layout.setVerticalGroup(
             button2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bt2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(button2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel2)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menu.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 150, -1));
@@ -259,7 +275,7 @@ public class FrameEmployee extends javax.swing.JFrame
         );
         bt3Layout.setVerticalGroup(
             bt3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 64, Short.MAX_VALUE)
         );
 
         jLabel3.setBackground(new java.awt.Color(250, 250, 250));
@@ -273,17 +289,17 @@ public class FrameEmployee extends javax.swing.JFrame
             button3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(button3Layout.createSequentialGroup()
                 .addComponent(bt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(0, 79, Short.MAX_VALUE))
+                .addGap(0, 87, Short.MAX_VALUE))
         );
         button3Layout.setVerticalGroup(
             button3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bt3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(button3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel3)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menu.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
@@ -307,7 +323,7 @@ public class FrameEmployee extends javax.swing.JFrame
         );
         bt4Layout.setVerticalGroup(
             bt4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 64, Short.MAX_VALUE)
         );
 
         jLabel4.setBackground(new java.awt.Color(250, 250, 250));
@@ -321,17 +337,17 @@ public class FrameEmployee extends javax.swing.JFrame
             button4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(button4Layout.createSequentialGroup()
                 .addComponent(bt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(0, 79, Short.MAX_VALUE))
+                .addGap(0, 87, Short.MAX_VALUE))
         );
         button4Layout.setVerticalGroup(
             button4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bt4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(button4Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel4)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menu.add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
@@ -378,6 +394,7 @@ public class FrameEmployee extends javax.swing.JFrame
 
         panel1.setVisible(true);
         panel2.setVisible(false);
+        panel3.setVisible(false);
         panel4.setVisible(false);
 
         if(panel1.isConnected())
@@ -398,7 +415,15 @@ public class FrameEmployee extends javax.swing.JFrame
             setColor(button2, bt2);
 
             panel1.setVisible(false);
+            try
+            {
+                panel2.buildPanel();
+            } catch (Exception ex)
+            {
+                Logger.getLogger(FrameEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            }
             panel2.setVisible(true);
+            panel3.setVisible(false);
             panel4.setVisible(false);
         }
 
@@ -413,6 +438,7 @@ public class FrameEmployee extends javax.swing.JFrame
 
             panel1.setVisible(false);
             panel2.setVisible(false);
+            panel3.setVisible(true);
             panel4.setVisible(false);
         }
 
@@ -427,7 +453,7 @@ public class FrameEmployee extends javax.swing.JFrame
 
             panel1.setVisible(false);
             panel2.setVisible(false);
-            
+            panel3.setVisible(false);
             panel4.setEmail(employee.getEmail());
             panel4.setVisible(true);
             

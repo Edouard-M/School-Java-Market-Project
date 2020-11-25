@@ -11,6 +11,7 @@ import static Model.DAO.searchEmployee;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Edoua
@@ -24,8 +25,10 @@ public class EmployeesConnection extends javax.swing.JPanel
      */
     public EmployeesConnection(FrameEmployee eframe)
     {
-        eFrame = eframe;
+       
+        this.eFrame = eframe;
         initComponents();
+        jLabel3.setIcon(new ImageIcon("src/Image/logoGifHermes.gif"));
         connected=false;
         setVisible(true);
     }
@@ -53,9 +56,10 @@ public class EmployeesConnection extends javax.swing.JPanel
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(53, 63, 74));
-        setPreferredSize(new java.awt.Dimension(360, 360));
+        setPreferredSize(new java.awt.Dimension(1130, 650));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setBorder(null);
@@ -66,7 +70,7 @@ public class EmployeesConnection extends javax.swing.JPanel
                 jTextField1ActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 140, 30));
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 140, 30));
 
         jPasswordField1.setBorder(null);
         jPasswordField1.addActionListener(new java.awt.event.ActionListener()
@@ -76,19 +80,19 @@ public class EmployeesConnection extends javax.swing.JPanel
                 jPasswordField1ActionPerformed(evt);
             }
         });
-        add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 140, 30));
+        add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 140, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Email");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 40, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 40, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(23, 35, 55));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
@@ -135,7 +139,8 @@ public class EmployeesConnection extends javax.swing.JPanel
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 100, 30));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, 100, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, -20, 690, 520));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1ActionPerformed
@@ -187,6 +192,7 @@ public class EmployeesConnection extends javax.swing.JPanel
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;

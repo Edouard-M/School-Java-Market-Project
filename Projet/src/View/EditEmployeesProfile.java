@@ -43,7 +43,7 @@ public class EditEmployeesProfile extends javax.swing.JPanel
             }
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(ageselector));  
             jComboBox1.setSelectedIndex(getEmployeeAge(email)-13);
-            System.out.println(" zdzdzdzdzd");
+            
             jTextField1.setText(getEmployeeFirstName(email));
 
             jTextField2.setText(getEmployeeAddress(email));
@@ -89,6 +89,7 @@ public class EditEmployeesProfile extends javax.swing.JPanel
         jTextField4 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -205,6 +206,11 @@ public class EditEmployeesProfile extends javax.swing.JPanel
 
         panel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 100, 30));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Your Profile");
+        panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
+
         add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 650));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -258,6 +264,7 @@ public class EditEmployeesProfile extends javax.swing.JPanel
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

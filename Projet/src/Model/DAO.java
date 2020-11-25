@@ -111,7 +111,28 @@ public class DAO
         } else
             return null;
     }
-
+    public static void productDelete(String name) throws Exception
+    {
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("DELETE FROM Product WHERE name = '" +name+ "'");
+         statement.executeUpdate();
+    }
+     public static void productAddStock(String name,int addToStock) throws Exception
+    {
+        int stock;
+        Connection con = getConnection();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Product WHERE name = '" +name+ "'");
+        ResultSet result = statement.executeQuery();
+        if (result.next())
+        {
+            
+            stock = result.getInt("stock");
+          
+           stock+=addToStock;
+            statement = con.prepareStatement("UPDATE Product SET Stock='"+stock+"'  WHERE name = '"+name+"'");
+        statement.executeUpdate();
+        }
+    }
     public static Discount searchDiscount(String search) throws Exception
     {
         String name = "";

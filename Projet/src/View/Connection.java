@@ -40,7 +40,7 @@ public class Connection extends javax.swing.JPanel {
 //            Image newimg = image.getScaledInstance(314, 110,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 //            imageIcon = new ImageIcon(newimg);  // transform it back
 
-           jLabel1.setIcon(new ImageIcon("src/Image/logo.gif"));
+           jLabel1.setIcon(new ImageIcon("src/Image/logoGifHermes.gif"));
        
     }
 
@@ -193,7 +193,7 @@ public class Connection extends javax.swing.JPanel {
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 100, 30));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 310, 240));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 600, 460));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
