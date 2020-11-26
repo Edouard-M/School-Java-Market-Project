@@ -37,6 +37,8 @@ public class EmployeesPanel extends javax.swing.JPanel
        private DefaultTableModel tableModel;
        private String currentName;
        private int quantity;
+       private TableColumnModel columnModel;
+       private JTableHeader tableHeader;
        
     /**
      * Creates new form EmployeesPanel
@@ -63,7 +65,7 @@ public class EmployeesPanel extends javax.swing.JPanel
 
         jTable1.getSelectionModel().addListSelectionListener(new EmployeesPanel.TableListener());
         
-        TableColumnModel columnModel = jTable1.getColumnModel();
+        columnModel = jTable1.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(100);
         columnModel.getColumn(1).setPreferredWidth(50);
         columnModel.getColumn(2).setPreferredWidth(150);
@@ -78,7 +80,7 @@ public class EmployeesPanel extends javax.swing.JPanel
   
    public void setTableStyle(JTable tableStyle)
     {
-        JTableHeader tableHeader=tableStyle.getTableHeader();
+        tableHeader=tableStyle.getTableHeader();
         tableHeader.setOpaque(true);
         tableHeader.setBackground(new Color(255, 255, 255));
         tableHeader.setForeground(new Color(0, 0, 0));
@@ -99,9 +101,15 @@ public class EmployeesPanel extends javax.swing.JPanel
         @Override
         public void valueChanged(ListSelectionEvent e)
         {
+          
+            
            int viewRow = jTable1.getSelectedRow();
-            currentName = (String) jTable1.getValueAt(viewRow, 0);
-            quantity = Integer.parseInt((String) jTable1.getValueAt(viewRow, 4));
+           if(viewRow>=0)
+           {
+                currentName = (String) jTable1.getValueAt(viewRow, 0);
+            quantity = Integer.parseInt((String) jTable1.getValueAt(viewRow, 4)); 
+           }
+          
             
         }
     }
@@ -603,11 +611,18 @@ public class EmployeesPanel extends javax.swing.JPanel
                Product product = new Product(newProductName.getText(), newProductCategory.getText(), newProductDescription.getText(), Double.parseDouble(newProductPrice.getText()), Integer.parseInt(newProductStock.getText()), null, newProductImage.getText());
            
            product.insertProduct();
-           this.buildPanel();
-           
+            String [] colNames = getCol("Product");
+             String [][] data = getLines("Product");
+           tableModel.setDataVector(data,colNames);
+              columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(50);
+        columnModel.getColumn(2).setPreferredWidth(150);
+        columnModel.getColumn(3).setPreferredWidth(50);
+        columnModel.getColumn(4).setPreferredWidth(50);
+            setTableStyle(jTable1);
            } catch (Exception ex)
            {
-               Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
+               System.out.println(ex);
            }  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel15MousePressed
 
@@ -625,10 +640,21 @@ public class EmployeesPanel extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jLabel16MousePressed
        try
            {
-               productAddStock(currentName, Integer.parseInt(quantityRestock.getText()));
+               int addstock= Integer.parseInt(quantityRestock.getText());
+               productAddStock(currentName,addstock);
+               String [] colNames = getCol("Product");
+             String [][] data = getLines("Product");
+           tableModel.setDataVector(data,colNames);
+              columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(50);
+        columnModel.getColumn(2).setPreferredWidth(150);
+        columnModel.getColumn(3).setPreferredWidth(50);
+        columnModel.getColumn(4).setPreferredWidth(50);
+            setTableStyle(jTable1);
            } catch (Exception ex)
            {
-               Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
+               System.out.println(ex);
+              // Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
            }  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel16MousePressed
 
@@ -647,9 +673,18 @@ public class EmployeesPanel extends javax.swing.JPanel
        try
            {
                productDelete(currentName);
+           String [] colNames = getCol("Product");
+           String [][] data = getLines("Product");
+           tableModel.setDataVector(data,colNames);
+              columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(50);
+        columnModel.getColumn(2).setPreferredWidth(150);
+        columnModel.getColumn(3).setPreferredWidth(50);
+        columnModel.getColumn(4).setPreferredWidth(50);
+           setTableStyle(jTable1);
            } catch (Exception ex)
            {
-               Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, ex);
+               System.out.println(ex);
            }    // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MousePressed
 
