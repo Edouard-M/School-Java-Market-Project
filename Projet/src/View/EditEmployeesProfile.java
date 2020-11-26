@@ -320,7 +320,7 @@ public class EditEmployeesProfile extends javax.swing.JPanel
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MousePressed
     {//GEN-HEADEREND:event_jLabel2MousePressed
-try
+        try
         {
             if(!"".equals(jTextField4.getText()))
             {

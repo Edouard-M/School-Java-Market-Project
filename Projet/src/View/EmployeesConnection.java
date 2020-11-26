@@ -86,7 +86,6 @@ public class EmployeesConnection extends javax.swing.JPanel
         });
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 250, 30));
 
-        jPasswordField1.setEditable(false);
         jPasswordField1.setBackground(new java.awt.Color(53, 63, 74));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setText("supermotdepass");

@@ -37,12 +37,15 @@ public class CreateEmployee extends javax.swing.JPanel
 {
     private ArrayList<Employee> allEmployeesList;
        private DefaultTableModel tableModel;
-private String currentMail;
+    private String currentMail;
+    private FrameEmployee eFrame;
+    private Employee employee;
     /**
      * Creates new form CreateEmployee
      */
-    public CreateEmployee()
+    public CreateEmployee(FrameEmployee eFrame)
     {
+        this.eFrame=eFrame;
         initComponents();
         String[]ageselector = new String[83];
         for(int i=18 ; i <= 100 ; i++)
@@ -51,21 +54,41 @@ private String currentMail;
             }
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(ageselector)); 
     }
+
+    public void setEmployee(Employee employee)
+    {
+        this.employee = employee;
+        if(!"admin@gmail.com".equals(employee.getEmail()))            
+       { jPanel4.setVisible(false);}
+        else
+            jPanel4.setVisible(true);
+    }
+    
      public void buildPanel() throws Exception
     {
        
-        
         allEmployeesList = selectAllEmployees();
         String [] colNames = getCol("Employee");
         String [][] data = getLines("Employee");
-        
+        String [] colNamesFilter = {"Name", "First Name", "Age", "Phone", "Address","Email"};
+        String [][] dataFilter = new String[data.length][6];
+        for(int i=0 ; i < data.length ; i++)
+        {
+            dataFilter[i][0] = data[i][0];
+            dataFilter[i][1] = data[i][1];
+            dataFilter[i][2] = data[i][2];
+            dataFilter[i][3] = data[i][3];
+            dataFilter[i][4] = data[i][4];
+            dataFilter[i][5] = data[i][5];
+        }
      
         
         tableModel =  (DefaultTableModel) jTable1.getModel();
         
-        
-        tableModel.setDataVector(data, colNames);
-
+        if("admin@gmail.com".equals(employee.getEmail()))  
+        { tableModel.setDataVector(data, colNames);}
+        else 
+            tableModel.setDataVector(dataFilter, colNamesFilter);
         jTable1.getSelectionModel().addListSelectionListener(new CreateEmployee.TableListener());
         
         TableColumnModel columnModel = jTable1.getColumnModel();
@@ -105,8 +128,9 @@ private String currentMail;
         public void valueChanged(ListSelectionEvent e)
         {
            int viewRow = jTable1.getSelectedRow();
-            currentMail = (String) jTable1.getValueAt(viewRow, 5);
-           
+           if(viewRow>=0)
+           { currentMail = (String) jTable1.getValueAt(viewRow, 5);
+           }
             
         }
     }
@@ -459,7 +483,15 @@ private String currentMail;
          
             Employee createdEmployee = new Employee(jTextField3.getText(),jTextField1.getText(),jComboBox1.getSelectedIndex()+18  ,jTextField2.getText(),jTextField6.getText(),jTextField4.getText(),jPasswordField1.getText());
            createdEmployee.insertEmployee();
-     
+            String[] colNames = getCol("Employee");
+            String[][] data = getLines("Employee");
+            tableModel.setDataVector(data, colNames);
+            TableColumnModel columnModel = jTable1.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(100);
+            columnModel.getColumn(1).setPreferredWidth(50);
+            columnModel.getColumn(2).setPreferredWidth(150);
+            columnModel.getColumn(3).setPreferredWidth(50);
+            columnModel.getColumn(4).setPreferredWidth(50);
         } catch (Exception ex)
         {
             
@@ -492,7 +524,19 @@ private String currentMail;
     {//GEN-HEADEREND:event_jLabel14MousePressed
         try
         {
-            employeeDelete(currentMail);       // TODO add your handling code here:
+            if(!"admin@gmail.com".equals(currentMail)&&!employee.getEmail().equals(currentMail))
+            { 
+            employeeDelete(currentMail);
+            String[] colNames = getCol("Employee");
+            String[][] data = getLines("Employee");
+            tableModel.setDataVector(data, colNames);
+            TableColumnModel columnModel = jTable1.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(100);
+            columnModel.getColumn(1).setPreferredWidth(50);
+            columnModel.getColumn(2).setPreferredWidth(150);
+            columnModel.getColumn(3).setPreferredWidth(50);
+            columnModel.getColumn(4).setPreferredWidth(50);
+            }// TODO add your handling code here:
         } catch (Exception ex)
         {
             Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);

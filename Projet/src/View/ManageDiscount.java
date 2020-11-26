@@ -41,6 +41,7 @@ private ArrayList<Product> allProductsList;
 private ArrayList<Discount> allDiscountList;
 private String productName;
 private String discountName;
+private TableColumnModel columnModel;
     /**
      * Creates new form ManageDiscount
      */
@@ -54,22 +55,37 @@ private String discountName;
         
         
         allProductsList = selectAllProducts();
-        String [] colNames = getCol("Product");
-        String [][] data = getLines("Product");
+        String[][] data = getLines("Product");
+            String[] colNamesFilter =
+            {
+                "Name", "Category", "Description", "Price", "Stock"
+            };
+            String[][] dataFilter = new String[data.length][5];
+            for (int i = 0; i < data.length; i++)
+            {
+                dataFilter[i][0] = data[i][0];
+                dataFilter[i][1] = data[i][1];
+                dataFilter[i][2] = data[i][2];
+                dataFilter[i][3] = data[i][3];
+                dataFilter[i][4] = data[i][4];
+                
+            }
+            
+          
         
      
         
         tableModel1 =  (DefaultTableModel) jTable1.getModel();
+   
         
-        
-        tableModel1.setDataVector(data, colNames);
+        tableModel1.setDataVector(data, colNamesFilter);
 
         jTable1.getSelectionModel().addListSelectionListener(new ManageDiscount.TableListener());
         
-        TableColumnModel columnModel = jTable1.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(100);
-        columnModel.getColumn(1).setPreferredWidth(50);
-        columnModel.getColumn(2).setPreferredWidth(150);
+        columnModel = jTable1.getColumnModel();
+          columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(220);
         columnModel.getColumn(3).setPreferredWidth(50);
         columnModel.getColumn(4).setPreferredWidth(50);
         
@@ -125,7 +141,8 @@ private String discountName;
         public void valueChanged(ListSelectionEvent e)
         {
            int viewRow = jTable1.getSelectedRow();
-            productName = (String) jTable1.getValueAt(viewRow, 0);    
+           if(viewRow>=0)
+           { productName = (String) jTable1.getValueAt(viewRow, 0);}    
         }
     }
   public class TableListener2 implements ListSelectionListener 
@@ -135,7 +152,8 @@ private String discountName;
         public void valueChanged(ListSelectionEvent e)
         {
            int viewRow = jTable2.getSelectedRow();
-            discountName = (String) jTable2.getValueAt(viewRow, 0);   
+           if(viewRow>=0)
+           {discountName = (String) jTable2.getValueAt(viewRow, 0);}
         }
     }
     /**
@@ -320,7 +338,7 @@ private String discountName;
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(30, 140, 453, 320);
+        jScrollPane2.setBounds(70, 140, 370, 320);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,9 +385,18 @@ private String discountName;
     try
     {
         discountDelete(discountName);// TODO add your handling code here:
+         String[] colNames = getCol("Discount");
+            String[][] data = getLines("Discount");
+            tableModel2.setDataVector(data, colNames);
+            columnModel = jTable2.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(100);
+            columnModel.getColumn(1).setPreferredWidth(50);
+            columnModel.getColumn(2).setPreferredWidth(150);
+            columnModel.getColumn(3).setPreferredWidth(50);
+            columnModel.getColumn(4).setPreferredWidth(50);
     } catch (Exception ex)
     {
-        Logger.getLogger(ManageDiscount.class.getName()).log(Level.SEVERE, null, ex);
+        System.out.println(ex);
     }
     }//GEN-LAST:event_jLabel3MousePressed
 
@@ -389,11 +416,20 @@ private String discountName;
     {
         Discount discount=new Discount(productName, Integer.parseInt(jTextField2.getText()),Double.parseDouble(jTextField3.getText()));
     discount.insertDiscount();
-    Window2 wind = new Window2();
+    String[] colNames = getCol("Discount");
+            String[][] data = getLines("Discount");
+            tableModel2.setDataVector(data, colNames);
+            columnModel = jTable2.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(100);
+            columnModel.getColumn(1).setPreferredWidth(50);
+            columnModel.getColumn(2).setPreferredWidth(150);
+            columnModel.getColumn(3).setPreferredWidth(50);
+            columnModel.getColumn(4).setPreferredWidth(50);
+    //Window2 wind = new Window2();
 // TODO add your handling code here:
     } catch (Exception ex)
     {
-        Logger.getLogger(ManageDiscount.class.getName()).log(Level.SEVERE, null, ex);
+        System.out.println(ex);
     }
     }//GEN-LAST:event_jLabel5MousePressed
 

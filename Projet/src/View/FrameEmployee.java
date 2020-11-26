@@ -27,6 +27,7 @@ public class FrameEmployee extends javax.swing.JFrame
    private CreateEmployee panel3; 
    private EditEmployeesProfile panel4;
    private ManageDiscount panel5;
+   private StatPanel panel6;
    
    
 
@@ -50,9 +51,10 @@ public class FrameEmployee extends javax.swing.JFrame
         
         panel1 = new EmployeesConnection(this);
         panel2 = new EmployeesPanel();
-        panel3 = new CreateEmployee();
+        panel3 = new CreateEmployee(this);
         panel4 = new EditEmployeesProfile("", this);
         panel5 = new ManageDiscount();
+        panel6 = new StatPanel();
         
 
         panel1.setVisible(false);
@@ -60,12 +62,14 @@ public class FrameEmployee extends javax.swing.JFrame
         panel3.setVisible(false);
         panel4.setVisible(false);
         panel5.setVisible(false);
+        panel6.setVisible(false);
         
         panel.add(panel1, c);
         panel.add(panel2, c);
         panel.add(panel3,c);
         panel.add(panel4, c);
         panel.add(panel5, c);
+        panel.add(panel6, c);
         
         panel1.setVisible(true);
     }
@@ -93,6 +97,7 @@ public class FrameEmployee extends javax.swing.JFrame
         panel3.setVisible(false);
         panel4.setVisible(false);
         panel5.setVisible(false);
+        panel6.setVisible(false);
         
         jLabel1.setText("Disconnect");
         
@@ -112,11 +117,13 @@ public class FrameEmployee extends javax.swing.JFrame
         button3.setBackground(new Color(32,41,50));
         button4.setBackground(new Color(32,41,50));
         button5.setBackground(new Color(32,41,50));
+        button6.setBackground(new Color(32,41,50));
         bt1.setBackground(new Color(32,41,50));
         bt2.setBackground(new Color(32,41,50));
         bt3.setBackground(new Color(32,41,50));
         bt4.setBackground(new Color(32,41,50));
         bt5.setBackground(new Color(32,41,50));
+        bt6.setBackground(new Color(32,41,50));
     }
 
     public EmployeesConnection getPanel1()
@@ -148,9 +155,12 @@ public class FrameEmployee extends javax.swing.JFrame
         button5 = new javax.swing.JPanel();
         bt5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        button6 = new javax.swing.JPanel();
+        bt6 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu.setBackground(new java.awt.Color(32, 41, 50));
@@ -411,6 +421,54 @@ public class FrameEmployee extends javax.swing.JFrame
 
         menu.add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
 
+        button6.setBackground(new java.awt.Color(49, 91, 111));
+        button6.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                button6MousePressed(evt);
+            }
+        });
+
+        bt6.setBackground(new java.awt.Color(250, 250, 250));
+
+        javax.swing.GroupLayout bt6Layout = new javax.swing.GroupLayout(bt6);
+        bt6.setLayout(bt6Layout);
+        bt6Layout.setHorizontalGroup(
+            bt6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+        bt6Layout.setVerticalGroup(
+            bt6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabel6.setBackground(new java.awt.Color(250, 250, 250));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(250, 250, 250));
+        jLabel6.setText("Statistics");
+
+        javax.swing.GroupLayout button6Layout = new javax.swing.GroupLayout(button6);
+        button6.setLayout(button6Layout);
+        button6Layout.setHorizontalGroup(
+            button6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(button6Layout.createSequentialGroup()
+                .addComponent(bt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addGap(0, 87, Short.MAX_VALUE))
+        );
+        button6Layout.setVerticalGroup(
+            button6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bt6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(button6Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel6)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        menu.add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
+
         getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 650));
 
         panel.setBackground(new java.awt.Color(53, 63, 74));
@@ -456,6 +514,7 @@ public class FrameEmployee extends javax.swing.JFrame
         panel3.setVisible(false);
         panel4.setVisible(false);
         panel5.setVisible(false);
+        panel6.setVisible(false);
 
         if(panel1.isConnected())
         {
@@ -486,6 +545,7 @@ public class FrameEmployee extends javax.swing.JFrame
             panel3.setVisible(false);
             panel4.setVisible(false);
             panel5.setVisible(false);
+            panel6.setVisible(false);
         }
 
     }//GEN-LAST:event_button2MousePressed
@@ -499,6 +559,7 @@ public class FrameEmployee extends javax.swing.JFrame
 
             panel1.setVisible(false);
             panel2.setVisible(false);
+            panel3.setEmployee(employee);
             try
             {
                 panel3.buildPanel();
@@ -509,6 +570,7 @@ public class FrameEmployee extends javax.swing.JFrame
             panel3.setVisible(true);
             panel4.setVisible(false);
             panel5.setVisible(false);
+            panel6.setVisible(false);
         }
 
     }//GEN-LAST:event_button3MousePressed
@@ -526,7 +588,7 @@ public class FrameEmployee extends javax.swing.JFrame
             panel4.setEmail(employee.getEmail());
             panel4.setVisible(true);
             panel5.setVisible(false);
-            
+            panel6.setVisible(false);
         }
 
     }//GEN-LAST:event_button4MousePressed
@@ -552,9 +614,27 @@ public class FrameEmployee extends javax.swing.JFrame
             }
             panel5.setSize(new Dimension(1130, 650));
             panel5.setVisible(true);
+            panel6.setVisible(false);
             
         } // TODO add your handling code here:
     }//GEN-LAST:event_button5MousePressed
+
+    private void button6MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_button6MousePressed
+    {//GEN-HEADEREND:event_button6MousePressed
+         if(panel1.isConnected())
+        {
+            resetColor();
+            setColor(button6, bt6);
+
+            panel1.setVisible(false);
+            panel2.setVisible(false);
+            panel3.setVisible(false);
+            panel4.setVisible(false);
+            panel5.setVisible(false);
+            panel6.setVisible(true);
+            
+        }  // TODO add your handling code here:
+    }//GEN-LAST:event_button6MousePressed
 
     /**
      * @param args the command line arguments
@@ -605,16 +685,19 @@ public class FrameEmployee extends javax.swing.JFrame
     private javax.swing.JPanel bt3;
     private javax.swing.JPanel bt4;
     private javax.swing.JPanel bt5;
+    private javax.swing.JPanel bt6;
     private javax.swing.JPanel button1;
     private javax.swing.JPanel button2;
     private javax.swing.JPanel button3;
     private javax.swing.JPanel button4;
     private javax.swing.JPanel button5;
+    private javax.swing.JPanel button6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
