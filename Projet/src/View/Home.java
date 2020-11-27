@@ -73,6 +73,17 @@ public class Home extends javax.swing.JPanel implements ActionListener
     
     private int viewRow;
     
+    private int x1;
+    private int y1;
+    private int x2;
+    private int y2;
+    private int x3;
+    private int y3;
+    private int x4;
+    private int y4;
+    private int x5;
+    private int y5;
+    
     private Object [][] allData;
 
     /**
@@ -90,7 +101,28 @@ public class Home extends javax.swing.JPanel implements ActionListener
         
         //cartTable.setAutoResizeMode(1);
         //cartTable.setSize(310, 50);
+        x1=(int) jPanel21.getLocation().getX();
+        y1=(int) jPanel21.getLocation().getY();
+        x2=(int) jPanel22.getLocation().getX();
+        y2=(int) jPanel22.getLocation().getY();
+        x3=(int) jPanel23.getLocation().getX();
+        y3=(int) jPanel23.getLocation().getY();
+        x4=(int) jPanel24.getLocation().getX();
+        y4=(int) jPanel24.getLocation().getY();
+        x5=(int) jPanel25.getLocation().getX();
+        y5=(int) jPanel25.getLocation().getY();
+        System.out.println("X1 = " + x1);
+        System.out.println("Y1 = " + y1);
         
+    }
+    
+    public void resetPosition()
+    {
+        jPanel21.setLocation(90, 16);
+        jPanel22.setLocation(90, 162);
+        jPanel23.setLocation(90, 308);
+        jPanel24.setLocation(90, 454);
+        jPanel25.setLocation(90, 600);
     }
     
     public void setClicked(boolean state)
@@ -122,7 +154,6 @@ public class Home extends javax.swing.JPanel implements ActionListener
     public void buildPanel() throws Exception
     {
         
-        
         viewRow=1;
         
         order = new Order(1, "", null);
@@ -133,7 +164,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
         
         allProductsList = selectAllProducts();
         
- 
+        p21=0;
+        p22=1;
+        p23=2;
+        p24=3;
+        p25=4;
         
         
         
@@ -173,11 +208,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         //jScrollPane3.setPreferredSize(new Dimension(310, 50));
         //jScrollPane3.setSize(new Dimension(310, 50));
  
-        p21=1;
-        p22=2;
-        p23=3;
-        p24=4;
-        p25=5;
+       
         
         setScrollItem();
         resetColor();
@@ -185,6 +216,48 @@ public class Home extends javax.swing.JPanel implements ActionListener
         table.setVisible(false);
         table.getTableHeader().setVisible(false);
        
+    }
+    
+    public void deleteCart()
+    {
+        //cartTable.removeAll();
+        
+        
+            order = new Order(1, "", null);
+            try
+            {
+                String [] colNames = new String[] {"Quantity","Product","Cost (€)"};
+                String [][] data = new String [order.getOrderedProducts().size()][3];
+                String [][] data2 = new String [3][order.getOrderedProducts().size()];
+                for(int i=0 ; i < order.getOrderedProducts().size() ; i++)
+                {
+                    data[i][0] = String.valueOf(order.getOrderedProducts().get(i).getQuantity());
+                    data[i][1] = String.valueOf(order.getOrderedProducts().get(i).getProductName());
+                    data[i][2] = String.valueOf(order.getOrderedProducts().get(i).getPrice());
+                    
+                    data2[0][i] = data[i][0];
+                    data2[1][i] = data[i][1];
+                    data2[2][i] = data[i][2];
+                }
+                
+
+                cartModel.setDataVector(data, colNames);
+                
+                //jList1.setListData(data2[0]);
+                //jList1.setListData(data2[0]);
+                
+
+                TableColumnModel cartColumnModel = cartTable.getColumnModel();
+                cartColumnModel.getColumn(0).setPreferredWidth(70);
+                cartColumnModel.getColumn(1).setPreferredWidth(100);
+                cartColumnModel.getColumn(2).setPreferredWidth(75);
+                jLabel12.setText(String.valueOf(order.totalCost()) + " €");
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        
     }
     
     
@@ -203,6 +276,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
     
     public void updateTable() throws Exception
     {
+       //resetPosition();
+        /*p21=0;
+        p22=1;
+        p23=2;
+        p24=3;
+        p25=4;*/
+        
         String [][] data = getLines("Product");
         
         String [] colNamesFilter = {"Name", "Category", "Description", "Stock", "Price (€)", "Image"};
@@ -238,6 +318,43 @@ public class Home extends javax.swing.JPanel implements ActionListener
         
         
         tableModel.setDataVector(dataFilter, colNamesFilter);  
+        
+        if(tableSize < 5)
+        {
+        if(p21 < tableSize && p21 >= 0)
+            enablePanel(jPanel21);
+        else
+            disablePanel(jPanel21);
+        
+        if(p22 < tableSize && p22 >= 0)
+            enablePanel(jPanel22);
+        else
+            disablePanel(jPanel22);
+        
+        if(p23 < tableSize && p23 >= 0)
+            enablePanel(jPanel23);
+        else
+            disablePanel(jPanel23);
+        
+        if(p24 < tableSize && p24 >= 0)
+            enablePanel(jPanel24);
+        else
+            disablePanel(jPanel24);
+        
+        if(p25 < tableSize && p25 >= 0)
+            enablePanel(jPanel25);
+        else
+            disablePanel(jPanel25);
+        }
+        
+        setScrollItem();
+        resetColor();
+        
+        table.setVisible(false);
+        table.getTableHeader().setVisible(false);
+        
+        deleteCart();
+        
     }
     
     public ImageIcon resize(String imagei, int width, int height)
@@ -281,7 +398,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     
     public void setScrollItem()
     {
-        if(p21 >= 0 && p21 < tableSize)
+        if(p21 >= 0 && p21 < tableSize )
         {
             //image21.setIcon(resize((String) (table.getValueAt(p21, 5)), 100, 100));
             image21.setIcon((ImageIcon) allData[p21][5]);
@@ -299,7 +416,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 
             setDiscount(discountTriangle1, d21Text1, d21Text2, d21Text3, (Discount) allData[p21][6]);
         }
-        if(p22 >= 0 && p22 < tableSize)
+        if(p22 >= 0 && p22 < tableSize )
         {
             //image22.setIcon(resize((String) (table.getValueAt(p22, 5)), 100, 100));
             image22.setIcon((ImageIcon) allData[p22][5]);
@@ -317,7 +434,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             
             setDiscount(discountTriangle2, d22Text1, d22Text2, d22Text3, (Discount) allData[p22][6]);
         }
-        if(p23 >= 0 && p23 < tableSize)
+        if(p23 >= 0 && p23 < tableSize  )
         {
             //image23.setIcon(resize((String) (table.getValueAt(p23, 5)), 100, 100));
             image23.setIcon((ImageIcon) allData[p23][5]);
@@ -335,7 +452,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             
             setDiscount(discountTriangle3, d23Text1, d23Text2, d23Text3, (Discount) allData[p23][6]);
         }
-        if(p24 >= 0 && p24 < tableSize)
+        if(p24 >= 0 && p24 < tableSize )
         {
             //image24.setIcon(resize((String) (table.getValueAt(p24, 5)), 100, 100));
             image24.setIcon((ImageIcon) allData[p24][5]);
@@ -353,7 +470,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             
             setDiscount(discountTriangle4, d24Text1, d24Text2, d24Text3, (Discount) allData[p24][6]);
         }
-        if(p25 >= 0 && p25 < tableSize)
+        if(p25 >= 0 && p25 < tableSize )
         {
             //image25.setIcon(resize((String) (table.getValueAt(p25, 5)), 100, 100));
             image25.setIcon((ImageIcon) allData[p25][5]);
@@ -1248,7 +1365,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     {//GEN-HEADEREND:event_jButton1ActionPerformed
 
         int quantity= jComboBox1.getSelectedIndex();
-        if(quantity > 0)
+        if(quantity > 0 && tableSize > 0)
         {
             int id=0;
             int orderID=order.getId();
@@ -1296,8 +1413,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
                     cartColumnModel.getColumn(1).setPreferredWidth(100);
                     cartColumnModel.getColumn(2).setPreferredWidth(75);
                     
-                    
-
+                   
                 }
                 catch(Exception e)
                 {
@@ -1305,8 +1421,6 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 }
 
                 jLabel12.setText(String.valueOf(order.totalCost()) + " €");
-                
-                
 
             }
         }
@@ -1511,50 +1625,99 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     }//GEN-LAST:event_jPanel8MouseWheelMoved
 
+    public void enablePanel(JPanel panel1)
+    {
+        panel1.setVisible(true);
+    }
+    
+    public void disablePanel(JPanel panel1)
+    {
+        panel1.setVisible(false);
+    }
+    
     private void jPanel21MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel21MousePressed
     {//GEN-HEADEREND:event_jPanel21MousePressed
-        viewRow = p21;
-        resetColor();
-        jPanel21.setBackground(new Color(23,35,55));
-        jLabel21D.setForeground(new Color(255,255,255));
-        selectionUpdate();
-   
+        if(p21 < tableSize && p21 >= 0)
+        {
+            enablePanel(jPanel21);
+            viewRow = p21;
+            resetColor();
+            jPanel21.setBackground(new Color(23,35,55));
+            jLabel21D.setForeground(new Color(255,255,255));
+            selectionUpdate();
+        }
+        else
+        {
+            disablePanel(jPanel21);
+        }
     }//GEN-LAST:event_jPanel21MousePressed
 
     private void jPanel22MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel22MousePressed
     {//GEN-HEADEREND:event_jPanel22MousePressed
-        viewRow = p22;
-        resetColor();
-        jPanel22.setBackground(new Color(23,35,55));
-        jLabel22D.setForeground(new Color(255,255,255));
-        selectionUpdate();
+        if(p22 < tableSize && p22 >= 0)
+        {
+            enablePanel(jPanel22);
+            viewRow = p22;
+            resetColor();
+            jPanel22.setBackground(new Color(23,35,55));
+            jLabel22D.setForeground(new Color(255,255,255));
+            selectionUpdate();
+        }
+        else 
+        {
+            disablePanel(jPanel22);
+        }
     }//GEN-LAST:event_jPanel22MousePressed
 
     private void jPanel23MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel23MousePressed
     {//GEN-HEADEREND:event_jPanel23MousePressed
-        viewRow = p23;
-        resetColor();
-        jPanel23.setBackground(new Color(23,35,55));
-        jLabel23D.setForeground(new Color(255,255,255));
-        selectionUpdate();
+        if(p23 < tableSize && p23 >= 0)
+        {
+            enablePanel(jPanel23);
+            viewRow = p23;
+            resetColor();
+            jPanel23.setBackground(new Color(23,35,55));
+            jLabel23D.setForeground(new Color(255,255,255));
+            selectionUpdate();
+        }
+        else 
+        {
+            disablePanel(jPanel23);
+        }
     }//GEN-LAST:event_jPanel23MousePressed
 
     private void jPanel24MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel24MousePressed
     {//GEN-HEADEREND:event_jPanel24MousePressed
-        viewRow = p24;
-        resetColor();
-        jPanel24.setBackground(new Color(23,35,55));
-        jLabel24D.setForeground(new Color(255,255,255));
-        selectionUpdate();
+        if(p24 < tableSize && p24 >= 0)
+        {
+            enablePanel(jPanel24);
+            viewRow = p24;
+            resetColor();
+            jPanel24.setBackground(new Color(23,35,55));
+            jLabel24D.setForeground(new Color(255,255,255));
+            selectionUpdate();
+        }
+        else
+        {
+            disablePanel(jPanel24);
+        }
     }//GEN-LAST:event_jPanel24MousePressed
 
     private void jPanel25MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel25MousePressed
     {//GEN-HEADEREND:event_jPanel25MousePressed
-        viewRow = p25;
-        resetColor();
-        jPanel25.setBackground(new Color(23,35,55));
-        jLabel25D.setForeground(new Color(255,255,255));
-        selectionUpdate();
+        if(p25 < tableSize && p25 >= 0)
+        {
+            enablePanel(jPanel25);
+            viewRow = p25;
+            resetColor();
+            jPanel25.setBackground(new Color(23,35,55));
+            jLabel25D.setForeground(new Color(255,255,255));
+            selectionUpdate();
+        }
+        else
+        {
+            disablePanel(jPanel25);
+        }
     }//GEN-LAST:event_jPanel25MousePressed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1ActionPerformed

@@ -38,7 +38,7 @@ public class Projet
         banane4.insertProduct();
         Product banane5 = new Product("Banane4", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane5.insertProduct();
-        Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        /*Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane6.insertProduct();
          Product banane7 = new Product("Banane6", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane7.insertProduct();
@@ -63,7 +63,7 @@ public class Projet
         Product banane17 = new Product("Banane16", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane17.insertProduct();
         Product banane18 = new Product("Banane17", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
-        banane18.insertProduct();
+        banane18.insertProduct();*/
         //Product banane4 = new Product("Banane3", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane5 = new Product("Banane4", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
@@ -72,10 +72,10 @@ public class Projet
         //Product banane9 = new Product("Banane8", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         Product kiwi = new Product("Kiwi", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
         kiwi.insertProduct();
-        Product kiwi2 = new Product("Kiwi2", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
-        kiwi2.insertProduct();
-        Product kiwi3 = new Product("Kiwi3", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
-        kiwi3.insertProduct();
+        //Product kiwi2 = new Product("Kiwi2", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
+        //kiwi2.insertProduct();
+        //Product kiwi3 = new Product("Kiwi3", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
+        //kiwi3.insertProduct();
         Customer Marc = new Customer("Marc", "Dampierre", 23, "0640787637", " 6 rue jean mermoz rueil-malmaison 92500", "", "");
         Employee Fred =new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "", "");
         Fred.insertEmployee();
@@ -85,7 +85,7 @@ public class Projet
         OrderedProduct OrderedKiwi= new OrderedProduct(1,2,"Kiwi", 5,12);
         //Discount DiscountBanane = new Discount("Banane", 10, 9);
         kiwi.addDiscount(10, 25);
-        banane5.addDiscount(12, 20);
+        //banane5.addDiscount(12, 20);
         
         Order order1 = new Order(1, "marc.damp@gmail.com", null);
         System.out.println("test");
