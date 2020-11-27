@@ -34,6 +34,7 @@ public class Product
     public void addDiscount(int discountQuantity, double discountPrice) throws Exception
     {
         discount = new Discount(name, discountQuantity, discountPrice);
+        discount.insertDiscount();
     }
     
     public void insertProduct() throws Exception

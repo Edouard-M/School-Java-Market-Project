@@ -5,7 +5,6 @@
  */
 package Model;
 
-import com.sun.beans.editors.IntegerEditor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

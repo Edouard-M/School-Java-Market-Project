@@ -134,9 +134,10 @@ public class MyFrame extends javax.swing.JFrame
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu.setBackground(new java.awt.Color(23, 35, 55));
@@ -396,6 +397,9 @@ public class MyFrame extends javax.swing.JFrame
 
         menu.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 150, 30));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logoh3.gif"))); // NOI18N
+        menu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 90));
+
         getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 650));
 
         panel.setBackground(new java.awt.Color(62, 120, 207));
@@ -436,6 +440,7 @@ public class MyFrame extends javax.swing.JFrame
         resetColor();
         setColor(button1, bt1);
         
+        panel0.setVisible(false);
         panel1.setVisible(true);
         
         if(panel1.isConnected())
@@ -456,6 +461,14 @@ public class MyFrame extends javax.swing.JFrame
             resetColor();
             setColor(button2, bt2);
         
+            try
+            {
+                panel2.updateTable();
+            } catch (Exception ex)
+            {
+                System.out.println(ex.getMessage());
+            }
+            
             panel1.setVisible(false);
             panel2.setVisible(true);
             panel3.setVisible(false);
@@ -576,6 +589,7 @@ public class MyFrame extends javax.swing.JFrame
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel panel;

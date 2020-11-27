@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import sun.util.calendar.LocalGregorianCalendar.*;
+//import sun.util.calendar.LocalGregorianCalendar.*;
 /**
  *
  * @author Edoua
@@ -16,10 +16,11 @@ public class Order
     
     private int id;
     private String email;
-    private Date date;
+    //private Date date;
+    private String date;
     private ArrayList<OrderedProduct> orderedProducts;
     
-    public Order(int ID, String Email, Date Date)
+    public Order(int ID, String Email, String Date)
     {
         id = ID;
         email = Email;

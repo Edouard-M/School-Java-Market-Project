@@ -158,6 +158,7 @@ public class FrameEmployee extends javax.swing.JFrame
         button6 = new javax.swing.JPanel();
         bt6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -469,6 +470,9 @@ public class FrameEmployee extends javax.swing.JFrame
 
         menu.add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logoh3.gif"))); // NOI18N
+        menu.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 90));
+
         getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 650));
 
         panel.setBackground(new java.awt.Color(53, 63, 74));
@@ -698,6 +702,7 @@ public class FrameEmployee extends javax.swing.JFrame
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
