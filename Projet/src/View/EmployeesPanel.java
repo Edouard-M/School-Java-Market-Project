@@ -13,6 +13,7 @@ import static Model.DAO.productDelete;
 import static Model.DAO.selectAllProducts;
 import Model.Product;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -87,6 +88,12 @@ public class EmployeesPanel extends javax.swing.JPanel
         columnModel.getColumn(4).setPreferredWidth(50);
 
         setTableStyle(jTable1);
+         jScrollPane1.setBackground(new Color(49,91,111));
+        
+        jTable1.setPreferredSize(new Dimension(310, 364));
+        jTable1.getTableHeader().setBackground(new Color(49,91,111));
+        jTable1.getTableHeader().setForeground(new Color(255,255,255));
+        jTable1.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
 
     }
 
@@ -313,6 +320,9 @@ public class EmployeesPanel extends javax.swing.JPanel
         jLabel3.setText("Create A New Product ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 260, 30));
 
+        jTable1.setBackground(new java.awt.Color(49, 91, 111));
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
@@ -326,6 +336,8 @@ public class EmployeesPanel extends javax.swing.JPanel
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setSelectionBackground(new java.awt.Color(53, 63, 74));
+        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 450, 390));

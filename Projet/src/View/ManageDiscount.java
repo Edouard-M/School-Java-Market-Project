@@ -15,6 +15,7 @@ import Model.Discount;
 import Model.Employee;
 import Model.Product;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -91,6 +92,12 @@ private TableColumnModel columnModel;
         
        
         setTableStyle(jTable1);
+         jScrollPane1.setBackground(new Color(53,63,74));
+        
+        jTable1.setPreferredSize(new Dimension(310, 284));
+        jTable1.getTableHeader().setBackground(new Color(53,63,74));
+        jTable1.getTableHeader().setForeground(new Color(255,255,255));
+        jTable1.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
         
         allDiscountList = selectAllDiscount();
        
@@ -113,7 +120,12 @@ private TableColumnModel columnModel;
         System.out.println("iciiii");
        
         setTableStyle(jTable2);
+        jScrollPane2.setBackground(new Color(49,91,111));
         
+        jTable2.setPreferredSize(new Dimension(310, 294));
+        jTable2.getTableHeader().setBackground(new Color(49,91,111));
+        jTable2.getTableHeader().setForeground(new Color(255,255,255));
+        jTable2.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
        
     }
   
@@ -194,6 +206,8 @@ private TableColumnModel columnModel;
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
+        jTable1.setBackground(new java.awt.Color(53, 63, 74));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
@@ -207,6 +221,8 @@ private TableColumnModel columnModel;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setSelectionBackground(new java.awt.Color(49, 91, 111));
+        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1);
@@ -322,6 +338,9 @@ private TableColumnModel columnModel;
         jPanel1.add(jLabel7);
         jLabel7.setBounds(590, 560, 360, 30);
 
+        jTable2.setBackground(new java.awt.Color(49, 91, 111));
+        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable2.setForeground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
@@ -335,6 +354,8 @@ private TableColumnModel columnModel;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.setSelectionBackground(new java.awt.Color(53, 63, 74));
+        jTable2.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2);

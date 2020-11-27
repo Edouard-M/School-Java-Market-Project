@@ -261,17 +261,121 @@ public class Home extends javax.swing.JPanel implements ActionListener
     }
     
     
-    public void researchUpdate(String recherche)
+    public void researchUpdate(String recherche) throws Exception
     {
-        for(int i=0 ; i < tableSize ; i++)
+        p21=0;
+        p22=1;
+        p23=2;
+        p24=3;
+        p25=4;
+        String [][] data = getLines("Product");
+        
+        String [] colNamesFilter = {"Name", "Category", "Description", "Stock", "Price (€)", "Image"};
+        String [][] dataFilter = new String[data.length][6];
+        allData = new Object[data.length][7];
+       
+        //allData =  "Name", "Category", "Description", "Stock", "Price (€)", "Image", "Discount"
+        if (!"".equals(recherche))
+        { int j=0;
+        for(int i=0 ; i < data.length ; i++)
         {
+            if(data[i][0].contains(recherche)) 
+            {dataFilter[j][0] = data[i][0];
+            dataFilter[j][1] = data[i][1];
+            dataFilter[j][2] = data[i][2];
+            dataFilter[j][3] = data[i][4];
+            dataFilter[j][4] = data[i][3];
+            dataFilter[j][5] = data[i][6];
             
-            if(!(((String) table.getValueAt(i, 0)).contains(recherche)))
-            {
-                table.remove(i);
-                
+            allData[j][0] = data[i][0];
+            allData[j][1] = data[i][1];
+            allData[j][2] = data[i][2];
+            allData[j][3] = data[i][4];
+            allData[j][4] = data[i][3];
+            allData[j][5] = resize((String)dataFilter[j][5], 100, 100);
+            allData[j][6] = (Discount) searchDiscount((String) allData[j][0]);
+            j++;
             }
         }
+       
+        
+        tableSize = j;}
+        else
+        {
+       
+        //allData =  "Name", "Category", "Description", "Stock", "Price (€)", "Image", "Discount"
+        for(int i=0 ; i < data.length ; i++)
+        {
+            dataFilter[i][0] = data[i][0];
+            System.out.println(dataFilter[i][0] );
+            dataFilter[i][1] = data[i][1];
+            dataFilter[i][2] = data[i][2];
+            dataFilter[i][3] = data[i][4];
+            dataFilter[i][4] = data[i][3];
+            dataFilter[i][5] = data[i][6];
+            
+            allData[i][0] = data[i][0];
+            allData[i][1] = data[i][1];
+            allData[i][2] = data[i][2];
+            allData[i][3] = data[i][4];
+            allData[i][4] = data[i][3];
+            allData[i][5] = resize((String)dataFilter[i][5], 100, 100);
+            allData[i][6] = (Discount) searchDiscount((String) allData[i][0]);
+        }
+        
+        tableSize = data.length;
+        }
+        
+        tableModel = (DefaultTableModel) table.getModel();
+        
+        
+        tableModel.setDataVector(dataFilter, colNamesFilter);  
+        
+        if(tableSize < 5)
+        {
+        if(p21 < tableSize && p21 >= 0)
+            enablePanel(jPanel21);
+        else
+            disablePanel(jPanel21);
+        
+        if(p22 < tableSize && p22 >= 0)
+            enablePanel(jPanel22);
+        else
+            disablePanel(jPanel22);
+        
+        if(p23 < tableSize && p23 >= 0)
+            enablePanel(jPanel23);
+        else
+            disablePanel(jPanel23);
+        
+        if(p24 < tableSize && p24 >= 0)
+            enablePanel(jPanel24);
+        else
+            disablePanel(jPanel24);
+        
+        if(p25 < tableSize && p25 >= 0)
+            enablePanel(jPanel25);
+        else
+            disablePanel(jPanel25);
+        }else 
+        {
+             if(p21 < tableSize && p21 >= 0)
+            enablePanel(jPanel21);
+              if(p22 < tableSize && p22 >= 0)
+            enablePanel(jPanel22);
+               if(p23< tableSize && p23 >= 0)
+            enablePanel(jPanel23);
+                if(p24 < tableSize && p24 >= 0)
+            enablePanel(jPanel24);
+                if(p25 < tableSize && p25 >= 0)
+            enablePanel(jPanel25);
+        }
+        
+        setScrollItem();
+        resetColor();
+        resetPosition();
+        table.setVisible(false);
+        table.getTableHeader().setVisible(false);
     }
     
     public void updateTable() throws Exception
@@ -346,7 +450,19 @@ public class Home extends javax.swing.JPanel implements ActionListener
         else
             disablePanel(jPanel25);
         }
-        
+        else 
+        {
+             if(p21 < tableSize && p21 >= 0)
+            enablePanel(jPanel21);
+             if(p22 < tableSize && p22 >= 0)
+            enablePanel(jPanel22);
+              if(p23< tableSize && p23 >= 0)
+            enablePanel(jPanel23);
+               if(p24 < tableSize && p24 >= 0)
+            enablePanel(jPanel24);
+               if(p25 < tableSize && p25 >= 0)
+            enablePanel(jPanel25);
+        }
         setScrollItem();
         resetColor();
         
@@ -713,11 +829,12 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel12 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1286,7 +1403,26 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         jPanel5.setBackground(new java.awt.Color(113, 168, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Category");
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 280, 50));
+
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 360, 80));
+
+        jTextField1.setBackground(new java.awt.Color(62, 120, 207));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setText("Research");
+        jTextField1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 290, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 370, 650));
 
@@ -1309,21 +1445,6 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         jPanel4.setBackground(new java.awt.Color(62, 120, 207));
         jPanel4.setLayout(null);
-
-        jTextField1.setBackground(new java.awt.Color(62, 120, 207));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Research");
-        jTextField1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField1);
-        jTextField1.setBounds(230, 10, 290, 30);
-
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 770, 50));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 650));
@@ -1722,8 +1843,17 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1ActionPerformed
     {//GEN-HEADEREND:event_jTextField1ActionPerformed
-        System.out.println(evt.getActionCommand());
-        //researchUpdate(evt.getActionCommand());
+        try
+        {
+          
+            System.out.println(evt.getActionCommand());
+            
+            researchUpdate(evt.getActionCommand());
+            
+        } catch (Exception ex)
+        {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
 
@@ -1757,6 +1887,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

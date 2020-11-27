@@ -28,15 +28,15 @@ public class Projet
     
     public static void testDB() throws Exception
     {
-        Product banane = new Product("Banane", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane = new Product("banane", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane.insertProduct();
-        Product banane2 = new Product("Banane1", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane2 = new Product("orange", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane2.insertProduct();
-        Product banane3 = new Product("Banane2", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane3 = new Product("poire", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane3.insertProduct();
-        Product banane4 = new Product("Banane3", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane4 = new Product("peche", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane4.insertProduct();
-        Product banane5 = new Product("Banane4", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane5 = new Product("pomme", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane5.insertProduct();
         /*Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane6.insertProduct();
