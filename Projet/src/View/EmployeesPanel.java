@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.EmpPanelController;
 import Model.DAO;
 import Model.Product;
 import java.awt.Color;
@@ -37,25 +38,25 @@ public class EmployeesPanel extends javax.swing.JPanel
     private int quantity;
     private TableColumnModel columnModel;
     private JTableHeader tableHeader;
-    private DAO dao;
+    private EmpPanelController controller;
 
     /**
      * Creates new form EmployeesPanel
      */
     public EmployeesPanel()
     {
-        dao=new DAO();
+        controller=new EmpPanelController();
         initComponents();
 
     }
 
     public void buildPanel() throws Exception
     {
-        dao.getConnection();
-        allProductsList = dao.selectAllProducts();
 
-        String[][] data = dao.getLines("Product");
-        dao.closeConnection();
+
+
+        String[][] data = controller.findData();
+
         String[] colNamesFilter =
         {
             "Name", "Category", "Description", "Price", "Stock", "Image"
@@ -627,12 +628,12 @@ public class EmployeesPanel extends javax.swing.JPanel
     private void jLabel15MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel15MousePressed
     {//GEN-HEADEREND:event_jLabel15MousePressed
         try
-        {dao.getConnection();
+        {
             Product product = new Product(newProductName.getText(), newProductCategory.getText(), newProductDescription.getText(), Double.parseDouble(newProductPrice.getText()), Integer.parseInt(newProductStock.getText()), null, newProductImage.getText());
 
             product.insertProduct();
-            String[][] data = dao.getLines("Product");
-            dao.closeConnection();
+            String[][] data = controller.findData();
+            
             String[] colNamesFilter =
             {
                 "Name", "Category", "Description", "Price", "Stock", "Image"
@@ -679,11 +680,11 @@ public class EmployeesPanel extends javax.swing.JPanel
     private void jLabel16MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel16MousePressed
     {//GEN-HEADEREND:event_jLabel16MousePressed
         try
-        {dao.getConnection();
-            int addstock = Integer.parseInt(quantityRestock.getText());
-            dao.productAddStock(currentName, addstock);
-            String[][] data = dao.getLines("Product");  
-            dao.closeConnection();
+        {
+            
+            controller.AddStock(currentName,Integer.parseInt(quantityRestock.getText()) );
+            String[][] data = controller.findData();
+
             String[] colNamesFilter =
             {
                 "Name", "Category", "Description", "Price", "Stock", "Image"
@@ -726,10 +727,10 @@ public class EmployeesPanel extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jLabel17MousePressed
         try
         {
-            dao.getConnection();
-            dao.productDelete(currentName);
-            String[][] data = dao.getLines("Product");
-            dao.closeConnection();
+
+            controller.EraseProduct(currentName);
+            String[][] data = controller.findData();
+
             String[] colNamesFilter =
             {
                 "Name", "Category", "Description", "Price", "Stock", "Image"

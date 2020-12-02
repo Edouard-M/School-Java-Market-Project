@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ManageDiscountController;
 import Model.DAO;
 import Model.Discount;
 import Model.Employee;
@@ -38,21 +39,22 @@ private ArrayList<Discount> allDiscountList;
 private String productName;
 private String discountName;
 private TableColumnModel columnModel;
-private DAO dao;
+private ManageDiscountController controller;
+
     /**
      * Creates new form ManageDiscount
      */
     public ManageDiscount()
     {
-        dao=new DAO();
+      controller = new ManageDiscountController();
         initComponents();
     }
   public void buildPanel() throws Exception
     {
-        dao.getConnection();
+       
         
-        allProductsList = dao.selectAllProducts();
-        String[][] data = dao.getLines("Product");
+        
+        String[][] data = controller.findDataProduct();
             String[] colNamesFilter =
             {
                 "Name", "Category", "Description", "Price", "Stock"
@@ -95,11 +97,10 @@ private DAO dao;
         jTable1.getTableHeader().setForeground(new Color(255,255,255));
         jTable1.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
         
-        allDiscountList = dao.selectAllDiscount();
        
-        String [] colNames2 = dao.getCol("Discount");
-        String [][] data2 = dao.getLines("Discount");
-        dao.closeConnection();
+        String [] colNames2 = controller.findColNameDiscount();
+        String [][] data2 = controller.findDataDiscount();
+       
      
         
         tableModel2 =  (DefaultTableModel) jTable2.getModel();
@@ -401,11 +402,11 @@ private DAO dao;
     {//GEN-HEADEREND:event_jLabel3MousePressed
     try
     {
-        dao.getConnection();
-        dao.discountDelete(discountName);// TODO add your handling code here:
-         String[] colNames = dao.getCol("Discount");
-            String[][] data = dao.getLines("Discount");
-            dao.closeConnection();
+        
+        controller.EraseDiscount(discountName);// TODO add your handling code here:
+         String[] colNames = controller.findColNameDiscount();
+            String[][] data = controller.findDataDiscount();
+            
             tableModel2.setDataVector(data, colNames);
             columnModel = jTable2.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(100);
@@ -434,12 +435,12 @@ private DAO dao;
     {//GEN-HEADEREND:event_jLabel5MousePressed
     try
     {
-        dao.getConnection();
+       
         Discount discount=new Discount(productName, Integer.parseInt(jTextField2.getText()),Double.parseDouble(jTextField3.getText()));
     discount.insertDiscount();
-    String[] colNames = dao.getCol("Discount");
-            String[][] data = dao.getLines("Discount");
-            dao.closeConnection();
+    String[] colNames = controller.findColNameDiscount();
+            String[][] data = controller.findDataDiscount();
+           
             tableModel2.setDataVector(data, colNames);
             columnModel = jTable2.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(100);

@@ -5,7 +5,9 @@
  */
 package View;
 
+import Controller.EditEmpController;
 import Model.DAO;
+import Model.Employee;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,13 +22,14 @@ public class EditEmployeesProfile extends javax.swing.JPanel
 {
     private String email;
     private FrameEmployee eFrame;
-    private DAO dao;
+    public EditEmpController controller;
+
     /**
      * Creates new form EditEmployeesProfile
      */
     public EditEmployeesProfile(String email, FrameEmployee eFrame)
     {
-        dao=new DAO();
+        controller=new EditEmpController();
         this.eFrame = eFrame;
         this.email = email;
         initComponents();
@@ -44,21 +47,22 @@ public class EditEmployeesProfile extends javax.swing.JPanel
             {
                 ageselector[i-13] = "" + i;
             }
-            dao.getConnection();
-            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(ageselector));  
-            jComboBox1.setSelectedIndex(dao.getEmployeeAge(email)-13);
+
+            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(ageselector));
+            Employee employee=controller.findEmployee(email);
+            jComboBox1.setSelectedIndex(employee.getAge()-13);
             
-            jTextField1.setText(dao.getEmployeeFirstName(email));
+            jTextField1.setText(employee.getFirstName());
 
-            jTextField2.setText(dao.getEmployeeAddress(email));
+            jTextField2.setText(employee.getAddress());
 
-            jTextField3.setText(dao.getEmployeePhone(email));
+            jTextField3.setText(employee.getPhone());
 
            jTextField4.setText("");
            //jTextField.set
 
-            jTextField6.setText(dao.getEmployeeName(email));
-            dao.closeConnection();
+            jTextField6.setText(employee.getName());
+
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
@@ -324,18 +328,11 @@ public class EditEmployeesProfile extends javax.swing.JPanel
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MousePressed
     {//GEN-HEADEREND:event_jLabel2MousePressed
         try
-        {dao.getConnection();
-            if(!"".equals(jTextField4.getText()))
-            {
-                dao.EditEmployee(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,jTextField4.getText());
-                eFrame.setEmployee(dao.getEmployee(email));
-            }
-            else
-            {
-                dao.EditEmployee(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,dao.getEmployeePassword(email));
-                eFrame.setEmployee(dao.getEmployee(email));
-            }
-            dao.closeConnection();
+        {
+            controller.EditEmployee(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,jTextField4.getText());
+            
+          
+            eFrame.setEmployee(controller.findEmployee(email));
         }catch (Exception ex)
         {
             System.out.println(ex.getMessage());
