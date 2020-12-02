@@ -29,5 +29,30 @@ public abstract class Person
         this.email = email;
         this.password = password;
     }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public int getAge()
+    {
+        return age;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
     
 }

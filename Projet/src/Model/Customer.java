@@ -41,6 +41,31 @@ public class Customer extends Person
         }
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public int getAge()
+    {
+        return age;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
     public String getEmail()
     {
         return email;

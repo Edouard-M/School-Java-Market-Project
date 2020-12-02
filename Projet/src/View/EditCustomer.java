@@ -5,6 +5,8 @@
  */
 package View;
 
+import Controller.EditCustomerController;
+import Model.Customer;
 import Model.DAO;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -17,14 +19,15 @@ public class EditCustomer extends javax.swing.JPanel
 {
 private String email;
 private MyFrame eFrame;
-private DAO dao;
+    EditCustomerController controller;
     /**
      * Creates new form EditCustomer
      */
  
     public EditCustomer(MyFrame eFrame)
     {
-        dao=new DAO();
+        controller = new EditCustomerController();
+
         this.eFrame=eFrame;
         initComponents();
     }
@@ -40,26 +43,28 @@ private void buildPanel()
         jLabel1.setText(email);
         try
         {
-            dao.getConnection();
+
             String[]ageselector = new String[88];
             for(int i=13 ; i <= 100 ; i++)
             {
                 ageselector[i-13] = "" + i;
             }
-            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(ageselector));  
-            jComboBox1.setSelectedIndex(dao.getCustomerAge(email)-13);
             
-            jTextField1.setText(dao.getCustomerFirstName(email));
+            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(ageselector));  
+            Customer cust=controller.findCustomer(email);
+            jComboBox1.setSelectedIndex(cust.getAge()-13);
+            
+            jTextField1.setText(cust.getFirstName());
 
-            jTextField2.setText(dao.getCustomerAddress(email));
+            jTextField2.setText(cust.getAddress());
 
-            jTextField3.setText(dao.getCustomerPhone(email));
+            jTextField3.setText(cust.getPhone());
            
            jTextField4.setText("");
            //jTextField.set
 
-            jTextField6.setText(dao.getCustomerName(email));
-            dao.closeConnection();
+            jTextField6.setText(cust.getName());
+
 
         } catch (Exception ex)
         {
@@ -336,18 +341,9 @@ private void buildPanel()
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseClicked
     {//GEN-HEADEREND:event_jLabel3MouseClicked
         try
-        {dao.getConnection();
-            if(!"".equals(jTextField4.getText()))
-            {
-                dao.EditCustomerdata(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,jTextField4.getText());
-                eFrame.setCustomer(dao.getCustomer(email));
-            }
-            else
-            {
-             dao.EditCustomerdata(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,dao.getEmployeePassword(email));
-               eFrame.setCustomer(dao.getCustomer(email));
-            }
-            dao.closeConnection();
+        {
+            controller.EditCustomer(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,jTextField4.getText());
+            eFrame.setCustomer(controller.findCustomer(email));
         }catch (Exception ex)
         {
             System.out.println(ex.getMessage());
