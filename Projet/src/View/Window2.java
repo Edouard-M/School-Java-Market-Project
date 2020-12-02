@@ -1,7 +1,7 @@
 
 package View;
 
-import static Model.DAO.*;
+import Model.DAO;
 import Model.Product;
 import java.awt.Color;
 import java.awt.Component;
@@ -37,10 +37,12 @@ public class Window2 extends JFrame
     private JLabel currentLabel;
     private ImageIcon currentImageIcon;
     private String currentImage;
+    private DAO dao;
     
     
     public Window2() throws Exception
     {
+        dao=new DAO();
         setTitle("Table Products");
         setSize(WIDTH_WINDOW, HEIGHT_WINDOW);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,31 +52,17 @@ public class Window2 extends JFrame
     
     public void buildPanelProduit() throws Exception
     {
+        dao.getConnection();
         panel = new JPanel();
         
-        String [] colNames = getCol("Discount");
-        System.out.println("test 1");
-        String [][] data = getLines("Discount");
-        System.out.println("test 2");
-        
-
+        String [] colNames = dao.getCol("Discount");
+        String [][] data = dao.getLines("Discount");
+        dao.closeConnection();
         table = new JTable(data,colNames);
         scrollTable = new JScrollPane(table);
         //table.getColumnModel().getColumn(6).setCellRenderer(new ImageCellRenderer());
         //URL url = window.class.getResource("/res/images/animated.gif");
-        imageIcon = new ImageIcon("src/path.gif");
-        label = new JLabel(imageIcon);
-        
-        JPanel panel1 = new JPanel();
-        JPanel panel2 = new JPanel();
-        
-        panel1.add(label);
-        panel2.add(scrollTable);
-        panel.setLayout(new GridLayout(3,1));
-        
-        
-        panel.add(panel1);
-        panel.add(panel2);
+        panel.add(scrollTable);
         add(panel);
         //add(label);
         //add(scrollTable);
@@ -84,48 +72,7 @@ public class Window2 extends JFrame
     }
     
     
-     public void buildPanel() throws Exception
-    {
-        panel = new JPanel();
-        
-      
-        //URL url = window.class.getResource("/res/images/animated.gif");
-        imageIcon = new ImageIcon("src/Image/path.gif");
-        label = new JLabel(imageIcon);
-        JTextField password= new JTextField("password");
-        JTextField email =new JTextField("email");
-        JButton connect =new JButton("Connect");
-        JButton newAccount =new JButton("create account");
-        JButton employee= new JButton("I'm an Employee");
-       
-        
-        JPanel panel1 = new JPanel();
-        JPanel panel2 = new JPanel();
-        JPanel panel3 = new JPanel();
-        JPanel panel4 = new JPanel();
-        JPanel panel5 = new JPanel();
-        
-        panel1.add(employee);
-        panel2.add(label);
-        panel3.add(email);
-        panel4.add(password);
-        panel5.add(connect);
-        panel5.add(newAccount);
-        panel.setLayout(new GridLayout(5,1));
-        
-        
-        panel.add(panel1);
-        panel.add(panel2);
-        panel.add(panel3);
-         panel.add(panel4);
-        panel.add(panel5);
-        add(panel);
-        //add(label);
-        //add(scrollTable);
-        
-        //panel.add(scrollTable);
-        //add(panel);
-    }
+ 
      
     public class TableListener implements ListSelectionListener
     {

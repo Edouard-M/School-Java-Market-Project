@@ -7,8 +7,6 @@
 package View;
 
 import Model.DAO;
-import static Model.DAO.getCustomer;
-import static Model.DAO.searchCustomer;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -28,6 +26,7 @@ public class Connection extends javax.swing.JPanel {
     /** Creates new form NewJPanel */
     private MyFrame myframe;
     private boolean connected;
+    private DAO dao;
     
     public Connection(MyFrame myFrame) 
     {
@@ -35,6 +34,7 @@ public class Connection extends javax.swing.JPanel {
         connected=false;
         initComponents();
         setVisible(true);
+        dao= new DAO();
 //      ImageIcon imageIcon = new ImageIcon("src/Image/path.gif"); // load the image to a imageIcon
 //            Image image = imageIcon.getImage(); // transform it 
 //            Image newimg = image.getScaledInstance(314, 110,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -370,14 +370,16 @@ jLabel10.setIcon(new ImageIcon("src/Image/button.png"));        // TODO add your
     {//GEN-HEADEREND:event_jLabel10MousePressed
           try
         {
-            if(searchCustomer(jTextField2.getText(),jPasswordField1.getText())==true)
+            dao.getConnection();
+            if(dao.searchCustomer(jTextField2.getText(),jPasswordField1.getText())==true)
             {
                 connected = true;
                 myframe.connection();
-                myframe.setCustomer(getCustomer(jTextField2.getText()));
+                myframe.setCustomer(dao.getCustomer(jTextField2.getText()));
                 System.out.println("Connection Accepted");
                 //Window wind =new Window(jTextField2.getText());
             }
+            dao.closeConnection();
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());

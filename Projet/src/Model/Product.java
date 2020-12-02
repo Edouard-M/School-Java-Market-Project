@@ -1,7 +1,7 @@
 
 package Model;
 
-import static Model.DAO.*;
+import Model.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,9 +19,11 @@ public class Product
     private int stock;
     private String image;
     private Discount discount;
+    private DAO dao;
     
     public Product(String Name, String Category, String Description, double Price, int Stock, Discount Discount, String Image) throws Exception
     {
+        dao= new DAO();
         name = Name;
         category = Category;
         description = Description;
@@ -40,7 +42,9 @@ public class Product
     public void insertProduct() throws Exception
     {
         try{
-            query("INSERT INTO Product (name, category, description, price, stock, image) VALUES ('"+name+"', '"+category+"', '"+description+"', '"+price+"', '"+stock+"', '"+image+"')");
+            dao.getConnection();
+            dao.query("INSERT INTO Product (name, category, description, price, stock, image) VALUES ('"+name+"', '"+category+"', '"+description+"', '"+price+"', '"+stock+"', '"+image+"')");
+            dao.closeConnection();
         }
         catch(Exception e){System.out.println(e);}
     }

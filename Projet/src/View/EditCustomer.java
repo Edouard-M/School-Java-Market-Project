@@ -6,8 +6,6 @@
 package View;
 
 import Model.DAO;
-
-import static Model.DAO.*;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -19,12 +17,14 @@ public class EditCustomer extends javax.swing.JPanel
 {
 private String email;
 private MyFrame eFrame;
+private DAO dao;
     /**
      * Creates new form EditCustomer
      */
  
     public EditCustomer(MyFrame eFrame)
     {
+        dao=new DAO();
         this.eFrame=eFrame;
         initComponents();
     }
@@ -40,24 +40,26 @@ private void buildPanel()
         jLabel1.setText(email);
         try
         {
+            dao.getConnection();
             String[]ageselector = new String[88];
             for(int i=13 ; i <= 100 ; i++)
             {
                 ageselector[i-13] = "" + i;
             }
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(ageselector));  
-            jComboBox1.setSelectedIndex(DAO.getCustomerAge(email)-13);
+            jComboBox1.setSelectedIndex(dao.getCustomerAge(email)-13);
             
-            jTextField1.setText(getCustomerFirstName(email));
+            jTextField1.setText(dao.getCustomerFirstName(email));
 
-            jTextField2.setText(getCustomerAddress(email));
+            jTextField2.setText(dao.getCustomerAddress(email));
 
-            jTextField3.setText(getCustomerPhone(email));
-
+            jTextField3.setText(dao.getCustomerPhone(email));
+           
            jTextField4.setText("");
            //jTextField.set
 
-            jTextField6.setText(getCustomerName(email));
+            jTextField6.setText(dao.getCustomerName(email));
+            dao.closeConnection();
 
         } catch (Exception ex)
         {
@@ -334,18 +336,18 @@ private void buildPanel()
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseClicked
     {//GEN-HEADEREND:event_jLabel3MouseClicked
         try
-        {
+        {dao.getConnection();
             if(!"".equals(jTextField4.getText()))
             {
-                EditCustomerdata(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,jTextField4.getText());
-                eFrame.setCustomer(getCustomer(email));
+                dao.EditCustomerdata(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,jTextField4.getText());
+                eFrame.setCustomer(dao.getCustomer(email));
             }
             else
             {
-             EditCustomerdata(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,getEmployeePassword(email));
-               eFrame.setCustomer(getCustomer(email));
+             dao.EditCustomerdata(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,dao.getEmployeePassword(email));
+               eFrame.setCustomer(dao.getCustomer(email));
             }
-
+            dao.closeConnection();
         }catch (Exception ex)
         {
             System.out.println(ex.getMessage());

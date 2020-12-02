@@ -5,9 +5,7 @@
  */
 package View;
 
-import static Model.DAO.getEmployee;
-import static Model.DAO.searchCustomer;
-import static Model.DAO.searchEmployee;
+import Model.DAO;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,12 +18,13 @@ public class EmployeesConnection extends javax.swing.JPanel
 {
     private boolean connected;
     private FrameEmployee eFrame;
+    private DAO dao;
     /**
      * Creates new form EmployeesConnection
      */
     public EmployeesConnection(FrameEmployee eframe)
     {
-       
+       dao=new DAO();
         this.eFrame = eframe;
         initComponents();
         jLabel3.setIcon(new ImageIcon("src/Image/logoGifHermes.gif"));
@@ -235,15 +234,16 @@ public class EmployeesConnection extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jLabel4MousePressed
       try
         {
-
-            if(searchEmployee(jTextField1.getText(),jPasswordField1.getText())==true)
+            dao.getConnection();
+            if(dao.searchEmployee(jTextField1.getText(),jPasswordField1.getText())==true)
             {
                 connected=true;
                 eFrame.connection();
-                eFrame.setEmployee(getEmployee(jTextField1.getText()));
+                eFrame.setEmployee(dao.getEmployee(jTextField1.getText()));
                 System.out.println("Get EMployee");
                 System.out.println("Employee Connection Accepted");
             }
+            dao.closeConnection();
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());

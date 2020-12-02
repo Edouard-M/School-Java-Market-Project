@@ -5,7 +5,7 @@
  */
 package View;
 
-import static Model.DAO.*;
+import Model.DAO;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,11 +20,13 @@ public class EditEmployeesProfile extends javax.swing.JPanel
 {
     private String email;
     private FrameEmployee eFrame;
+    private DAO dao;
     /**
      * Creates new form EditEmployeesProfile
      */
     public EditEmployeesProfile(String email, FrameEmployee eFrame)
     {
+        dao=new DAO();
         this.eFrame = eFrame;
         this.email = email;
         initComponents();
@@ -42,20 +44,21 @@ public class EditEmployeesProfile extends javax.swing.JPanel
             {
                 ageselector[i-13] = "" + i;
             }
+            dao.getConnection();
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(ageselector));  
-            jComboBox1.setSelectedIndex(getEmployeeAge(email)-13);
+            jComboBox1.setSelectedIndex(dao.getEmployeeAge(email)-13);
             
-            jTextField1.setText(getEmployeeFirstName(email));
+            jTextField1.setText(dao.getEmployeeFirstName(email));
 
-            jTextField2.setText(getEmployeeAddress(email));
+            jTextField2.setText(dao.getEmployeeAddress(email));
 
-            jTextField3.setText(getEmployeePhone(email));
+            jTextField3.setText(dao.getEmployeePhone(email));
 
            jTextField4.setText("");
            //jTextField.set
 
-            jTextField6.setText(getEmployeeName(email));
-
+            jTextField6.setText(dao.getEmployeeName(email));
+            dao.closeConnection();
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
@@ -321,18 +324,18 @@ public class EditEmployeesProfile extends javax.swing.JPanel
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MousePressed
     {//GEN-HEADEREND:event_jLabel2MousePressed
         try
-        {
+        {dao.getConnection();
             if(!"".equals(jTextField4.getText()))
             {
-                EditEmployee(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,jTextField4.getText());
-                eFrame.setEmployee(getEmployee(email));
+                dao.EditEmployee(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,jTextField4.getText());
+                eFrame.setEmployee(dao.getEmployee(email));
             }
             else
             {
-                EditEmployee(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,getEmployeePassword(email));
-                eFrame.setEmployee(getEmployee(email));
+                dao.EditEmployee(email,jTextField1.getText(),jTextField6.getText(),jTextField2.getText(),jTextField3.getText() ,jComboBox1.getSelectedIndex()+13,dao.getEmployeePassword(email));
+                eFrame.setEmployee(dao.getEmployee(email));
             }
-
+            dao.closeConnection();
         }catch (Exception ex)
         {
             System.out.println(ex.getMessage());

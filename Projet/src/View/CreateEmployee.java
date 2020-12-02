@@ -6,11 +6,6 @@
 package View;
 
 import Model.DAO;
-import static Model.DAO.employeeDelete;
-import static Model.DAO.getCol;
-import static Model.DAO.getLines;
-import static Model.DAO.selectAllEmployees;
-import static Model.DAO.selectAllProducts;
 import Model.Employee;
 import Model.Product;
 import java.awt.Color;
@@ -41,11 +36,13 @@ public class CreateEmployee extends javax.swing.JPanel
     private String currentMail;
     private FrameEmployee eFrame;
     private Employee employee;
+    private DAO dao;
     /**
      * Creates new form CreateEmployee
      */
     public CreateEmployee(FrameEmployee eFrame)
     {
+        dao= new DAO();
         this.eFrame=eFrame;
         initComponents();
         String[]ageselector = new String[83];
@@ -67,12 +64,13 @@ public class CreateEmployee extends javax.swing.JPanel
     
      public void buildPanel() throws Exception
     {
-       
-        allEmployeesList = selectAllEmployees();
-        String [] colNames = getCol("Employee");
-        String [][] data = getLines("Employee");
+       dao.getConnection();
+        allEmployeesList = dao.selectAllEmployees();
+        String [] colNames = dao.getCol("Employee");
+        String [][] data = dao.getLines("Employee");
         String [] colNamesFilter = {"Name", "First Name", "Age", "Phone", "Address","Email"};
         String [][] dataFilter = new String[data.length][6];
+        dao.closeConnection();
         for(int i=0 ; i < data.length ; i++)
         {
             dataFilter[i][0] = data[i][0];
@@ -82,7 +80,7 @@ public class CreateEmployee extends javax.swing.JPanel
             dataFilter[i][4] = data[i][4];
             dataFilter[i][5] = data[i][5];
         }
-     
+        
         
         tableModel =  (DefaultTableModel) jTable1.getModel();
         
@@ -494,11 +492,12 @@ public class CreateEmployee extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jLabel1MousePressed
        try
         {
-         
+         dao.getConnection();
             Employee createdEmployee = new Employee(jTextField3.getText(),jTextField1.getText(),jComboBox1.getSelectedIndex()+18  ,jTextField2.getText(),jTextField6.getText(),jTextField4.getText(),jPasswordField1.getText());
            createdEmployee.insertEmployee();
-            String[] colNames = getCol("Employee");
-            String[][] data = getLines("Employee");
+            String[] colNames = dao.getCol("Employee");
+            String[][] data = dao.getLines("Employee");
+            dao.closeConnection();
             tableModel.setDataVector(data, colNames);
             TableColumnModel columnModel = jTable1.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(100);
@@ -538,11 +537,13 @@ public class CreateEmployee extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jLabel14MousePressed
         try
         {
+            dao.getConnection();
             if(!"admin@gmail.com".equals(currentMail)&&!employee.getEmail().equals(currentMail))
             { 
-            employeeDelete(currentMail);
-            String[] colNames = getCol("Employee");
-            String[][] data = getLines("Employee");
+            dao.employeeDelete(currentMail);
+            String[] colNames = dao.getCol("Employee");
+            String[][] data = dao.getLines("Employee");
+            dao.closeConnection();
             tableModel.setDataVector(data, colNames);
             TableColumnModel columnModel = jTable1.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(100);

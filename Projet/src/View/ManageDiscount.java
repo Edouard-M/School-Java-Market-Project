@@ -6,11 +6,6 @@
 package View;
 
 import Model.DAO;
-import static Model.DAO.discountDelete;
-import static Model.DAO.getCol;
-import static Model.DAO.getLines;
-import static Model.DAO.selectAllDiscount;
-import static Model.DAO.selectAllProducts;
 import Model.Discount;
 import Model.Employee;
 import Model.Product;
@@ -43,20 +38,21 @@ private ArrayList<Discount> allDiscountList;
 private String productName;
 private String discountName;
 private TableColumnModel columnModel;
+private DAO dao;
     /**
      * Creates new form ManageDiscount
      */
     public ManageDiscount()
     {
-        
+        dao=new DAO();
         initComponents();
     }
   public void buildPanel() throws Exception
     {
+        dao.getConnection();
         
-        
-        allProductsList = selectAllProducts();
-        String[][] data = getLines("Product");
+        allProductsList = dao.selectAllProducts();
+        String[][] data = dao.getLines("Product");
             String[] colNamesFilter =
             {
                 "Name", "Category", "Description", "Price", "Stock"
@@ -99,11 +95,11 @@ private TableColumnModel columnModel;
         jTable1.getTableHeader().setForeground(new Color(255,255,255));
         jTable1.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
         
-        allDiscountList = selectAllDiscount();
+        allDiscountList = dao.selectAllDiscount();
        
-        String [] colNames2 = getCol("Discount");
-        String [][] data2 = getLines("Discount");
-        
+        String [] colNames2 = dao.getCol("Discount");
+        String [][] data2 = dao.getLines("Discount");
+        dao.closeConnection();
      
         
         tableModel2 =  (DefaultTableModel) jTable2.getModel();
@@ -405,9 +401,11 @@ private TableColumnModel columnModel;
     {//GEN-HEADEREND:event_jLabel3MousePressed
     try
     {
-        discountDelete(discountName);// TODO add your handling code here:
-         String[] colNames = getCol("Discount");
-            String[][] data = getLines("Discount");
+        dao.getConnection();
+        dao.discountDelete(discountName);// TODO add your handling code here:
+         String[] colNames = dao.getCol("Discount");
+            String[][] data = dao.getLines("Discount");
+            dao.closeConnection();
             tableModel2.setDataVector(data, colNames);
             columnModel = jTable2.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(100);
@@ -415,6 +413,7 @@ private TableColumnModel columnModel;
             columnModel.getColumn(2).setPreferredWidth(150);
             columnModel.getColumn(3).setPreferredWidth(50);
             columnModel.getColumn(4).setPreferredWidth(50);
+            
     } catch (Exception ex)
     {
         System.out.println(ex);
@@ -435,10 +434,12 @@ private TableColumnModel columnModel;
     {//GEN-HEADEREND:event_jLabel5MousePressed
     try
     {
+        dao.getConnection();
         Discount discount=new Discount(productName, Integer.parseInt(jTextField2.getText()),Double.parseDouble(jTextField3.getText()));
     discount.insertDiscount();
-    String[] colNames = getCol("Discount");
-            String[][] data = getLines("Discount");
+    String[] colNames = dao.getCol("Discount");
+            String[][] data = dao.getLines("Discount");
+            dao.closeConnection();
             tableModel2.setDataVector(data, colNames);
             columnModel = jTable2.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(100);

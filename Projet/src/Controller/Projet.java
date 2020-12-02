@@ -1,5 +1,5 @@
-
 package Controller;
+
 import static Model.DAO.*;
 import Model.*;
 import View.Window2;
@@ -13,19 +13,23 @@ import java.util.ArrayList;
  */
 public class Projet
 {
+
     public static void main(String[] args) throws Exception
     {
+        DAO dao = new DAO();
         dropAllTable();
-        createAllTable();
-        
+        dao.getConnection();
+        dao.createAllTable();
+        dao.closeConnection();
+
         testDB();
-        
+
         MyFrame frame = new MyFrame();
         //Window wind = new Window("marc.damp@gmail.com");
         //Window2 wind2 = new Window2();
         //CreateCustomer wind3 = new CreateCustomer();
     }
-    
+
     public static void testDB() throws Exception
     {
         Product banane = new Product("banane", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
@@ -77,30 +81,32 @@ public class Projet
         //Product kiwi3 = new Product("Kiwi3", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
         //kiwi3.insertProduct();
         Customer Marc = new Customer("Marc", "Dampierre", 23, "0640787637", " 6 rue jean mermoz rueil-malmaison 92500", "", "");
-        Employee Fred =new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "", "");
+        Employee Fred = new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "", "");
         Fred.insertEmployee();
-        Employee admin =new Employee("Fredo", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "admin@gmail.com", "ADMIN");
+        Employee admin = new Employee("Fredo", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "admin@gmail.com", "ADMIN");
         admin.insertEmployee();
-        OrderedProduct OrderedBanane= new OrderedProduct(1,1,"Banane", 10,12);
-        OrderedProduct OrderedKiwi= new OrderedProduct(1,2,"Kiwi", 5,12);
+        OrderedProduct OrderedBanane = new OrderedProduct(1, 1, "Banane", 10, 12);
+        OrderedProduct OrderedKiwi = new OrderedProduct(1, 2, "Kiwi", 5, 12);
         //Discount DiscountBanane = new Discount("Banane", 10, 9);
         kiwi.addDiscount(10, 25);
         //banane5.addDiscount(12, 20);
-        
+
         Order order1 = new Order(1, "marc.damp@gmail.com", null);
         System.out.println("test");
     }
-    
+
     public static void dropAllTable()
     {
-        query("DROP TABLE Product");
-        query("DROP TABLE Discount");
-        query("DROP TABLE Customer");
-        query("DROP TABLE Employee");
-        query("DROP TABLE OrderedProduct");
-        query("DROP TABLE Orders");
+        DAO dao = new DAO();
+        dao.getConnection();
+        dao.query("DROP TABLE Product");
+        dao.query("DROP TABLE Discount");
+        dao.query("DROP TABLE Customer");
+        dao.query("DROP TABLE Employee");
+        dao.query("DROP TABLE OrderedProduct");
+        dao.query("DROP TABLE Orders");
+        dao.closeConnection();
         System.out.println("All Table Droped");
     }
-    
-    
+
 }

@@ -6,7 +6,7 @@
 //GIT PROJET
 package View;
 
-import static Model.DAO.*;
+import Model.DAO;
 import Model.Discount;
 import Model.Order;
 import Model.OrderedProduct;
@@ -85,12 +85,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private int y5;
     
     private Object [][] allData;
-
+    private DAO dao;
     /**
      * Creates new form Home
      */
     public Home() throws Exception
     {
+        dao=new DAO();
         initComponents();
         
         
@@ -161,9 +162,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
         timer.start();
         
         panel = new JPanel();
-        
-        allProductsList = selectAllProducts();
-        
+        dao.getConnection();
+        allProductsList = dao.selectAllProducts();
+        dao.closeConnection();
         p21=0;
         p22=1;
         p23=2;
@@ -268,7 +269,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
         p23=2;
         p24=3;
         p25=4;
-        String [][] data = getLines("Product");
+        dao.getConnection();
+        String [][] data = dao.getLines("Product");
         
         String [] colNamesFilter = {"Name", "Category", "Description", "Stock", "Price (€)", "Image"};
         String [][] dataFilter = new String[data.length][6];
@@ -293,7 +295,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             allData[j][3] = data[i][4];
             allData[j][4] = data[i][3];
             allData[j][5] = resize((String)dataFilter[j][5], 100, 100);
-            allData[j][6] = (Discount) searchDiscount((String) allData[j][0]);
+            allData[j][6] = (Discount) dao.searchDiscount((String) allData[j][0]);
             j++;
             }
         }
@@ -320,7 +322,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             allData[i][3] = data[i][4];
             allData[i][4] = data[i][3];
             allData[i][5] = resize((String)dataFilter[i][5], 100, 100);
-            allData[i][6] = (Discount) searchDiscount((String) allData[i][0]);
+            allData[i][6] = (Discount) dao.searchDiscount((String) allData[i][0]);
         }
         
         tableSize = data.length;
@@ -376,6 +378,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         resetPosition();
         table.setVisible(false);
         table.getTableHeader().setVisible(false);
+        dao.closeConnection();
     }
     
     public void updateTable() throws Exception
@@ -386,8 +389,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
         p23=2;
         p24=3;
         p25=4;*/
-        
-        String [][] data = getLines("Product");
+        dao.getConnection();
+        String [][] data = dao.getLines("Product");
         
         String [] colNamesFilter = {"Name", "Category", "Description", "Stock", "Price (€)", "Image"};
         String [][] dataFilter = new String[data.length][6];
@@ -408,12 +411,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
             allData[i][3] = data[i][4];
             allData[i][4] = data[i][3];
             allData[i][5] = resize((String)dataFilter[i][5], 100, 100);
-            allData[i][6] = (Discount) searchDiscount((String) allData[i][0]);
+            allData[i][6] = (Discount) dao.searchDiscount((String) allData[i][0]);
             if(allData[i][6]==null)
                 System.out.println(allData[i][0] + " Pas Discount");
             else
                 System.out.println(allData[i][0] + " Discount");
         }
+        dao.closeConnection();
         
         tableSize = data.length;
         
@@ -1457,11 +1461,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
         {
             try
             {
+                dao.getConnection();
                 currentName = (String) table.getValueAt(viewRow, 0);
                 double unitPrice = Double.parseDouble((String) table.getValueAt(viewRow, 4));
                 int quantity = jComboBox1.getSelectedIndex();
 
-                Discount discount = searchDiscount(currentName);
+                Discount discount = dao.searchDiscount(currentName);
+                dao.closeConnection();
                 double total;
 
                 if(discount != null && discount.getQuantity() <= quantity)

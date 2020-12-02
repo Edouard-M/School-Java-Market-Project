@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -18,40 +19,49 @@ import java.util.ArrayList;
  */
 public class DAO
 {
+    private final String driver = "com.mysql.cj.jdbc.Driver";
+    private final String url = "jdbc:mysql://dbtest.cfuu3y9e8cbz.eu-west-3.rds.amazonaws.com:3306/DB";
+    private final String username = "admin";
+    private final String password = "Jolipuzzle";
+    private  Connection con;
 
-    private final Connection connect;
 
-    public DAO() throws Exception
-    {
-        connect = getConnection();
-    }
 
-    public static Connection getConnection() throws Exception
+    public void getConnection()
     {
         try
         {
-            String driver = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://dbtest.cfuu3y9e8cbz.eu-west-3.rds.amazonaws.com:3306/DB";
-            String username = "admin";
-            String password = "Jolipuzzle";
-
-            Class.forName(driver);
-            Connection con = DriverManager.getConnection(url, username, password);
+             Class.forName(driver);
+             con = DriverManager.getConnection(url, username, password);
             //System.out.println("Connected to server !");
-            return con;
-        } catch (Exception e)
+           
+        } catch (ClassNotFoundException | SQLException e)
         {
             System.out.println(e);
         }
-        return null;
+
+    }
+    public void closeConnection() 
+    {
+        try
+        {
+             
+             con.close();
+            //System.out.println("Connected to server !");
+           
+        } catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+
     }
 
-    public static PreparedStatement query(String query)
+    public  PreparedStatement query(String query)
     {
         try
         {
             boolean exist = false;
-            Connection con = getConnection();
+         
             PreparedStatement statement = con.prepareStatement(query);
             statement.executeUpdate();
             return statement;
@@ -62,11 +72,11 @@ public class DAO
         return null;
     }
 
-    public static void createAllTable() throws Exception
+    public  void createAllTable() throws Exception
     {
         try
         {
-            Connection con = getConnection();
+            
             PreparedStatement create;
             create = con.prepareStatement("CREATE TABLE IF NOT EXISTS Product( name varchar(255), category varchar(255), description varchar(255), price double, stock int, discountId int, image varchar(255), PRIMARY KEY(name))");
             create.executeUpdate();
@@ -87,13 +97,11 @@ public class DAO
         }
     }
 
-    public static Product searchProduct(String search) throws Exception
+    public Product searchProduct(String search) throws Exception
     {
         String name, category, description, image;
         double price;
         int stock;
-
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Product WHERE name = '" + search + "'");
         ResultSet result = statement.executeQuery();
         if (result.next())
@@ -111,28 +119,27 @@ public class DAO
         } else
             return null;
     }
-    public static void productDelete(String name) throws Exception
+    public void productDelete(String name) throws Exception
     {
-        Connection con = getConnection();
+        
         PreparedStatement statement = con.prepareStatement("DELETE FROM Product WHERE name = '" +name+ "'");
          statement.executeUpdate();
     }
-    public static void discountDelete(String name) throws Exception
+    public  void discountDelete(String name) throws Exception
     {
-        Connection con = getConnection();
+        
         PreparedStatement statement = con.prepareStatement("DELETE FROM Discount WHERE name = '" +name+ "'");
          statement.executeUpdate();
     }
-    public static void employeeDelete(String email) throws Exception
+    public void employeeDelete(String email) throws Exception
     {
-        Connection con = getConnection();
+       
         PreparedStatement statement = con.prepareStatement("DELETE FROM Employee WHERE email = '" +email+ "'");
          statement.executeUpdate();
     }
-     public static void productAddStock(String name,int addToStock) throws Exception
+     public  void productAddStock(String name,int addToStock) throws Exception
     {
         int stock;
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Product WHERE name = '" +name+ "'");
         ResultSet result = statement.executeQuery();
         if (result.next())
@@ -145,13 +152,13 @@ public class DAO
         statement.executeUpdate();
         }
     }
-    public static Discount searchDiscount(String search) throws Exception
+    public Discount searchDiscount(String search) throws Exception
     {
         String name = "";
         int quantity = 0;
         double price = 0;
 
-        Connection con = getConnection();
+        
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Discount WHERE name = '" + search + "'");
         ResultSet result = statement.executeQuery();
         if (result.next())
@@ -167,9 +174,9 @@ public class DAO
             return null;
     }
 
-    public static boolean searchCustomer(String enteredemail, String enteredpassword) throws Exception
+    public boolean searchCustomer(String enteredemail, String enteredpassword) throws Exception
     {
-        Connection con = getConnection();
+        
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + enteredemail + "'");
         ResultSet result = statement.executeQuery();
         if (result.next())
@@ -183,9 +190,9 @@ public class DAO
             return false;
     }
 
-    public static boolean searchEmployee(String enteredemail, String enteredpassword) throws Exception
+    public  boolean searchEmployee(String enteredemail, String enteredpassword) throws Exception
     {
-        Connection con = getConnection();
+        
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + enteredemail + "'");
         ResultSet result = statement.executeQuery();
         if (result.next())
@@ -197,9 +204,9 @@ public class DAO
             return false;
     }
     
-    public static Employee getEmployee(String email) throws Exception
+    public Employee getEmployee(String email) throws Exception
     {
-        Connection con = getConnection();
+       
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
         String name, firstName, phone, adress, mail, password;
         int age;
@@ -218,9 +225,9 @@ public class DAO
         return null;
     }
 
-    public static String getEmployeeName(String email) throws Exception
+    public  String getEmployeeName(String email) throws Exception
     {
-        Connection con = getConnection();
+        
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
         String name;
         ResultSet result = statement.executeQuery();
@@ -231,9 +238,8 @@ public class DAO
         return "";
     }
 
-    public static String getEmployeeFirstName(String email) throws Exception
+    public String getEmployeeFirstName(String email) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
        String name;
         ResultSet result = statement.executeQuery();
@@ -244,9 +250,9 @@ public class DAO
         return "";
     }
 
-    public static String getEmployeeAddress(String email) throws Exception
+    public String getEmployeeAddress(String email) throws Exception
     {
-        Connection con = getConnection();
+        
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
           String name;
         ResultSet result = statement.executeQuery();
@@ -257,9 +263,8 @@ public class DAO
         return "";
     }
 
-    public static String getEmployeePhone(String email) throws Exception
+    public String getEmployeePhone(String email) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
          String name;
         ResultSet result = statement.executeQuery();
@@ -270,9 +275,9 @@ public class DAO
         return "";
     }
 
-    public static String getEmployeePassword(String email) throws Exception
+    public String getEmployeePassword(String email) throws Exception
     {
-        Connection con = getConnection();
+
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
         String name;
         ResultSet result = statement.executeQuery();
@@ -283,9 +288,9 @@ public class DAO
         return "";
     }
 
-    public static int getEmployeeAge(String email) throws Exception
+    public int getEmployeeAge(String email) throws Exception
     {
-        Connection con = getConnection();
+        
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
          int name;
         ResultSet result = statement.executeQuery();
@@ -295,9 +300,8 @@ public class DAO
         }
         return 0;
     }
-    public static void EditEmployee(String email,String firstname, String name,String address,String phone,int age,String password) throws Exception
+    public void EditEmployee(String email,String firstname, String name,String address,String phone,int age,String password) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement;
         statement = con.prepareStatement("SELECT firstname, name,address,phone,age,password FROM Employee WHERE email= '" + email + "'");
         statement.executeQuery();
@@ -307,9 +311,8 @@ public class DAO
     
     
     
-     public static Customer getCustomer(String email) throws Exception
+     public Customer getCustomer(String email) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
         String name, firstName, phone, adress, mail, password;
         int age;
@@ -327,9 +330,9 @@ public class DAO
         }
         return null;
     }
-    public static String getCustomerName(String email) throws Exception
+    public String getCustomerName(String email) throws Exception
     {
-        Connection con = getConnection();
+
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
         String name;
         ResultSet result = statement.executeQuery();
@@ -340,9 +343,8 @@ public class DAO
         return "";
     }
 
-    public static String getCustomerFirstName(String email) throws Exception
+    public String getCustomerFirstName(String email) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
        String name;
         ResultSet result = statement.executeQuery();
@@ -353,9 +355,8 @@ public class DAO
         return "";
     }
 
-    public static String getCustomerAddress(String email) throws Exception
+    public String getCustomerAddress(String email) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
           String name;
         ResultSet result = statement.executeQuery();
@@ -366,9 +367,8 @@ public class DAO
         return "";
     }
 
-    public static String getCustomerPhone(String email) throws Exception
+    public String getCustomerPhone(String email) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
          String name;
         ResultSet result = statement.executeQuery();
@@ -379,9 +379,8 @@ public class DAO
         return "";
     }
 
-    public static String getCustomPassword(String email) throws Exception
+    public String getCustomPassword(String email) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
         String name;
         ResultSet result = statement.executeQuery();
@@ -392,9 +391,8 @@ public class DAO
         return "";
     }
 
-    public static int getCustomerAge(String email) throws Exception
+    public int getCustomerAge(String email) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
          int name;
         ResultSet result = statement.executeQuery();
@@ -404,21 +402,19 @@ public class DAO
         }
         return 0;
     }
-    public static void EditCustomerdata(String email,String firstname, String name,String address,String phone,int age,String password) throws Exception
+    public void EditCustomerdata(String email,String firstname, String name,String address,String phone,int age,String password) throws Exception
     {
-        Connection con = getConnection();
         PreparedStatement statement;
         statement = con.prepareStatement("SELECT firstname, name,address,phone,age,password FROM Customer WHERE email= '" + email + "'");
         statement.executeQuery();
         statement = con.prepareStatement("UPDATE Customer SET firstname = '"+firstname+"' ,name='"+name+"', address = '"+address+"', phone = '"+phone+"', age= "+age+" ,password = '"+password+"' WHERE email = '"+email+"'");
         statement.executeUpdate();
     }
-    public static ArrayList<Product> selectAllProducts() throws Exception
+    public ArrayList<Product> selectAllProducts() throws Exception
     {
         try
         {
             Product product;
-            Connection con = getConnection();
             PreparedStatement statement = con.prepareStatement("SELECT * FROM Product ORDER BY name");
 
             ResultSet result = statement.executeQuery();
@@ -438,12 +434,12 @@ public class DAO
         }
         return null;
     }
-        public static ArrayList<Discount> selectAllDiscount() throws Exception
+        public ArrayList<Discount> selectAllDiscount() throws Exception
     {
         try
         {
             Discount discount;
-            Connection con = getConnection();
+            
             PreparedStatement statement = con.prepareStatement("SELECT * FROM Discount ORDER BY name");
 
             ResultSet result = statement.executeQuery();
@@ -463,12 +459,12 @@ public class DAO
         }
         return null;
     }
-    public static ArrayList<Employee> selectAllEmployees() throws Exception
+    public  ArrayList<Employee> selectAllEmployees() throws Exception
     {
         try
         {
             Employee employee;
-            Connection con = getConnection();
+            
             PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee ORDER BY email");
 
             ResultSet result = statement.executeQuery();
@@ -489,10 +485,10 @@ public class DAO
         return null;
     }
 
-    public static int getRowSize(String tableName) throws Exception
+    public  int getRowSize(String tableName) throws Exception
     {
         ArrayList<String> array = new ArrayList<>();
-        Connection con = getConnection();
+       
         PreparedStatement statement = con.prepareStatement("SELECT * FROM " + tableName);
         ResultSet result = statement.executeQuery();
 
@@ -504,11 +500,11 @@ public class DAO
         return array.size();
     }
 
-    public static String[] getCol(String tableName) throws Exception
+    public  String[] getCol(String tableName) throws Exception
     {
         String[] col;
 
-        Connection con = getConnection();
+       
         PreparedStatement statement = con.prepareStatement("SELECT * FROM " + tableName + "");
         ResultSet result = statement.executeQuery();
         ResultSetMetaData meta = result.getMetaData();
@@ -522,12 +518,11 @@ public class DAO
         return col;
     }
 
-    public static String[][] getLines(String tableName) throws Exception
+    public  String[][] getLines(String tableName) throws Exception
     {
         int numRows = getRowSize(tableName);
         String[][] lines;
 
-        Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM " + tableName + "");
         ResultSet result = statement.executeQuery();
         ResultSetMetaData meta = result.getMetaData();

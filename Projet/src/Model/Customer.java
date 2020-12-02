@@ -5,7 +5,7 @@
  */
 package Model;
 
-import static Model.DAO.*;
+import Model.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,22 +16,32 @@ import java.sql.ResultSet;
  */
 public class Customer extends Person
 {
+
     private int fidelityPoint;
+    private DAO dao;
 
     public Customer(String name, String firstName, int age, String phone, String address, String email, String password) throws Exception
     {
         super(name, firstName, age, phone, address, email, password);
-        fidelityPoint=0;
+        fidelityPoint = 0;
+        dao = new DAO();
         insertCustomer();
     }
-    
-        public void insertCustomer() throws Exception
+
+    public void insertCustomer() throws Exception
     {
-        try{
-            query("INSERT INTO Customer (name, firstName, age, phone, address, email, password, fidelityPoint) VALUES ('"+name+"', '"+firstName+"', '"+age+"', '"+phone+"', '"+address+"', '"+email+"', '"+password+"', '"+fidelityPoint+"')");
-        } catch(Exception e){System.out.println(e);}
+        try
+        {
+            dao.getConnection();
+            dao.query("INSERT INTO Customer (name, firstName, age, phone, address, email, password, fidelityPoint) VALUES ('" + name + "', '" + firstName + "', '" + age + "', '" + phone + "', '" + address + "', '" + email + "', '" + password + "', '" + fidelityPoint + "')");
+        dao.closeConnection();
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
-     public String getEmail()
+
+    public String getEmail()
     {
         return email;
     }
