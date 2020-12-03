@@ -22,10 +22,12 @@ private DAO dao;
     {
         dao = new DAO();
     }
+    
     public boolean ConnectButton(String text1,String text2)
     {
         boolean bool=false;
-           try
+        System.out.println("OUI");
+        try
         {
             
             dao.getConnection();
@@ -43,6 +45,7 @@ private DAO dao;
         }
            return bool;
     }
+    
     public Customer findCustomer(String text2)
     {
         dao.getConnection();

@@ -34,6 +34,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
+import java.sql.Date;
 
 /**
  *
@@ -46,10 +47,12 @@ public class Home extends javax.swing.JPanel implements ActionListener
     final int HEIGHT_WINDOW = 700;
     
     private Order order;
+    private String customerEmail;
     private ArrayList<Product> allProductsList;
     private DefaultTableModel cartModel;
     private DefaultTableModel tableModel;
     
+    private MyFrame myFrame;
     private JPanel panel;
     //private JTable table;
     private JLabel label;
@@ -89,10 +92,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
     /**
      * Creates new form Home
      */
-    public Home() throws Exception
+    public Home(MyFrame myFrame) throws Exception
     {
+        this.myFrame = myFrame;
         controller = new HomeController();
         initComponents();
+        
+        
         
         
         
@@ -115,6 +121,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
         System.out.println("X1 = " + x1);
         System.out.println("Y1 = " + y1);
         
+    }
+    
+    public Order getOrder()
+    {
+        return order;
     }
     
     public void resetPosition()
@@ -152,12 +163,20 @@ public class Home extends javax.swing.JPanel implements ActionListener
         return bottom;
     }
     
+    public void setNewOrder(String email)
+    {
+        this.customerEmail = email;
+        order = new Order(email);
+    }
+    
     public void buildPanel() throws Exception
     {
         
         viewRow=1;
         
-        order = new Order(1, "", null);
+        order = new Order("");
+        System.out.println("Date : " + order.getDate());
+        labelDate.setText( order.getDate().toString());
         
         timer.start();
         
@@ -198,7 +217,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
         
         jScrollPane3.setBackground(new Color(62,120,207));
         
-        cartTable.setPreferredSize(new Dimension(310, 288));
+        //cartTable.setPreferredSize(new Dimension(310, 288));
+        cartTable.setPreferredSize(new Dimension(310, 250));
         cartTable.getTableHeader().setBackground(new Color(77,128,216));
         cartTable.getTableHeader().setForeground(new Color(255,255,255));
         cartTable.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 12));
@@ -222,7 +242,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         //cartTable.removeAll();
         
         
-            order = new Order(1, "", null);
+            order = new Order("");
             try
             {
                 String [] colNames = new String[] {"Quantity","Product","Cost (€)"};
@@ -408,10 +428,15 @@ public class Home extends javax.swing.JPanel implements ActionListener
             allData[i][4] = data[i][3];
             allData[i][5] = resize((String)dataFilter[i][5], 100, 100);
             allData[i][6] = controller.findDiscount((String) allData[i][0]);
+            
+           /* System.out.println("AllData [i][0] = " + (String) allData[i][0]);
+            if(controller.findDiscount((String) allData[i][0]) != null)
+                System.out.println("Quantity Discount = " + controller.findDiscount((String) allData[i][0]).getQuantity());
+            
             if(allData[i][6]==null)
                 System.out.println(allData[i][0] + " Pas Discount");
             else
-                System.out.println(allData[i][0] + " Discount");
+                System.out.println(allData[i][0] + " Discount");*/
         }
         
         tableSize = data.length;
@@ -830,10 +855,12 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jPanel4 = new javax.swing.JPanel();
+        labelDate = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1373,7 +1400,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         cartTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(cartTable);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 310, 310));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 310, 272));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1423,6 +1450,19 @@ public class Home extends javax.swing.JPanel implements ActionListener
         });
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 290, 30));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setText("Checkout");
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, 150, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 370, 650));
 
         jPanel3.setBackground(new java.awt.Color(245, 247, 253));
@@ -1444,6 +1484,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         jPanel4.setBackground(new java.awt.Color(62, 120, 207));
         jPanel4.setLayout(null);
+
+        labelDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelDate.setForeground(new java.awt.Color(255, 255, 255));
+        labelDate.setText("Date");
+        jPanel4.add(labelDate);
+        labelDate.setBounds(650, 10, 110, 25);
+
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 770, 50));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 650));
@@ -1855,6 +1902,12 @@ public class Home extends javax.swing.JPanel implements ActionListener
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
+    {//GEN-HEADEREND:event_jButton3ActionPerformed
+        System.out.println("Finish Order");
+        myFrame.checkout();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable cartTable;
@@ -1885,6 +1938,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private javax.swing.JLabel image25;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1929,6 +1983,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel labelDate;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

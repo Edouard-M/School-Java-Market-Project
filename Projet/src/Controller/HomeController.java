@@ -60,7 +60,7 @@ public class HomeController
         
         dao.getConnection();
         try{
-            dao.searchDiscount(text);
+            discount=dao.searchDiscount(text);
         }
         catch(Exception e)
         {

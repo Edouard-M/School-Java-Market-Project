@@ -91,7 +91,7 @@ public class Projet
         kiwi.addDiscount(10, 25);
         //banane5.addDiscount(12, 20);
 
-        Order order1 = new Order(1, "marc.damp@gmail.com", null);
+        Order order1 = new Order("marc.damp@gmail.com");
         System.out.println("test");
     }
 

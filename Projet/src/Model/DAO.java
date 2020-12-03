@@ -80,7 +80,7 @@ public class DAO
             PreparedStatement create;
             create = con.prepareStatement("CREATE TABLE IF NOT EXISTS Product( name varchar(255), category varchar(255), description varchar(255), price double, stock int, discountId int, image varchar(255), PRIMARY KEY(name))");
             create.executeUpdate();
-            create = con.prepareStatement("CREATE TABLE IF NOT EXISTS Orders( id int, email varchar(255), PRIMARY KEY(id))");
+            create = con.prepareStatement("CREATE TABLE IF NOT EXISTS Orders( id int, email varchar(255), date date, PRIMARY KEY(id))");
             create.executeUpdate();
             create = con.prepareStatement("CREATE TABLE IF NOT EXISTS OrderedProduct( orderID int, id int NOT NULL AUTO_INCREMENT, productName varchar(255), quantity int, PRIMARY KEY(id))");
             create.executeUpdate();
@@ -316,6 +316,7 @@ public class DAO
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
         String name, firstName, phone, adress, mail, password;
         int age;
+        System.out.println("ebGRQINIJBQPOFNBQJ");
         ResultSet result = statement.executeQuery();
         if (result.next())
         {   
@@ -542,5 +543,30 @@ public class DAO
 
         return lines;
     }
+    
+    public int findIdOrder()
+    {
+         int id=0;
+        try{
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Orders ORDER BY id");
+            ResultSet result = statement.executeQuery();
+        
+            while(result.next())
+            {
+                int i = result.getInt("id");
+                if(id < i)
+                    id = i;
+            }
+            
+         
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+         return id+1;
+     }
+    
+    
 
 }

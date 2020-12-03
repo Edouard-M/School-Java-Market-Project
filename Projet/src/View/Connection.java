@@ -367,13 +367,15 @@ public class Connection extends javax.swing.JPanel
 
     private void jLabel10MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel10MousePressed
     {//GEN-HEADEREND:event_jLabel10MousePressed
-
+   
         if (connectControl.ConnectButton(jPasswordField1.getText(), jTextField2.getText()))
         {
             connected = true;
-            myframe.connection();
             myframe.setCustomer(connectControl.findCustomer(jTextField2.getText()));
-        } // TODO add your handling code here:
+            myframe.connection();
+            
+            System.out.println("Customer Find = " + connectControl.findCustomer(jTextField2.getText()).getFirstName());
+        } 
     }//GEN-LAST:event_jLabel10MousePressed
 
 

@@ -25,6 +25,8 @@ public class MyFrame extends javax.swing.JFrame
    private Connection panel1; 
    private Home panel2;
    private EditCustomer panel3;
+   private Checkout panel4;
+   private MyOrders panel5;
    
    //private Test2 panel2;
     
@@ -47,20 +49,27 @@ public class MyFrame extends javax.swing.JFrame
         
         panel1 = new Connection(this);
         panel0 = new NewCustomer(this, panel1);
-        panel2 = new Home();
-        panel3=new EditCustomer(this);
+        panel2 = new Home(this);
+        panel3 = new EditCustomer(this);
+        panel4 = new Checkout(this);
+        panel5 = new MyOrders();
 
         panel0.setVisible(false);
         panel1.setVisible(false);
         panel2.setVisible(false);
         panel3.setVisible(false);
+        panel4.setVisible(false);
+        panel5.setVisible(false);
         
         panel.add(panel0, c);
         panel.add(panel1, c);
         panel.add(panel2, c);
         panel.add(panel3, c);
+        panel.add(panel4, c);
+        panel.add(panel5, c);
         
         panel1.setVisible(true);
+        
         
     }
     public void setCustomer(Customer customer)
@@ -74,12 +83,39 @@ public class MyFrame extends javax.swing.JFrame
         panel1.setVisible(false);
     }
     
+    public void checkout()
+    {
+        //menu.setVisible(false);
+        panel4.setOrder(panel2.getOrder());
+        panel4.setVisible(true);
+        panel2.setVisible(false);
+    }
+    public void checkoutComplete()
+    {
+        resetColor();
+        setColor(button4, bt4);
+        panel2.setNewOrder(customer.getEmail());
+        
+        panel1.setVisible(false);
+        panel2.setVisible(false);
+        panel3.setVisible(false);
+        panel4.setVisible(false);
+        
+        panel5.setVisible(true);
+    }
+    
     public void connection()
     {
         resetColor();
         setColor(button2,bt2);
+        System.out.println("Ca bug ?");
+        System.out.println("Customer email = " + customer.getEmail());
+        panel2.setNewOrder(customer.getEmail());
+        System.out.println("Customer email = " + customer.getEmail());
         panel1.setVisible(false);
         panel0.setVisible(false);
+        panel4.setVisible(false);
+        panel5.setVisible(false);
         panel2.setVisible(true);
         jLabel1.setText("Disconnect");
         
@@ -450,6 +486,8 @@ public class MyFrame extends javax.swing.JFrame
             
             panel2.setVisible(false);
             panel3.setVisible(false);
+            panel4.setVisible(false);
+            panel5.setVisible(false);
         }
         
     }//GEN-LAST:event_button1MousePressed
@@ -472,6 +510,8 @@ public class MyFrame extends javax.swing.JFrame
             panel1.setVisible(false);
             panel2.setVisible(true);
             panel3.setVisible(false);
+            panel4.setVisible(false);
+            panel5.setVisible(false);
         }
         
     }//GEN-LAST:event_button2MousePressed
@@ -485,8 +525,10 @@ public class MyFrame extends javax.swing.JFrame
         
             panel1.setVisible(false);
             panel2.setVisible(false);
+            panel5.setVisible(false);
             panel3.setEmail(customer.getEmail());
             panel3.setVisible(true);
+            panel4.setVisible(false);
         }
         
     }//GEN-LAST:event_button3MousePressed
@@ -501,6 +543,8 @@ public class MyFrame extends javax.swing.JFrame
             panel1.setVisible(false);
             panel2.setVisible(false);
             panel3.setVisible(false);
+            panel4.setVisible(false);
+            panel5.setVisible(true);
         }
         
     }//GEN-LAST:event_button4MousePressed

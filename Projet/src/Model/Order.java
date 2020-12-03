@@ -4,7 +4,10 @@ import Model.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.Date;
 //import sun.util.calendar.LocalGregorianCalendar.*;
 
 /**
@@ -17,18 +20,49 @@ public class Order
     private int id;
     private String email;
     //private Date date;
-    private String date;
+    private Date date;
     private ArrayList<OrderedProduct> orderedProducts;
     private DAO dao;
+    
 
-    public Order(int ID, String Email, String Date)
+    public Order(String Email)
     {
         dao = new DAO();
-        id = ID;
+        
+        dao.getConnection();
+        id = dao.findIdOrder();
+        dao.closeConnection();
+        
         email = Email;
-        date = Date;
+        date = getTodayDate();
         orderedProducts = new ArrayList<>();
+      
+       
         //insertOrder();
+    }
+    
+    public Date getTodayDate()  // Methode pour obtenir la date actuelle
+    {  
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+        java.util.Date date = new java.util.Date();  
+        Date theDate=null;
+        try
+        {
+            //return formatter.format(date);
+            date = new SimpleDateFormat("dd/MM/yyyy").parse(formatter.format(date));
+            
+            theDate = new java.sql.Date(date.getTime());
+                    
+        } catch (ParseException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return theDate;
+    }
+    
+    public Date getDate()
+    {
+        return date;
     }
 
     public void insertOrder()
@@ -36,7 +70,7 @@ public class Order
         try
         {
             dao.getConnection();
-            dao.query("INSERT INTO Orders ( id, email) VALUES ('" + id + "', '" + email + "')");
+            dao.query("INSERT INTO Orders ( id, email, date) VALUES ('" + id + "', '" + email + "','" + date + "')");
             dao.closeConnection();
         } catch (Exception e)
         {

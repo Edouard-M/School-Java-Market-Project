@@ -34,7 +34,7 @@ public class Customer extends Person
         {
             dao.getConnection();
             dao.query("INSERT INTO Customer (name, firstName, age, phone, address, email, password, fidelityPoint) VALUES ('" + name + "', '" + firstName + "', '" + age + "', '" + phone + "', '" + address + "', '" + email + "', '" + password + "', '" + fidelityPoint + "')");
-        dao.closeConnection();
+            dao.closeConnection();
         } catch (Exception e)
         {
             System.out.println(e);
