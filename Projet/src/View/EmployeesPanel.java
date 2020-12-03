@@ -6,7 +6,6 @@
 package View;
 
 import Controller.EmpPanelController;
-import Model.DAO;
 import Model.Product;
 import java.awt.Color;
 import java.awt.Dimension;

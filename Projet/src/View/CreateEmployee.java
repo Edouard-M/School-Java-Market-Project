@@ -6,7 +6,6 @@
 package View;
 
 import Controller.EmpCreationController;
-import Model.DAO;
 import Model.Employee;
 import Model.Product;
 import java.awt.Color;

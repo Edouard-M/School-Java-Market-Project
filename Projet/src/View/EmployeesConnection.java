@@ -5,10 +5,7 @@
  */
 package View;
 
-import Model.DAO;
-import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Controller.EmployeesConnectionController;
 import javax.swing.ImageIcon;
 /**
  *
@@ -18,13 +15,13 @@ public class EmployeesConnection extends javax.swing.JPanel
 {
     private boolean connected;
     private FrameEmployee eFrame;
-    private DAO dao;
+    private EmployeesConnectionController controller;
     /**
      * Creates new form EmployeesConnection
      */
     public EmployeesConnection(FrameEmployee eframe)
     {
-       dao=new DAO();
+        controller = new EmployeesConnectionController();
         this.eFrame = eframe;
         initComponents();
         jLabel3.setIcon(new ImageIcon("src/Image/logoGifHermes.gif"));
@@ -192,7 +189,7 @@ public class EmployeesConnection extends javax.swing.JPanel
 
     private void jPanel3MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseMoved
     {//GEN-HEADEREND:event_jPanel3MouseMoved
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jPanel3MouseMoved
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseEntered
@@ -232,22 +229,14 @@ public class EmployeesConnection extends javax.swing.JPanel
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel4MousePressed
     {//GEN-HEADEREND:event_jLabel4MousePressed
-      try
+         if(controller.isEmployee(jTextField1.getText(),jPasswordField1.getText()))
         {
-            dao.getConnection();
-            if(dao.searchEmployee(jTextField1.getText(),jPasswordField1.getText())==true)
-            {
-                connected=true;
-                eFrame.connection();
-                eFrame.setEmployee(dao.getEmployee(jTextField1.getText()));
-                System.out.println("Get EMployee");
-                System.out.println("Employee Connection Accepted");
-            }
-            dao.closeConnection();
-        } catch (Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }    // TODO add your handling code here:
+            connected=true;
+            eFrame.connection();
+            eFrame.setEmployee(controller.findEmployee(jTextField1.getText()));
+            System.out.println("Get EMployee");
+            System.out.println("Employee Connection Accepted");
+        }
     }//GEN-LAST:event_jLabel4MousePressed
 
 

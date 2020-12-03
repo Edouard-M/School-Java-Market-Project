@@ -7,7 +7,6 @@ package View;
 
 import Controller.EditCustomerController;
 import Model.Customer;
-import Model.DAO;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 

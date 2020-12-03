@@ -6,7 +6,6 @@
 package View;
 
 import Controller.ConnectionController;
-import Model.DAO;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;

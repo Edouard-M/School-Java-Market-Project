@@ -6,7 +6,6 @@
 package View;
 
 import Controller.ManageDiscountController;
-import Model.DAO;
 import Model.Discount;
 import Model.Employee;
 import Model.Product;

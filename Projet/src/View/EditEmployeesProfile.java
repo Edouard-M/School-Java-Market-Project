@@ -6,7 +6,6 @@
 package View;
 
 import Controller.EditEmpController;
-import Model.DAO;
 import Model.Employee;
 import java.awt.Color;
 import java.util.logging.Level;
