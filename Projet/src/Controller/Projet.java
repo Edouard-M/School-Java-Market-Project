@@ -8,7 +8,7 @@ import java.net.PasswordAuthentication;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
-import javax.mail.*;
+//import javax.mail.*;
 
 /**
  * @author Edouard MIGNIEN

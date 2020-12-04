@@ -686,6 +686,12 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 jPanel21.setBackground(new Color(23, 35, 55));
 
             setDiscount(discountTriangle1, d21Text1, d21Text2, d21Text3, (Discount) allData[p21][6]);
+            
+            if(Integer.parseInt( String.valueOf(table.getValueAt(p21,3))) == 0)
+                jLabel21OUTOFSTOCK.setVisible(true);
+            else
+                jLabel21OUTOFSTOCK.setVisible(false);
+            
         }
         if (p22 >= 0 && p22 < tableSize)
         {
@@ -700,6 +706,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 jPanel22.setBackground(new Color(23, 35, 55));
 
             setDiscount(discountTriangle2, d22Text1, d22Text2, d22Text3, (Discount) allData[p22][6]);
+            
+            if(Integer.parseInt( String.valueOf(table.getValueAt(p22,3))) == 0)
+                jLabel22OUTOFSTOCK.setVisible(true);
+            else
+                jLabel22OUTOFSTOCK.setVisible(false);
         }
         if (p23 >= 0 && p23 < tableSize)
         {
@@ -714,6 +725,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 jPanel23.setBackground(new Color(23, 35, 55));
 
             setDiscount(discountTriangle3, d23Text1, d23Text2, d23Text3, (Discount) allData[p23][6]);
+            
+            if(Integer.parseInt( String.valueOf(table.getValueAt(p23,3))) == 0)
+                jLabel23OUTOFSTOCK.setVisible(true);
+            else
+                jLabel23OUTOFSTOCK.setVisible(false);
         }
         if (p24 >= 0 && p24 < tableSize)
         {
@@ -728,6 +744,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 jPanel24.setBackground(new Color(23, 35, 55));
 
             setDiscount(discountTriangle4, d24Text1, d24Text2, d24Text3, (Discount) allData[p24][6]);
+            
+            if(Integer.parseInt( String.valueOf(table.getValueAt(p24,3))) == 0)
+                jLabel24OUTOFSTOCK.setVisible(true);
+            else
+                jLabel24OUTOFSTOCK.setVisible(false);
         }
         if (p25 >= 0 && p25 < tableSize)
         {
@@ -742,6 +763,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 jPanel25.setBackground(new Color(23, 35, 55));
 
             setDiscount(discountTriangle5, d25Text1, d25Text2, d25Text3, (Discount) allData[p25][6]);
+            
+            if(Integer.parseInt( String.valueOf(table.getValueAt(p25,3))) == 0)
+                jLabel25OUTOFSTOCK.setVisible(true);
+            else
+                jLabel25OUTOFSTOCK.setVisible(false);
         }
 
         //ImageIcon imageIcon = new ImageIcon("src/Image/BananeImg.jpg");
@@ -892,6 +918,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel21 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         image21 = new javax.swing.JLabel();
+        jLabel21OUTOFSTOCK = new javax.swing.JLabel();
         d21Text2 = new javax.swing.JLabel();
         d21Text3 = new javax.swing.JLabel();
         d21Text1 = new javax.swing.JLabel();
@@ -902,6 +929,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel22 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         image22 = new javax.swing.JLabel();
+        jLabel22OUTOFSTOCK = new javax.swing.JLabel();
         d22Text2 = new javax.swing.JLabel();
         d22Text3 = new javax.swing.JLabel();
         d22Text1 = new javax.swing.JLabel();
@@ -912,6 +940,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel23 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         image23 = new javax.swing.JLabel();
+        jLabel23OUTOFSTOCK = new javax.swing.JLabel();
         d23Text2 = new javax.swing.JLabel();
         d23Text3 = new javax.swing.JLabel();
         d23Text1 = new javax.swing.JLabel();
@@ -922,6 +951,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel24 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         image24 = new javax.swing.JLabel();
+        jLabel24OUTOFSTOCK = new javax.swing.JLabel();
         d24Text2 = new javax.swing.JLabel();
         d24Text3 = new javax.swing.JLabel();
         d24Text1 = new javax.swing.JLabel();
@@ -932,6 +962,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel25 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         image25 = new javax.swing.JLabel();
+        jLabel25OUTOFSTOCK = new javax.swing.JLabel();
         d25Text2 = new javax.swing.JLabel();
         d25Text3 = new javax.swing.JLabel();
         d25Text1 = new javax.swing.JLabel();
@@ -1054,6 +1085,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel21.add(jPanel12);
         jPanel12.setBounds(25, 14, 100, 100);
 
+        jLabel21OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel21OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel21OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21OUTOFSTOCK.setText("OUT OF STOCK");
+        jPanel21.add(jLabel21OUTOFSTOCK);
+        jLabel21OUTOFSTOCK.setBounds(270, 80, 230, 50);
+
         d21Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d21Text2.setForeground(new java.awt.Color(255, 51, 51));
         d21Text2.setText("for");
@@ -1130,6 +1168,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         jPanel22.add(jPanel13);
         jPanel13.setBounds(26, 18, 100, 100);
+
+        jLabel22OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel22OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel22OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22OUTOFSTOCK.setText("OUT OF STOCK");
+        jPanel22.add(jLabel22OUTOFSTOCK);
+        jLabel22OUTOFSTOCK.setBounds(270, 80, 230, 50);
 
         d22Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d22Text2.setForeground(new java.awt.Color(255, 51, 51));
@@ -1208,6 +1253,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel23.add(jPanel14);
         jPanel14.setBounds(30, 19, 100, 100);
 
+        jLabel23OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel23OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel23OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23OUTOFSTOCK.setText("OUT OF STOCK");
+        jPanel23.add(jLabel23OUTOFSTOCK);
+        jLabel23OUTOFSTOCK.setBounds(270, 80, 230, 50);
+
         d23Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d23Text2.setForeground(new java.awt.Color(255, 51, 51));
         d23Text2.setText("for");
@@ -1284,6 +1336,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel24.add(jPanel15);
         jPanel15.setBounds(30, 19, 100, 100);
 
+        jLabel24OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel24OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel24OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24OUTOFSTOCK.setText("OUT OF STOCK");
+        jPanel24.add(jLabel24OUTOFSTOCK);
+        jLabel24OUTOFSTOCK.setBounds(270, 80, 230, 50);
+
         d24Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d24Text2.setForeground(new java.awt.Color(255, 51, 51));
         d24Text2.setText("for");
@@ -1359,6 +1418,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         jPanel25.add(jPanel17);
         jPanel17.setBounds(30, 19, 100, 100);
+
+        jLabel25OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel25OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel25OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25OUTOFSTOCK.setText("OUT OF STOCK");
+        jPanel25.add(jLabel25OUTOFSTOCK);
+        jLabel25OUTOFSTOCK.setBounds(270, 80, 230, 50);
 
         d25Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d25Text2.setForeground(new java.awt.Color(255, 51, 51));
@@ -2223,18 +2289,23 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel211;
     private javax.swing.JLabel jLabel21D;
+    private javax.swing.JLabel jLabel21OUTOFSTOCK;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel222;
     private javax.swing.JLabel jLabel22D;
+    private javax.swing.JLabel jLabel22OUTOFSTOCK;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel233;
     private javax.swing.JLabel jLabel23D;
+    private javax.swing.JLabel jLabel23OUTOFSTOCK;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel244;
     private javax.swing.JLabel jLabel24D;
+    private javax.swing.JLabel jLabel24OUTOFSTOCK;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel255;
     private javax.swing.JLabel jLabel25D;
+    private javax.swing.JLabel jLabel25OUTOFSTOCK;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -11,6 +11,8 @@ import Model.Order;
 import Model.OrderedProduct;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -51,6 +53,24 @@ public class CheckoutController
         for(int i=0 ; i < order.getOrderedProducts().size() ; i++)
         {
             dao.query("INSERT INTO OrderedProduct ( orderID, productName, quantity) VALUES ('" + order.getId() + "', '" + order.getOrderedProducts().get(i).getProductName() + "', '" + order.getOrderedProducts().get(i).getQuantity() + "')");
+        }
+        dao.closeConnection();
+    }
+    
+    public void updateStock(Order order)
+    {
+        dao.getConnection();
+        
+        for(int i=0 ; i < order.getOrderedProducts().size() ; i++)
+        {
+            try
+            {
+                dao.productAddStock(order.getOrderedProducts().get(i).getProductName(), -order.getOrderedProducts().get(i).getQuantity());
+            } 
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
         }
         dao.closeConnection();
     }

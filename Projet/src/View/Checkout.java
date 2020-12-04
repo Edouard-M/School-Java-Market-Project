@@ -319,7 +319,10 @@ public class Checkout extends javax.swing.JPanel
             System.out.println(e.getMessage());
         }
         
+        
+        
         controller.insertAllOrder(order);
+        controller.updateStock(order);
         
         myFrame.checkoutComplete();     
     }//GEN-LAST:event_paypalMousePressed
