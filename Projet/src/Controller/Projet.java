@@ -4,8 +4,11 @@ import static Model.DAO.*;
 import Model.*;
 import View.Window2;
 import View.MyFrame;
+import java.net.PasswordAuthentication;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Properties;
+import javax.mail.*;
 
 /**
  * @author Edouard MIGNIEN
@@ -32,15 +35,15 @@ public class Projet
 
     public static void testDB() throws Exception
     {
-        Product banane = new Product("banane", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane = new Product("banane", "fresh", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane.insertProduct();
-        Product banane2 = new Product("orange", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane2 = new Product("orange", "alcohol", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane2.insertProduct();
-        Product banane3 = new Product("poire", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane3 = new Product("poire", "grocery", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane3.insertProduct();
-        Product banane4 = new Product("peche", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane4 = new Product("peche", "alcohol", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane4.insertProduct();
-        Product banane5 = new Product("pomme", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane5 = new Product("pomme", "fresh", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane5.insertProduct();
         /*Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane6.insertProduct();
@@ -74,7 +77,7 @@ public class Projet
         //Product banane7 = new Product("Banane6", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane8 = new Product("Banane7", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane9 = new Product("Banane8", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
-        Product kiwi = new Product("Kiwi", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
+        Product kiwi = new Product("Kiwi", "grocery", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
         kiwi.insertProduct();
         //Product kiwi2 = new Product("Kiwi2", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
         //kiwi2.insertProduct();
@@ -91,7 +94,7 @@ public class Projet
         kiwi.addDiscount(10, 25);
         //banane5.addDiscount(12, 20);
 
-        Order order1 = new Order("marc.damp@gmail.com");
+       // Order order1 = new Order("marc.damp@gmail.com");
         System.out.println("test");
     }
 

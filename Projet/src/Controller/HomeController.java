@@ -53,6 +53,21 @@ public class HomeController
         
         return datas;
     }
+     public String[][] getDataDiscount()
+    {
+        String[][]datas=null;
+        dao.getConnection();
+        try{
+            datas=dao.getLines("Discount");
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        dao.closeConnection();
+        
+        return datas;
+    }
     
     public Discount findDiscount(String text)
     {
