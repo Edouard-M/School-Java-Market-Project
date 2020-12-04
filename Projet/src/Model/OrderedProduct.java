@@ -52,6 +52,7 @@ public class OrderedProduct
             total = ((quantity % dQuantity) * unitPrice) + ((quantity - (quantity % dQuantity)) / dQuantity * dPrice);
         } else
             total = quantity * unitPrice;
+         total = Math.round(total * 100.0) / 100.0;
 
         return total;
     }

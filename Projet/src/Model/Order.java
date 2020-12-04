@@ -119,7 +119,7 @@ public class Order
 
         for (int i = 0; i < orderedProducts.size(); i++)
             totalCost += orderedProducts.get(i).getPrice();
-        
+         totalCost = Math.round(totalCost * 100.0) / 100.0;
 
         return totalCost;
     }

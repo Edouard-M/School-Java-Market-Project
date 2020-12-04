@@ -37,7 +37,8 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import java.sql.Date;
 import java.util.Map;
-
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 /**
  *
  * @author Edoua
@@ -47,6 +48,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     final int WIDTH_WINDOW = 800;
     final int HEIGHT_WINDOW = 700;
+    
 
     private Order order;
     private String customerEmail;
@@ -1608,6 +1610,10 @@ public class Home extends javax.swing.JPanel implements ActionListener
             {
                 jLabel5MouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel5MousePressed(evt);
+            }
         });
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 80));
 
@@ -1679,6 +1685,10 @@ public class Home extends javax.swing.JPanel implements ActionListener
             {
                 jLabel3MouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel3MousePressed(evt);
+            }
         });
         jPanel4.add(jLabel3);
         jLabel3.setBounds(160, 0, 140, 50);
@@ -1694,6 +1704,10 @@ public class Home extends javax.swing.JPanel implements ActionListener
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 jLabel4MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel4MousePressed(evt);
             }
         });
         jPanel4.add(jLabel4);
@@ -1711,6 +1725,10 @@ public class Home extends javax.swing.JPanel implements ActionListener
             {
                 jLabel7MouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel7MousePressed(evt);
+            }
         });
         jPanel4.add(jLabel7);
         jLabel7.setBounds(460, 0, 150, 50);
@@ -1726,6 +1744,10 @@ public class Home extends javax.swing.JPanel implements ActionListener
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
                 jLabel2MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel2MousePressed(evt);
             }
         });
         jPanel4.add(jLabel2);
@@ -1748,7 +1770,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
                 Discount discount = controller.findDiscount(currentName);
                 double total;
-
+                
                 if (discount != null && discount.getQuantity() <= quantity)
                 {
 
@@ -1757,7 +1779,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
                     total = ((quantity % dQuantity) * unitPrice) + ((quantity - (quantity % dQuantity)) / dQuantity * dPrice);
                 } else
                     total = quantity * unitPrice;
-
+                total = Math.round(total * 100.0) / 100.0;
+                
                 jLabel10.setText(String.valueOf(total) + " €");
             } catch (Exception ex)
             {
@@ -1776,7 +1799,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             String name = (String) table.getValueAt(viewRow, 0);
 
             double cost = (Double.parseDouble((String) table.getValueAt(viewRow, 4)));
-
+            cost = Math.round(cost * 100.0) / 100.0;
             if (order.getProduct(name) != null)
                 if ((quantity + order.getProduct(name).getQuantity()) > Integer.parseInt((String) table.getValueAt(viewRow, 3)))
                     quantity = Integer.parseInt((String) table.getValueAt(viewRow, 3)) - order.getProduct(name).getQuantity();
@@ -2131,7 +2154,120 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MouseClicked
     {//GEN-HEADEREND:event_jLabel5MouseClicked
-        if (onlydiscount == false)
+    
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MouseClicked
+    {//GEN-HEADEREND:event_jLabel2MouseClicked
+    
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseClicked
+    {//GEN-HEADEREND:event_jLabel3MouseClicked
+         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel4MouseClicked
+    {//GEN-HEADEREND:event_jLabel4MouseClicked
+         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel7MouseClicked
+    {//GEN-HEADEREND:event_jLabel7MouseClicked
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MousePressed
+    {//GEN-HEADEREND:event_jLabel2MousePressed
+         try
+        {
+            Font font = jLabel5.getFont();
+            Map attributes = font.getAttributes();
+            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+            jLabel2.setFont(font.deriveFont(attributes));
+            attributes.clear();
+            jLabel4.setFont(font.deriveFont(attributes));
+            jLabel3.setFont(font.deriveFont(attributes));
+            jLabel7.setFont(font.deriveFont(attributes));
+            jPanel5.setBackground(new Color(113, 168, 255));
+            onlydiscount = false;
+            selectedCategroy = "all";
+            researchUpdate(jTextField1.getText());
+        } catch (Exception ex)
+        {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MousePressed
+    {//GEN-HEADEREND:event_jLabel3MousePressed
+     try
+        {
+            Font font = jLabel5.getFont();
+            Map attributes = font.getAttributes();
+            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+            jLabel3.setFont(font.deriveFont(attributes));
+            attributes.clear();
+            jLabel2.setFont(font.deriveFont(attributes));
+            jLabel4.setFont(font.deriveFont(attributes));
+            jLabel7.setFont(font.deriveFont(attributes));
+            jPanel5.setBackground(new Color(113, 168, 255));
+            onlydiscount = false;
+            selectedCategroy = "grocery";
+            researchUpdate(jTextField1.getText());// TODO add your handling code here:
+        } catch (Exception ex)
+        {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel3MousePressed
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel4MousePressed
+    {//GEN-HEADEREND:event_jLabel4MousePressed
+       try
+        {
+            Font font = jLabel5.getFont();
+            Map attributes = font.getAttributes();
+            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+            jLabel4.setFont(font.deriveFont(attributes));
+            attributes.clear();
+            jLabel2.setFont(font.deriveFont(attributes));
+            jLabel3.setFont(font.deriveFont(attributes));
+            jLabel7.setFont(font.deriveFont(attributes));
+            jPanel5.setBackground(new Color(113, 168, 255));
+            onlydiscount = false;
+            selectedCategroy = "alcohol";
+            researchUpdate(jTextField1.getText());// TODO add your handling code here:
+        } catch (Exception ex)
+        {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MousePressed
+
+    private void jLabel7MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel7MousePressed
+    {//GEN-HEADEREND:event_jLabel7MousePressed
+     try
+        {
+            Font font = jLabel5.getFont();
+            Map attributes = font.getAttributes();
+            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+            jLabel7.setFont(font.deriveFont(attributes));
+            attributes.clear();
+            jLabel2.setFont(font.deriveFont(attributes));
+            jLabel3.setFont(font.deriveFont(attributes));
+            jLabel4.setFont(font.deriveFont(attributes));
+            jPanel5.setBackground(new Color(113, 168, 255));
+            onlydiscount = false;
+            selectedCategroy = "fresh";
+            researchUpdate(jTextField1.getText());// TODO add your handling code here:
+        } catch (Exception ex)
+        {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MousePressed
+
+    private void jLabel5MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MousePressed
+    {//GEN-HEADEREND:event_jLabel5MousePressed
+           if (onlydiscount == false)
             try
             {
                 jPanel5.setBackground(new Color(23, 35, 55));
@@ -2158,97 +2294,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
             } catch (Exception ex)
             {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MouseClicked
-    {//GEN-HEADEREND:event_jLabel2MouseClicked
-        try
-        {
-            Font font = jLabel5.getFont();
-            Map attributes = font.getAttributes();
-            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-            jLabel2.setFont(font.deriveFont(attributes));
-            attributes.clear();
-            jLabel4.setFont(font.deriveFont(attributes));
-            jLabel3.setFont(font.deriveFont(attributes));
-            jLabel7.setFont(font.deriveFont(attributes));
-            jPanel5.setBackground(new Color(113, 168, 255));
-            onlydiscount = false;
-            selectedCategroy = "all";
-            researchUpdate(jTextField1.getText());// TODO add your handling code here:
-        } catch (Exception ex)
-        {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseClicked
-    {//GEN-HEADEREND:event_jLabel3MouseClicked
-        try
-        {
-            Font font = jLabel5.getFont();
-            Map attributes = font.getAttributes();
-            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-            jLabel3.setFont(font.deriveFont(attributes));
-            attributes.clear();
-            jLabel2.setFont(font.deriveFont(attributes));
-            jLabel4.setFont(font.deriveFont(attributes));
-            jLabel7.setFont(font.deriveFont(attributes));
-            jPanel5.setBackground(new Color(113, 168, 255));
-            onlydiscount = false;
-            selectedCategroy = "grocery";
-            researchUpdate(jTextField1.getText());// TODO add your handling code here:
-        } catch (Exception ex)
-        {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        } // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel4MouseClicked
-    {//GEN-HEADEREND:event_jLabel4MouseClicked
-        try
-        {
-            Font font = jLabel5.getFont();
-            Map attributes = font.getAttributes();
-            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-            jLabel4.setFont(font.deriveFont(attributes));
-            attributes.clear();
-            jLabel2.setFont(font.deriveFont(attributes));
-            jLabel3.setFont(font.deriveFont(attributes));
-            jLabel7.setFont(font.deriveFont(attributes));
-            jPanel5.setBackground(new Color(113, 168, 255));
-            onlydiscount = false;
-            selectedCategroy = "alcohol";
-            researchUpdate(jTextField1.getText());// TODO add your handling code here:
-        } catch (Exception ex)
-        {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        }  // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel7MouseClicked
-    {//GEN-HEADEREND:event_jLabel7MouseClicked
-        try
-        {
-            Font font = jLabel5.getFont();
-            Map attributes = font.getAttributes();
-            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-
-            jLabel7.setFont(font.deriveFont(attributes));
-            attributes.clear();
-            jLabel2.setFont(font.deriveFont(attributes));
-            jLabel3.setFont(font.deriveFont(attributes));
-            jLabel4.setFont(font.deriveFont(attributes));
-            jPanel5.setBackground(new Color(113, 168, 255));
-            onlydiscount = false;
-            selectedCategroy = "fresh";
-            researchUpdate(jTextField1.getText());// TODO add your handling code here:
-        } catch (Exception ex)
-        {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7MouseClicked
+            } // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
