@@ -137,12 +137,13 @@ public void sendmail(String to, String firstname,String name)
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setBackground(new java.awt.Color(62, 120, 207));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setBorder(null);
         panel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 183, -1));
 
         jTextField2.setBackground(new java.awt.Color(62, 120, 207));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(null);
         jTextField2.addActionListener(new java.awt.event.ActionListener()
@@ -181,7 +182,7 @@ public void sendmail(String to, String firstname,String name)
         panel.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 183, 20));
 
         jPasswordField1.setBackground(new java.awt.Color(62, 120, 207));
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(null);
         panel.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 183, -1));
@@ -301,7 +302,7 @@ public void sendmail(String to, String firstname,String name)
         panel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 180, 10));
 
         jTextField5.setBackground(new java.awt.Color(62, 120, 207));
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
         jTextField5.setBorder(null);
         jTextField5.addActionListener(new java.awt.event.ActionListener()
@@ -370,6 +371,8 @@ public void sendmail(String to, String firstname,String name)
         panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 150, 50));
 
         jComboBox1.setBackground(new java.awt.Color(62, 120, 207));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         panel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, -1, -1));
 
