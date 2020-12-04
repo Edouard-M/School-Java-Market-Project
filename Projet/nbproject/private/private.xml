@@ -5,18 +5,34 @@
         <group>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/Home.java</file>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/FrameEmployee.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Model/Customer.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Model/Product.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/EditEmployeesProfile.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/Connection.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/MyOrders.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Model/Order.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/Window2.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Controller/HomeController.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/StatPanel.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/EditCustomer.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/Checkout.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Model/DAO.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Model/Discount.java</file>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/CreateEmployee.java</file>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/MyFrame.java</file>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/ManageDiscount.java</file>
-            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/EditEmployeesProfile.java</file>
-            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/Connection.java</file>
-            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Controller/HomeController.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Controller/ConnectionController.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Controller/CheckoutController.java</file>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/EmployeesPanel.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Model/Person.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Controller/MyOrdersController.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Model/Employee.java</file>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Controller/EmployeesConnectionController.java</file>
-            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/StatPanel.java</file>
-            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/EditCustomer.java</file>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/EmployeesConnection.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Controller/ManageDiscountController.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Controller/Projet.java</file>
             <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/View/NewCustomer.java</file>
+            <file>file:/C:/Users/Edoua/Documents/GitHub/PAS-GITKRAKEN-PROJECT/Projet/src/Model/OrderedProduct.java</file>
         </group>
     </open-files>
 </project-private>

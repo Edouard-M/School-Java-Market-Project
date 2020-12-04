@@ -52,7 +52,7 @@ public class MyFrame extends javax.swing.JFrame
         panel2 = new Home(this);
         panel3 = new EditCustomer(this);
         panel4 = new Checkout(this);
-        panel5 = new MyOrders();
+        panel5 = new MyOrders(this);
 
         panel0.setVisible(false);
         panel1.setVisible(false);
@@ -102,6 +102,7 @@ public class MyFrame extends javax.swing.JFrame
         panel4.setVisible(false);
         
         panel5.setVisible(true);
+        panel5.buildTable();
     }
     
     public void connection()
@@ -143,6 +144,11 @@ public class MyFrame extends javax.swing.JFrame
     public Connection getPanel1()
     {
         return panel1;
+    }
+    
+    public Customer getCustomer()
+    {
+        return customer;
     }
 
     
@@ -545,6 +551,7 @@ public class MyFrame extends javax.swing.JFrame
             panel3.setVisible(false);
             panel4.setVisible(false);
             panel5.setVisible(true);
+            panel5.buildTable();
         }
         
     }//GEN-LAST:event_button4MousePressed

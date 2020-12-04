@@ -41,6 +41,21 @@ public class Order
         //insertOrder();
     }
     
+    public void setArrayList(ArrayList<OrderedProduct> list)
+    {
+        orderedProducts = list;
+    }
+    
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    
+    public void setDate(Date date)
+    {
+        this.date = date;
+    }
+    
     public Date getTodayDate()  // Methode pour obtenir la date actuelle
     {  
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
@@ -100,12 +115,13 @@ public class Order
 
     public double totalCost()
     {
-        double cost = 0;
+        double totalCost = 0;
 
         for (int i = 0; i < orderedProducts.size(); i++)
-            cost += orderedProducts.get(i).getPrice();
+            totalCost += orderedProducts.get(i).getPrice();
+        
 
-        return cost;
+        return totalCost;
     }
 
     public int getId()

@@ -6,6 +6,7 @@
 package Model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -565,7 +566,63 @@ public class DAO
             System.out.println(e.getMessage());
         }
          return id+1;
-     }
+    }
+    
+    public ArrayList<Order> getCustOrders(String email)
+    {
+        Order order=null;
+        ArrayList<Order> list = new ArrayList<>();
+        try{
+            
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Orders WHERE email= '" + email + "'");
+            ResultSet result = statement.executeQuery();
+        
+            while(result.next())
+            {
+                int id = result.getInt("id");
+                Date date = result.getDate("date");
+                
+                order = new Order(email);
+                order.setId(id);
+                order.setDate(date);
+                
+                list.add(order);
+            }
+            
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    public ArrayList<OrderedProduct> getOrderedProducts(int orderId)
+    {
+        ArrayList<OrderedProduct> list = new ArrayList<>();
+        OrderedProduct ordProduct=null;
+        try{
+            
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM OrderedProduct WHERE orderID= '" + orderId + "'");
+            ResultSet result = statement.executeQuery();
+        
+            while(result.next())
+            {
+                String productName = result.getString("productName");
+                int quantity = result.getInt("quantity");
+                double unitPrice = searchProduct(productName).getPrice();
+                
+                ordProduct = new OrderedProduct(orderId, 0, productName, quantity, unitPrice);
+                list.add(ordProduct);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        
+        return list;
+    }
     
     
 
