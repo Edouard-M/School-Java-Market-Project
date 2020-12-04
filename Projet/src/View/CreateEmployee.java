@@ -492,7 +492,11 @@ public class CreateEmployee extends javax.swing.JPanel
             createdEmployee.insertEmployee();
             String[] colNames = controller.findColName();
             String[][] data = controller.findData();
-            tableModel.setDataVector(data, colNames);
+             String [] colNamesFilter = {"Name", "First Name", "Age", "Phone", "Address","Email"};
+            if("admin@gmail.com".equals(employee.getEmail()))  
+            { tableModel.setDataVector(data, colNames);}
+            else 
+            { tableModel.setDataVector(data, colNamesFilter);}
             TableColumnModel columnModel = jTable1.getColumnModel();
             columnModel.getColumn(0).setPreferredWidth(100);
             columnModel.getColumn(1).setPreferredWidth(50);
