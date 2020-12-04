@@ -207,9 +207,10 @@ public class EditEmployeesProfile extends javax.swing.JPanel
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Edit Profile");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(50, 30, 100, 25);
+        jLabel6.setBounds(20, 10, 150, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter()
@@ -228,7 +229,7 @@ public class EditEmployeesProfile extends javax.swing.JPanel
             }
         });
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(20, 10, 150, 60);
+        jLabel2.setBounds(20, 10, 150, 50);
 
         panel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 210, 70));
 

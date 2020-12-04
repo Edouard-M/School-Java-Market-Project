@@ -63,6 +63,7 @@ public class EmployeesConnection extends javax.swing.JPanel
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setBackground(new java.awt.Color(53, 63, 74));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setText("Enter email");
         jTextField1.setBorder(null);
@@ -141,9 +142,10 @@ public class EmployeesConnection extends javax.swing.JPanel
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Connect");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(40, 10, 70, 25);
+        jLabel6.setBounds(0, 0, 150, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter()

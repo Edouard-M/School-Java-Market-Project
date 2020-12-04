@@ -129,9 +129,10 @@ public class Connection extends javax.swing.JPanel
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("New Account");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(20, 10, 105, 25);
+        jLabel5.setBounds(0, 0, 150, 50);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter()
@@ -150,7 +151,7 @@ public class Connection extends javax.swing.JPanel
             }
         });
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(0, 0, 160, 50);
+        jLabel9.setBounds(0, 0, 150, 50);
 
         jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 150, 50));
 
@@ -182,9 +183,10 @@ public class Connection extends javax.swing.JPanel
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Connect");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(40, 10, 65, 25);
+        jLabel6.setBounds(-5, -5, 160, 60);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter()
@@ -203,7 +205,7 @@ public class Connection extends javax.swing.JPanel
             }
         });
         jPanel3.add(jLabel10);
-        jLabel10.setBounds(0, 0, 160, 50);
+        jLabel10.setBounds(0, 0, 150, 50);
 
         jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 150, 50));
 
@@ -237,6 +239,7 @@ public class Connection extends javax.swing.JPanel
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 80, -1));
 
         jTextField2.setBackground(new java.awt.Color(0, 51, 102));
+        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setText("Enter your email");
         jTextField2.setBorder(null);

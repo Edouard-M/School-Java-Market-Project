@@ -227,9 +227,10 @@ private void buildPanel()
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Edit Profile");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(30, 20, 90, 25);
+        jLabel6.setBounds(0, 0, 150, 50);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
         jLabel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
@@ -255,9 +256,9 @@ private void buildPanel()
             }
         });
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(0, 0, 150, 60);
+        jLabel3.setBounds(0, 0, 150, 50);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, 150, 60));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, 150, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));

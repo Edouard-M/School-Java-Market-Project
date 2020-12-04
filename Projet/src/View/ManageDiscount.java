@@ -235,9 +235,10 @@ private ManageDiscountController controller;
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Create Discount");
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(10, 20, 130, 25);
+        jLabel4.setBounds(0, 0, 150, 50);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter()
@@ -256,7 +257,7 @@ private ManageDiscountController controller;
             }
         });
         jPanel3.add(jLabel5);
-        jLabel5.setBounds(0, 0, 150, 60);
+        jLabel5.setBounds(0, 0, 150, 50);
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(880, 490, 150, 60);
@@ -266,9 +267,10 @@ private ManageDiscountController controller;
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Delete");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(50, 20, 60, 25);
+        jLabel2.setBounds(0, 0, 150, 50);
 
         jLabel3.setBackground(new java.awt.Color(49, 91, 111));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
@@ -288,10 +290,10 @@ private ManageDiscountController controller;
             }
         });
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(0, 0, 150, 60);
+        jLabel3.setBounds(0, 0, 150, 50);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(350, 500, 150, 60);
+        jPanel2.setBounds(350, 500, 150, 50);
 
         jTextField2.setBackground(new java.awt.Color(53, 63, 74));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

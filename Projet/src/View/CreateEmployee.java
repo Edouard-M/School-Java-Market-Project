@@ -308,9 +308,10 @@ public class CreateEmployee extends javax.swing.JPanel
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Create");
         jPanel3.add(jLabel12);
-        jLabel12.setBounds(50, 30, 60, 16);
+        jLabel12.setBounds(0, 0, 150, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter()
@@ -329,7 +330,7 @@ public class CreateEmployee extends javax.swing.JPanel
             }
         });
         jPanel3.add(jLabel1);
-        jLabel1.setBounds(0, 10, 153, 51);
+        jLabel1.setBounds(0, 0, 153, 51);
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, 160, 70));
 
@@ -411,9 +412,10 @@ public class CreateEmployee extends javax.swing.JPanel
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Delete");
         jPanel4.add(jLabel13);
-        jLabel13.setBounds(50, 30, 60, 16);
+        jLabel13.setBounds(0, 0, 150, 50);
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter()
@@ -432,9 +434,9 @@ public class CreateEmployee extends javax.swing.JPanel
             }
         });
         jPanel4.add(jLabel14);
-        jLabel14.setBounds(0, 10, 153, 51);
+        jLabel14.setBounds(0, 0, 153, 51);
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 160, 70));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, 160, 50));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 650));
     }// </editor-fold>//GEN-END:initComponents
