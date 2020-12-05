@@ -57,9 +57,9 @@ public class StatPanel extends javax.swing.JPanel
     
 
     
-    public void buildPieChart(String category)
+    public void buildPieChart(String category, boolean load)
     {
-        PieDataset dataset = createPieDataset(category);
+        PieDataset dataset = createPieDataset(category, load);
         
         JFreeChart chart = ChartFactory.createPieChart3D("", dataset);
         
@@ -92,12 +92,13 @@ public class StatPanel extends javax.swing.JPanel
         panelGraph1.validate();
     }
     
-    public PieDataset createPieDataset(String category)
+    public PieDataset createPieDataset(String category, boolean load)
     {
-        ArrayList<OrderedProduct> list = controller.getPieData(category);
+        System.out.println("Get Pie Data");
+        ArrayList<OrderedProduct> list = controller.getPieData(category, load);
        
         DefaultPieDataset dataset = new DefaultPieDataset();
-        
+        System.out.println(" Insert Pie Value");
         for(int i=0 ; i < list.size() ; i++)
         {
             dataset.insertValue(0, list.get(i).getProductName(), list.get(i).getQuantity());
@@ -167,6 +168,7 @@ public class StatPanel extends javax.swing.JPanel
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         System.out.println("get orders");
         controller.getOrders();
+        System.out.println("get area orders");
         listMonth1 = controller.getAreaOrders(month1);
         listMonth2 = controller.getAreaOrders(month2);
         listMonth3 = controller.getAreaOrders(month3);
@@ -187,7 +189,8 @@ public class StatPanel extends javax.swing.JPanel
                     
                     if(day.equals(String.valueOf(i)))
                     {
-                        total += listMonth1.get(j).totalCost();
+                        total += listMonth1.get(j).getTotal();
+                        //total += listMonth1.get(j).totalCost();
                         //dataset.addValue(listMonth1.get(j).totalCost(), month1Name, ""+ String.valueOf(i));
                         présent = true;
                     }
@@ -212,7 +215,8 @@ public class StatPanel extends javax.swing.JPanel
                     
                     if(day.equals(String.valueOf(i)))
                     {
-                        total += listMonth2.get(j).totalCost();
+                        total += listMonth2.get(j).getTotal();
+                        //total += listMonth2.get(j).totalCost();
                         //dataset.addValue(listMonth2.get(j).totalCost(), month2Name, ""+ String.valueOf(i));
                         présent = true;
                     }
@@ -237,7 +241,8 @@ public class StatPanel extends javax.swing.JPanel
                     
                     if(day.equals(String.valueOf(i)))
                     {
-                        total += listMonth3.get(j).totalCost();
+                        total += listMonth3.get(j).getTotal();
+                        //total += listMonth3.get(j).totalCost();
                         //dataset.addValue(listMonth3.get(j).totalCost(), month3Name, ""+ String.valueOf(i));
                         présent = true;
                     }
@@ -256,7 +261,7 @@ public class StatPanel extends javax.swing.JPanel
     public void updatePie(String category)
     {
         panelGraph1.removeAll();
-        buildPieChart(category);
+        buildPieChart(category, true);
     }
     
     public void updateArea()
@@ -270,7 +275,7 @@ public class StatPanel extends javax.swing.JPanel
         panelGraph.removeAll();
         panelGraph1.removeAll();
         buildAreaChart(jComboBox2.getSelectedIndex()+1,jComboBox3.getSelectedIndex()+1,jComboBox4.getSelectedIndex()+1);
-        buildPieChart(category);
+        buildPieChart(category, false);
     }
     
     public void setData()

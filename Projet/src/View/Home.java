@@ -85,7 +85,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private Object[][] allData;
     private Object[][] dataFilter;
     private HomeController controller;
+    
+    private ImageIcon selectImage;
+    private ImageIcon resetImage;
 
+    private ImageIcon button;
+    private ImageIcon buttonClicked;
+    
     /**
      * Creates new form Home
      */
@@ -94,6 +100,12 @@ public class Home extends javax.swing.JPanel implements ActionListener
         this.myFrame = myFrame;
         controller = new HomeController();
         initComponents();
+        selectImage = new ImageIcon("src/Image/Home2.png");
+        resetImage = new ImageIcon("src/Image/Home1_1.png");
+        
+        button = resize("button.png", 120, 36);
+        buttonClicked = resize("buttonClicked.png", 120, 36);
+        addButton.setIcon(button);
 
         //jLabel1.setIcon(new ImageIcon("src/Image/path.gif"));
         selectedCategroy = "all";
@@ -112,6 +124,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
         y4 = (int) jPanel24.getLocation().getY();
         x5 = (int) jPanel25.getLocation().getX();
         y5 = (int) jPanel25.getLocation().getY();
+        
+        addButton.setIcon(button);
       
 
     }
@@ -169,7 +183,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         order = new Order("");
         //System.out.println("Date : " + order.getDate());
-        labelDate.setText(order.getDate().toString());
+      
 
         timer.start();
 
@@ -639,9 +653,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             jLabel211.setText((String) table.getValueAt(p21, 4) + " €");
             jLabel21D.setText((String) table.getValueAt(p21, 2));
             if (!allData[p21][0].equals(currentName))
-                jPanel21.setBackground(new Color(113, 168, 255));
+                home21.setIcon(resetImage);
             else
-                jPanel21.setBackground(new Color(23, 35, 55));
+                home21.setIcon(selectImage);
 
             setDiscount(discountTriangle1, d21Text1, d21Text2, d21Text3, (Discount) dataFilter[p21][6]);
 
@@ -659,9 +673,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             jLabel222.setText((String) table.getValueAt(p22, 4) + " €");
             jLabel22D.setText((String) table.getValueAt(p22, 2));
             if (!allData[p22][0].equals(currentName))
-                jPanel22.setBackground(new Color(113, 168, 255));
+                home22.setIcon(resetImage);
             else
-                jPanel22.setBackground(new Color(23, 35, 55));
+                home22.setIcon(selectImage);
 
             setDiscount(discountTriangle2, d22Text1, d22Text2, d22Text3, (Discount) dataFilter[p22][6]);
 
@@ -678,9 +692,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             jLabel233.setText((String) table.getValueAt(p23, 4) + " €");
             jLabel23D.setText((String) table.getValueAt(p23, 2));
             if (!allData[p23][0].equals(currentName))
-                jPanel23.setBackground(new Color(113, 168, 255));
+                home23.setIcon(resetImage);
             else
-                jPanel23.setBackground(new Color(23, 35, 55));
+                home23.setIcon(selectImage);
 
             setDiscount(discountTriangle3, d23Text1, d23Text2, d23Text3, (Discount) dataFilter[p23][6]);
 
@@ -697,9 +711,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             jLabel244.setText((String) table.getValueAt(p24, 4) + " €");
             jLabel24D.setText((String) table.getValueAt(p24, 2));
             if (!allData[p24][0].equals(currentName))
-                jPanel24.setBackground(new Color(113, 168, 255));
+                home24.setIcon(resetImage);
             else
-                jPanel24.setBackground(new Color(23, 35, 55));
+                home24.setIcon(selectImage);
 
             setDiscount(discountTriangle4, d24Text1, d24Text2, d24Text3, (Discount) dataFilter[p24][6]);
 
@@ -716,9 +730,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             jLabel255.setText((String) table.getValueAt(p25, 4) + " €");
             jLabel25D.setText((String) table.getValueAt(p25, 2));
             if (!allData[p25][0].equals(currentName))
-                jPanel25.setBackground(new Color(113, 168, 255));
+                home25.setIcon(resetImage);
             else
-                jPanel25.setBackground(new Color(23, 35, 55));
+                home25.setIcon(selectImage);
 
             setDiscount(discountTriangle5, d25Text1, d25Text2, d25Text3, (Discount) dataFilter[p25][6]);
 
@@ -830,12 +844,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     public void resetColor()
     {
-        jPanel21.setBackground(new Color(113, 168, 255));
-        jPanel22.setBackground(new Color(113, 168, 255));
-        jPanel23.setBackground(new Color(113, 168, 255));
-        jPanel24.setBackground(new Color(113, 168, 255));
-        jPanel25.setBackground(new Color(113, 168, 255));
-
+        home21.setIcon(resetImage);
+        home22.setIcon(resetImage);
+        home23.setIcon(resetImage);
+        home24.setIcon(resetImage);
+        home25.setIcon(resetImage);
     }
 
     @Override
@@ -868,10 +881,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         jPanel6 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
+        jLabel14 = new javax.swing.JLabel();
+        addButton = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -884,6 +898,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel211 = new javax.swing.JLabel();
         jLabel21D = new javax.swing.JLabel();
         discountTriangle1 = new javax.swing.JLabel();
+        home21 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         image22 = new javax.swing.JLabel();
@@ -895,6 +910,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel222 = new javax.swing.JLabel();
         jLabel22D = new javax.swing.JLabel();
         discountTriangle2 = new javax.swing.JLabel();
+        home22 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         image23 = new javax.swing.JLabel();
@@ -906,6 +922,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel233 = new javax.swing.JLabel();
         jLabel23D = new javax.swing.JLabel();
         discountTriangle3 = new javax.swing.JLabel();
+        home23 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         image24 = new javax.swing.JLabel();
@@ -917,6 +934,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel244 = new javax.swing.JLabel();
         jLabel24D = new javax.swing.JLabel();
         discountTriangle4 = new javax.swing.JLabel();
+        home24 = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         image25 = new javax.swing.JLabel();
@@ -928,6 +946,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel255 = new javax.swing.JLabel();
         jLabel25D = new javax.swing.JLabel();
         discountTriangle5 = new javax.swing.JLabel();
+        home25 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -940,12 +959,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jPanel4 = new javax.swing.JPanel();
-        labelDate = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -953,7 +973,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(77, 128, 216));
+        jPanel6.setBackground(new java.awt.Color(62, 120, 207));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBox1.setBackground(new java.awt.Color(23, 35, 55));
@@ -970,6 +990,30 @@ public class Home extends javax.swing.JPanel implements ActionListener
         });
         jPanel6.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, 30));
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("add to cart");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 85, 100, 30));
+
+        addButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                addButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                addButtonMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                addButtonMousePressed(evt);
+            }
+        });
+        jPanel6.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 80, 150, 40));
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Quantity :");
@@ -978,25 +1022,12 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Price :");
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 30));
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText(" 0 €");
-        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, 30));
-
-        jButton1.setBackground(new java.awt.Color(62, 120, 207));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("add to cart");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 80, 150, -1));
+        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, 30));
 
         add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 360, 130));
 
@@ -1010,7 +1041,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         });
         jPanel8.setLayout(null);
 
-        jPanel21.setBackground(new java.awt.Color(23, 35, 55));
+        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
         jPanel21.addMouseWheelListener(new java.awt.event.MouseWheelListener()
         {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt)
@@ -1028,6 +1059,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel21.setLayout(null);
 
         jPanel12.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel12.setOpaque(false);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1041,60 +1073,66 @@ public class Home extends javax.swing.JPanel implements ActionListener
         );
 
         jPanel21.add(jPanel12);
-        jPanel12.setBounds(25, 14, 100, 100);
+        jPanel12.setBounds(40, 14, 100, 100);
 
         jLabel21OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel21OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
         jLabel21OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21OUTOFSTOCK.setText("OUT OF STOCK");
         jPanel21.add(jLabel21OUTOFSTOCK);
-        jLabel21OUTOFSTOCK.setBounds(270, 80, 230, 50);
+        jLabel21OUTOFSTOCK.setBounds(240, 60, 230, 50);
 
         d21Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d21Text2.setForeground(new java.awt.Color(255, 51, 51));
         d21Text2.setText("for");
         jPanel21.add(d21Text2);
-        d21Text2.setBounds(550, 80, 30, 16);
+        d21Text2.setBounds(520, 30, 30, 16);
 
-        d21Text3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        d21Text3.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         d21Text3.setForeground(new java.awt.Color(255, 51, 51));
+        d21Text3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         d21Text3.setText("25 €");
         jPanel21.add(d21Text3);
-        d21Text3.setBounds(530, 100, 70, 16);
+        d21Text3.setBounds(470, 30, 110, 70);
 
         d21Text1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         d21Text1.setForeground(new java.awt.Color(255, 51, 51));
         d21Text1.setText("10");
         jPanel21.add(d21Text1);
-        d21Text1.setBounds(570, 70, 30, 16);
+        d21Text1.setBounds(490, 20, 30, 25);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("ITEM 1");
         jPanel21.add(jLabel21);
-        jLabel21.setBounds(160, 10, 270, 60);
+        jLabel21.setBounds(170, 10, 270, 60);
 
         jLabel211.setBackground(new java.awt.Color(204, 204, 204));
         jLabel211.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel211.setForeground(new java.awt.Color(255, 255, 255));
         jLabel211.setText("ITEM 1");
         jPanel21.add(jLabel211);
-        jLabel211.setBounds(440, 40, 150, 60);
+        jLabel211.setBounds(370, 10, 150, 60);
 
         jLabel21D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21D.setText("jLabel2");
         jPanel21.add(jLabel21D);
-        jLabel21D.setBounds(160, 66, 240, 50);
+        jLabel21D.setBounds(170, 60, 240, 50);
 
-        discountTriangle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/triangleDiscount.png"))); // NOI18N
+        discountTriangle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel21.add(discountTriangle1);
-        discountTriangle1.setBounds(500, 30, 100, 100);
+        discountTriangle1.setBounds(470, -20, 200, 170);
+
+        home21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home2.png"))); // NOI18N
+        jPanel21.add(home21);
+        home21.setBounds(0, 0, 600, 130);
 
         jPanel8.add(jPanel21);
         jPanel21.setBounds(90, 16, 600, 130);
 
-        jPanel22.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
         jPanel22.addMouseWheelListener(new java.awt.event.MouseWheelListener()
         {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt)
@@ -1112,6 +1150,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel22.setLayout(null);
 
         jPanel13.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel13.setOpaque(false);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -1125,60 +1164,66 @@ public class Home extends javax.swing.JPanel implements ActionListener
         );
 
         jPanel22.add(jPanel13);
-        jPanel13.setBounds(26, 18, 100, 100);
+        jPanel13.setBounds(40, 14, 100, 100);
 
         jLabel22OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel22OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
         jLabel22OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22OUTOFSTOCK.setText("OUT OF STOCK");
         jPanel22.add(jLabel22OUTOFSTOCK);
-        jLabel22OUTOFSTOCK.setBounds(270, 80, 230, 50);
+        jLabel22OUTOFSTOCK.setBounds(240, 60, 230, 50);
 
         d22Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d22Text2.setForeground(new java.awt.Color(255, 51, 51));
         d22Text2.setText("for");
         jPanel22.add(d22Text2);
-        d22Text2.setBounds(550, 80, 30, 16);
+        d22Text2.setBounds(520, 30, 30, 16);
 
-        d22Text3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        d22Text3.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         d22Text3.setForeground(new java.awt.Color(255, 51, 51));
+        d22Text3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         d22Text3.setText("25 €");
         jPanel22.add(d22Text3);
-        d22Text3.setBounds(530, 100, 70, 16);
+        d22Text3.setBounds(470, 30, 110, 70);
 
         d22Text1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         d22Text1.setForeground(new java.awt.Color(255, 51, 51));
         d22Text1.setText("10");
         jPanel22.add(d22Text1);
-        d22Text1.setBounds(570, 70, 30, 16);
+        d22Text1.setBounds(490, 20, 30, 25);
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("ITEM 2");
         jPanel22.add(jLabel22);
-        jLabel22.setBounds(160, 10, 270, 60);
+        jLabel22.setBounds(170, 10, 270, 60);
 
         jLabel222.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel222.setForeground(new java.awt.Color(255, 255, 255));
         jLabel222.setText("ITEM 2");
         jPanel22.add(jLabel222);
-        jLabel222.setBounds(440, 40, 150, 60);
+        jLabel222.setBounds(370, 10, 150, 60);
 
         jLabel22D.setBackground(new java.awt.Color(187, 187, 187));
         jLabel22D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel22D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22D.setText("jLabel2");
         jPanel22.add(jLabel22D);
-        jLabel22D.setBounds(160, 66, 240, 50);
+        jLabel22D.setBounds(170, 60, 240, 50);
 
-        discountTriangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/triangleDiscount.png"))); // NOI18N
+        discountTriangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel22.add(discountTriangle2);
-        discountTriangle2.setBounds(500, 30, 100, 100);
+        discountTriangle2.setBounds(470, -20, 200, 170);
+
+        home22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home1_1.png"))); // NOI18N
+        jPanel22.add(home22);
+        home22.setBounds(0, 0, 600, 130);
 
         jPanel8.add(jPanel22);
         jPanel22.setBounds(90, 162, 600, 130);
 
-        jPanel23.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
         jPanel23.addMouseWheelListener(new java.awt.event.MouseWheelListener()
         {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt)
@@ -1196,6 +1241,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel23.setLayout(null);
 
         jPanel14.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel14.setOpaque(false);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1209,59 +1255,65 @@ public class Home extends javax.swing.JPanel implements ActionListener
         );
 
         jPanel23.add(jPanel14);
-        jPanel14.setBounds(30, 19, 100, 100);
+        jPanel14.setBounds(40, 14, 100, 100);
 
         jLabel23OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel23OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
         jLabel23OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23OUTOFSTOCK.setText("OUT OF STOCK");
         jPanel23.add(jLabel23OUTOFSTOCK);
-        jLabel23OUTOFSTOCK.setBounds(270, 80, 230, 50);
+        jLabel23OUTOFSTOCK.setBounds(240, 60, 230, 50);
 
         d23Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d23Text2.setForeground(new java.awt.Color(255, 51, 51));
         d23Text2.setText("for");
         jPanel23.add(d23Text2);
-        d23Text2.setBounds(550, 80, 30, 16);
+        d23Text2.setBounds(520, 30, 30, 16);
 
-        d23Text3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        d23Text3.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         d23Text3.setForeground(new java.awt.Color(255, 51, 51));
+        d23Text3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         d23Text3.setText("25 €");
         jPanel23.add(d23Text3);
-        d23Text3.setBounds(530, 100, 70, 16);
+        d23Text3.setBounds(470, 30, 110, 70);
 
         d23Text1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         d23Text1.setForeground(new java.awt.Color(255, 51, 51));
         d23Text1.setText("10");
         jPanel23.add(d23Text1);
-        d23Text1.setBounds(570, 70, 30, 16);
+        d23Text1.setBounds(490, 20, 30, 25);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("ITEM 3");
         jPanel23.add(jLabel23);
-        jLabel23.setBounds(160, 10, 270, 60);
+        jLabel23.setBounds(170, 10, 270, 60);
 
         jLabel233.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel233.setForeground(new java.awt.Color(255, 255, 255));
         jLabel233.setText("ITEM 3");
         jPanel23.add(jLabel233);
-        jLabel233.setBounds(440, 40, 150, 60);
+        jLabel233.setBounds(370, 10, 150, 60);
 
         jLabel23D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel23D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23D.setText("jLabel2");
         jPanel23.add(jLabel23D);
-        jLabel23D.setBounds(160, 66, 240, 50);
+        jLabel23D.setBounds(170, 66, 240, 50);
 
-        discountTriangle3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/triangleDiscount.png"))); // NOI18N
+        discountTriangle3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel23.add(discountTriangle3);
-        discountTriangle3.setBounds(500, 30, 100, 100);
+        discountTriangle3.setBounds(470, -20, 200, 170);
+
+        home23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home1_1.png"))); // NOI18N
+        jPanel23.add(home23);
+        home23.setBounds(0, 0, 600, 130);
 
         jPanel8.add(jPanel23);
         jPanel23.setBounds(90, 308, 600, 130);
 
-        jPanel24.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
         jPanel24.addMouseWheelListener(new java.awt.event.MouseWheelListener()
         {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt)
@@ -1279,6 +1331,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel24.setLayout(null);
 
         jPanel15.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel15.setOpaque(false);
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1292,59 +1345,65 @@ public class Home extends javax.swing.JPanel implements ActionListener
         );
 
         jPanel24.add(jPanel15);
-        jPanel15.setBounds(30, 19, 100, 100);
+        jPanel15.setBounds(40, 14, 100, 100);
 
         jLabel24OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel24OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
         jLabel24OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24OUTOFSTOCK.setText("OUT OF STOCK");
         jPanel24.add(jLabel24OUTOFSTOCK);
-        jLabel24OUTOFSTOCK.setBounds(270, 80, 230, 50);
+        jLabel24OUTOFSTOCK.setBounds(240, 60, 230, 50);
 
         d24Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d24Text2.setForeground(new java.awt.Color(255, 51, 51));
         d24Text2.setText("for");
         jPanel24.add(d24Text2);
-        d24Text2.setBounds(550, 80, 30, 16);
+        d24Text2.setBounds(520, 30, 30, 16);
 
-        d24Text3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        d24Text3.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         d24Text3.setForeground(new java.awt.Color(255, 51, 51));
+        d24Text3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         d24Text3.setText("25 €");
         jPanel24.add(d24Text3);
-        d24Text3.setBounds(530, 100, 70, 16);
+        d24Text3.setBounds(470, 30, 110, 70);
 
         d24Text1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         d24Text1.setForeground(new java.awt.Color(255, 51, 51));
         d24Text1.setText("10");
         jPanel24.add(d24Text1);
-        d24Text1.setBounds(570, 70, 30, 16);
+        d24Text1.setBounds(490, 20, 30, 25);
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("ITEM 4");
         jPanel24.add(jLabel24);
-        jLabel24.setBounds(160, 10, 270, 60);
+        jLabel24.setBounds(170, 10, 270, 60);
 
         jLabel244.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel244.setForeground(new java.awt.Color(255, 255, 255));
         jLabel244.setText("ITEM 4");
         jPanel24.add(jLabel244);
-        jLabel244.setBounds(440, 40, 150, 60);
+        jLabel244.setBounds(370, 10, 150, 60);
 
         jLabel24D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel24D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24D.setText("jLabel2");
         jPanel24.add(jLabel24D);
-        jLabel24D.setBounds(160, 66, 240, 50);
+        jLabel24D.setBounds(170, 60, 240, 50);
 
-        discountTriangle4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/triangleDiscount.png"))); // NOI18N
+        discountTriangle4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel24.add(discountTriangle4);
-        discountTriangle4.setBounds(500, 30, 100, 100);
+        discountTriangle4.setBounds(470, -20, 200, 170);
+
+        home24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home1_1.png"))); // NOI18N
+        jPanel24.add(home24);
+        home24.setBounds(0, 0, 600, 130);
 
         jPanel8.add(jPanel24);
         jPanel24.setBounds(90, 454, 600, 130);
 
-        jPanel25.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
         jPanel25.addMouseWheelListener(new java.awt.event.MouseWheelListener()
         {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt)
@@ -1362,6 +1421,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel25.setLayout(null);
 
         jPanel17.setBackground(new java.awt.Color(113, 168, 255));
+        jPanel17.setOpaque(false);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -1375,54 +1435,60 @@ public class Home extends javax.swing.JPanel implements ActionListener
         );
 
         jPanel25.add(jPanel17);
-        jPanel17.setBounds(30, 19, 100, 100);
+        jPanel17.setBounds(40, 14, 100, 100);
 
         jLabel25OUTOFSTOCK.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel25OUTOFSTOCK.setForeground(new java.awt.Color(255, 0, 0));
         jLabel25OUTOFSTOCK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25OUTOFSTOCK.setText("OUT OF STOCK");
         jPanel25.add(jLabel25OUTOFSTOCK);
-        jLabel25OUTOFSTOCK.setBounds(270, 80, 230, 50);
+        jLabel25OUTOFSTOCK.setBounds(240, 60, 230, 50);
 
         d25Text2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         d25Text2.setForeground(new java.awt.Color(255, 51, 51));
         d25Text2.setText("for");
         jPanel25.add(d25Text2);
-        d25Text2.setBounds(550, 80, 30, 16);
+        d25Text2.setBounds(520, 30, 30, 16);
 
-        d25Text3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        d25Text3.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         d25Text3.setForeground(new java.awt.Color(255, 51, 51));
+        d25Text3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         d25Text3.setText("25 €");
         jPanel25.add(d25Text3);
-        d25Text3.setBounds(530, 100, 70, 16);
+        d25Text3.setBounds(470, 30, 110, 70);
 
         d25Text1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         d25Text1.setForeground(new java.awt.Color(255, 51, 51));
         d25Text1.setText("10");
         jPanel25.add(d25Text1);
-        d25Text1.setBounds(570, 70, 30, 16);
+        d25Text1.setBounds(490, 20, 30, 25);
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("ITEM 5");
         jPanel25.add(jLabel25);
-        jLabel25.setBounds(160, 10, 270, 60);
+        jLabel25.setBounds(170, 10, 270, 60);
 
         jLabel255.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel255.setForeground(new java.awt.Color(255, 255, 255));
         jLabel255.setText("ITEM 5");
         jPanel25.add(jLabel255);
-        jLabel255.setBounds(440, 40, 150, 60);
+        jLabel255.setBounds(370, 10, 150, 60);
 
         jLabel25D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel25D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25D.setText("jLabel2");
         jPanel25.add(jLabel25D);
-        jLabel25D.setBounds(160, 66, 240, 50);
+        jLabel25D.setBounds(170, 60, 240, 50);
 
-        discountTriangle5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/triangleDiscount.png"))); // NOI18N
+        discountTriangle5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel25.add(discountTriangle5);
-        discountTriangle5.setBounds(500, 30, 100, 100);
+        discountTriangle5.setBounds(470, -20, 200, 170);
+
+        home25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Home1_1.png"))); // NOI18N
+        jPanel25.add(home25);
+        home25.setBounds(0, 0, 600, 130);
 
         jPanel8.add(jPanel25);
         jPanel25.setBounds(90, 600, 600, 130);
@@ -1588,18 +1654,59 @@ public class Home extends javax.swing.JPanel implements ActionListener
         });
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 290, 30));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Checkout");
-        jButton3.addActionListener(new java.awt.event.ActionListener()
+        jPanel7.setBackground(new java.awt.Color(62, 120, 207));
+        jPanel7.setPreferredSize(new java.awt.Dimension(170, 40));
+        jPanel7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
         {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
+            public void mouseMoved(java.awt.event.MouseEvent evt)
             {
-                jButton3ActionPerformed(evt);
+                jPanel7MouseMoved(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, 150, -1));
+        jPanel7.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jPanel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jPanel7MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jPanel7MousePressed(evt);
+            }
+        });
+        jPanel7.setLayout(null);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Checkout");
+        jPanel7.add(jLabel8);
+        jLabel8.setBounds(-6, -7, 160, 60);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/button.png"))); // NOI18N
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel13MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel13MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel13MousePressed(evt);
+            }
+        });
+        jPanel7.add(jLabel13);
+        jLabel13.setBounds(0, 0, 150, 50);
+
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 594, 150, 50));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 370, 650));
 
@@ -1623,12 +1730,6 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jPanel4.setBackground(new java.awt.Color(62, 120, 207));
         jPanel4.setLayout(null);
 
-        labelDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        labelDate.setForeground(new java.awt.Color(255, 255, 255));
-        labelDate.setText("Date");
-        jPanel4.add(labelDate);
-        labelDate.setBounds(650, 10, 110, 25);
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1647,7 +1748,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             }
         });
         jPanel4.add(jLabel3);
-        jLabel3.setBounds(160, 0, 140, 50);
+        jLabel3.setBounds(190, 0, 192, 50);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -1667,7 +1768,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             }
         });
         jPanel4.add(jLabel4);
-        jLabel4.setBounds(310, 0, 140, 50);
+        jLabel4.setBounds(390, 0, 192, 50);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -1687,7 +1788,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             }
         });
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(460, 0, 150, 50);
+        jLabel7.setBounds(570, 0, 192, 50);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -1707,7 +1808,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             }
         });
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(0, 0, 150, 50);
+        jLabel2.setBounds(0, 0, 192, 50);
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 770, 50));
 
@@ -1743,72 +1844,6 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 System.out.println(ex.getMessage());
             }
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-
-        int quantity = jComboBox1.getSelectedIndex();
-        if (quantity > 0 && tableSize > 0)
-        {
-            int id = 0;
-            int orderID = order.getId();
-            String name = (String) table.getValueAt(viewRow, 0);
-
-            double cost = (Double.parseDouble((String) table.getValueAt(viewRow, 4)));
-            cost = Math.round(cost * 100.0) / 100.0;
-            if (order.getProduct(name) != null)
-                if ((quantity + order.getProduct(name).getQuantity()) > Integer.parseInt((String) table.getValueAt(viewRow, 3)))
-                    quantity = Integer.parseInt((String) table.getValueAt(viewRow, 3)) - order.getProduct(name).getQuantity();
-
-            if (quantity != 0)
-            {
-                try
-                {
-                    order.addOrderedProduct(new OrderedProduct(orderID, id, name, quantity, cost));
-                } catch (Exception ex)
-                {
-                    System.out.println(ex.getMessage());
-                }
-
-                try
-                {
-                    String[] colNames = new String[]
-                    {
-                        "Quantity", "Product", "Cost (€)"
-                    };
-                    String[][] data = new String[order.getOrderedProducts().size()][3];
-                    String[][] data2 = new String[3][order.getOrderedProducts().size()];
-                    for (int i = 0; i < order.getOrderedProducts().size(); i++)
-                    {
-                        data[i][0] = String.valueOf(order.getOrderedProducts().get(i).getQuantity());
-                        data[i][1] = String.valueOf(order.getOrderedProducts().get(i).getProductName());
-                        data[i][2] = String.valueOf(order.getOrderedProducts().get(i).getPrice());
-
-                        data2[0][i] = data[i][0];
-                        data2[1][i] = data[i][1];
-                        data2[2][i] = data[i][2];
-                    }
-
-                    cartModel.setDataVector(data, colNames);
-                    //jList1.setListData(data2[0]);
-                    //jList1.setListData(data2[0]);
-
-                    TableColumnModel cartColumnModel = cartTable.getColumnModel();
-                    cartColumnModel.getColumn(0).setPreferredWidth(70);
-                    cartColumnModel.getColumn(1).setPreferredWidth(100);
-                    cartColumnModel.getColumn(2).setPreferredWidth(75);
-
-                } catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-
-                jLabel12.setText(String.valueOf(order.totalCost()) + " €");
-
-            }
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
@@ -2023,7 +2058,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             enablePanel(jPanel21);
             viewRow = p21;
             resetColor();
-            jPanel21.setBackground(new Color(23, 35, 55));
+            home21.setIcon(selectImage);
             jLabel21D.setForeground(new Color(255, 255, 255));
             selectionUpdate();
         } else
@@ -2037,7 +2072,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             enablePanel(jPanel22);
             viewRow = p22;
             resetColor();
-            jPanel22.setBackground(new Color(23, 35, 55));
+            home22.setIcon(selectImage);
             jLabel22D.setForeground(new Color(255, 255, 255));
             selectionUpdate();
         } else
@@ -2051,7 +2086,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             enablePanel(jPanel23);
             viewRow = p23;
             resetColor();
-            jPanel23.setBackground(new Color(23, 35, 55));
+            home23.setIcon(selectImage);
             jLabel23D.setForeground(new Color(255, 255, 255));
             selectionUpdate();
         } else
@@ -2065,7 +2100,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             enablePanel(jPanel24);
             viewRow = p24;
             resetColor();
-            jPanel24.setBackground(new Color(23, 35, 55));
+            home24.setIcon(selectImage);
             jLabel24D.setForeground(new Color(255, 255, 255));
             selectionUpdate();
         } else
@@ -2079,7 +2114,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             enablePanel(jPanel25);
             viewRow = p25;
             resetColor();
-            jPanel25.setBackground(new Color(23, 35, 55));
+            home25.setIcon(selectImage);
             jLabel25D.setForeground(new Color(255, 255, 255));
             selectionUpdate();
         } else
@@ -2101,12 +2136,6 @@ public class Home extends javax.swing.JPanel implements ActionListener
             System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
-    {//GEN-HEADEREND:event_jButton3ActionPerformed
-       
-        myFrame.checkout();
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MouseClicked
     {//GEN-HEADEREND:event_jLabel5MouseClicked
@@ -2255,8 +2284,119 @@ public class Home extends javax.swing.JPanel implements ActionListener
             } // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MousePressed
 
+    private void jLabel13MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel13MouseEntered
+    {//GEN-HEADEREND:event_jLabel13MouseEntered
+        jLabel13.setIcon(new ImageIcon("src/Image/buttonClicked.png"));        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel13MouseEntered
+
+    private void jLabel13MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel13MouseExited
+    {//GEN-HEADEREND:event_jLabel13MouseExited
+        jLabel13.setIcon(new ImageIcon("src/Image/button.png"));        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel13MouseExited
+
+    private void jLabel13MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel13MousePressed
+    {//GEN-HEADEREND:event_jLabel13MousePressed
+
+       myFrame.checkout();
+    }//GEN-LAST:event_jLabel13MousePressed
+
+    private void jPanel7MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel7MouseMoved
+    {//GEN-HEADEREND:event_jPanel7MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel7MouseMoved
+
+    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel7MouseEntered
+    {//GEN-HEADEREND:event_jPanel7MouseEntered
+ 
+    }//GEN-LAST:event_jPanel7MouseEntered
+
+    private void jPanel7MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel7MouseExited
+    {//GEN-HEADEREND:event_jPanel7MouseExited
+
+    }//GEN-LAST:event_jPanel7MouseExited
+
+    private void jPanel7MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel7MousePressed
+    {//GEN-HEADEREND:event_jPanel7MousePressed
+        
+    }//GEN-LAST:event_jPanel7MousePressed
+
+    private void addButtonMouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_addButtonMouseEntered
+    {//GEN-HEADEREND:event_addButtonMouseEntered
+        addButton.setIcon(buttonClicked);
+    }//GEN-LAST:event_addButtonMouseEntered
+
+    private void addButtonMouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_addButtonMouseExited
+    {//GEN-HEADEREND:event_addButtonMouseExited
+        addButton.setIcon(button);
+    }//GEN-LAST:event_addButtonMouseExited
+
+    private void addButtonMousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_addButtonMousePressed
+    {//GEN-HEADEREND:event_addButtonMousePressed
+        int quantity = jComboBox1.getSelectedIndex();
+        if (quantity > 0 && tableSize > 0)
+        {
+            int id = 0;
+            int orderID = order.getId();
+            String name = (String) table.getValueAt(viewRow, 0);
+
+            double cost = (Double.parseDouble((String) table.getValueAt(viewRow, 4)));
+            cost = Math.round(cost * 100.0) / 100.0;
+            if (order.getProduct(name) != null)
+                if ((quantity + order.getProduct(name).getQuantity()) > Integer.parseInt((String) table.getValueAt(viewRow, 3)))
+                    quantity = Integer.parseInt((String) table.getValueAt(viewRow, 3)) - order.getProduct(name).getQuantity();
+
+            if (quantity != 0)
+            {
+                try
+                {
+                    order.addOrderedProduct(new OrderedProduct(orderID, id, name, quantity, cost));
+                } catch (Exception ex)
+                {
+                    System.out.println(ex.getMessage());
+                }
+
+                try
+                {
+                    String[] colNames = new String[]
+                    {
+                        "Quantity", "Product", "Cost (€)"
+                    };
+                    String[][] data = new String[order.getOrderedProducts().size()][3];
+                    String[][] data2 = new String[3][order.getOrderedProducts().size()];
+                    for (int i = 0; i < order.getOrderedProducts().size(); i++)
+                    {
+                        data[i][0] = String.valueOf(order.getOrderedProducts().get(i).getQuantity());
+                        data[i][1] = String.valueOf(order.getOrderedProducts().get(i).getProductName());
+                        data[i][2] = String.valueOf(order.getOrderedProducts().get(i).getPrice());
+
+                        data2[0][i] = data[i][0];
+                        data2[1][i] = data[i][1];
+                        data2[2][i] = data[i][2];
+                    }
+
+                    cartModel.setDataVector(data, colNames);
+                    //jList1.setListData(data2[0]);
+                    //jList1.setListData(data2[0]);
+
+                    TableColumnModel cartColumnModel = cartTable.getColumnModel();
+                    cartColumnModel.getColumn(0).setPreferredWidth(70);
+                    cartColumnModel.getColumn(1).setPreferredWidth(100);
+                    cartColumnModel.getColumn(2).setPreferredWidth(75);
+
+                } catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
+
+                jLabel12.setText(String.valueOf(order.totalCost()) + " €");
+
+            }
+        }
+    }//GEN-LAST:event_addButtonMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addButton;
     private javax.swing.JTable cartTable;
     private javax.swing.JLabel d21Text1;
     private javax.swing.JLabel d21Text2;
@@ -2278,18 +2418,23 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private javax.swing.JLabel discountTriangle3;
     private javax.swing.JLabel discountTriangle4;
     private javax.swing.JLabel discountTriangle5;
+    private javax.swing.JLabel home21;
+    private javax.swing.JLabel home22;
+    private javax.swing.JLabel home23;
+    private javax.swing.JLabel home24;
+    private javax.swing.JLabel home25;
     private javax.swing.JLabel image21;
     private javax.swing.JLabel image22;
     private javax.swing.JLabel image23;
     private javax.swing.JLabel image24;
     private javax.swing.JLabel image25;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel211;
@@ -2316,6 +2461,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
@@ -2333,13 +2479,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JLabel labelDate;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

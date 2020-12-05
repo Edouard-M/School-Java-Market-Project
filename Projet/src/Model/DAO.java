@@ -81,7 +81,7 @@ public class DAO
             PreparedStatement create;
             create = con.prepareStatement("CREATE TABLE IF NOT EXISTS Product( name varchar(255), category varchar(255), description varchar(255), price double, stock int, discountId int, image varchar(255), PRIMARY KEY(name))");
             create.executeUpdate();
-            create = con.prepareStatement("CREATE TABLE IF NOT EXISTS Orders( id int, email varchar(255), date date, PRIMARY KEY(id))");
+            create = con.prepareStatement("CREATE TABLE IF NOT EXISTS Orders( id int, email varchar(255), date date, total double, PRIMARY KEY(id))");
             create.executeUpdate();
             create = con.prepareStatement("CREATE TABLE IF NOT EXISTS OrderedProduct( orderID int, id int NOT NULL AUTO_INCREMENT, productName varchar(255), quantity int, PRIMARY KEY(id))");
             create.executeUpdate();
@@ -694,10 +694,12 @@ public class DAO
                 String email = result.getString("email");
                 int orderID = result.getInt("id");
                 Date date = result.getDate("date");
+                double total = result.getDouble("total");
                 order = new Order(email);
+                order.setTotal(total);
                 order.setId(orderID);
                 order.setDate(date);
-                order.setArrayList(this.getOrderedProducts(orderID));
+                //order.setArrayList(this.getOrderedProducts(orderID));
                 list.add(order);
             }
         }

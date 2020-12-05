@@ -21,6 +21,7 @@ public class Order
     private String email;
     //private Date date;
     private Date date;
+    private double total;
     private ArrayList<OrderedProduct> orderedProducts;
     private DAO dao;
     
@@ -84,8 +85,9 @@ public class Order
     {
         try
         {
+            this.total = totalCost();
             dao.getConnection();
-            dao.query("INSERT INTO Orders ( id, email, date) VALUES ('" + id + "', '" + email + "','" + date + "')");
+            dao.query("INSERT INTO Orders ( id, email, date, total) VALUES ('" + id + "', '" + email + "','" + date + "', '" + total + "')");
             dao.closeConnection();
         } catch (Exception e)
         {
@@ -96,8 +98,9 @@ public class Order
     {
         try
         {
+            this.total = totalCostCalcul();
             dao.getConnection();
-            dao.query("INSERT INTO Orders ( id, email, date) VALUES ('" + id + "', '" + email + "','" + date + "')");
+            dao.query("INSERT INTO Orders ( id, email, date, total) VALUES ('" + id + "', '" + email + "','" + date + "', '" + total + "')");
             dao.closeConnection();
             dao.getConnection();
             for(int i=0 ; i < orderedProducts.size() ; i++)
@@ -110,6 +113,8 @@ public class Order
             System.out.println(e.getMessage());
         }
     }
+    
+    
 
     public void addOrderedProduct(OrderedProduct orderedProduct) throws Exception
     {
@@ -138,8 +143,32 @@ public class Order
         for (int i = 0; i < orderedProducts.size(); i++)
             totalCost += orderedProducts.get(i).getPrice();
          totalCost = Math.round(totalCost * 100.0) / 100.0;
+         
 
         return totalCost;
+    }
+    
+    public double totalCostCalcul()
+    {
+        double totalCost = 0;
+        try{
+
+        for (int i = 0; i < orderedProducts.size(); i++)
+            totalCost += orderedProducts.get(i).calculatePrice();
+         totalCost = Math.round(totalCost * 100.0) / 100.0;
+         
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return totalCost;
+    }
+    
+    public double getTotal()
+    {
+        return total;
     }
 
     public int getId()
@@ -160,6 +189,11 @@ public class Order
     public ArrayList<OrderedProduct> getOrderedProducts()
     {
         return orderedProducts;
+    }
+    
+    public void setTotal(double total)
+    {
+        this.total = total;
     }
 
     public String getEmail()

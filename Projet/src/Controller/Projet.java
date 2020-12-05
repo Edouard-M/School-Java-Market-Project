@@ -25,16 +25,17 @@ public class Projet
     
     public  static void main(String[] args) throws Exception
     {
+        
         Initialisation init = new Initialisation();
         
         DAO dao = new DAO();
-        //init.dropAllTable();
-        /*dao.getConnection();
+        init.dropAllTable();
+        dao.getConnection();
         dao.createAllTable();
-        dao.closeConnection();*/
+        dao.closeConnection();
 
-        //init.testDB();
-
+        init.testDB();
+        
         MyFrame frame = new MyFrame();
         
     }

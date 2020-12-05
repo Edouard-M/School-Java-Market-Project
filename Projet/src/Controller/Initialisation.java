@@ -33,15 +33,15 @@ public class Initialisation
     
     public void testDB() throws Exception
     {
-        Product banane = new Product("banane", "fresh", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane = new Product("banane", "fresh", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
         banane.insertProduct();
-        Product banane2 = new Product("orange", "alcohol", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane2 = new Product("orange", "alcohol", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
         banane2.insertProduct();
-        Product banane3 = new Product("poire", "grocery", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane3 = new Product("poire", "grocery", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
         banane3.insertProduct();
-        Product banane4 = new Product("peche", "alcohol", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane4 = new Product("peche", "alcohol", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
         banane4.insertProduct();
-        Product banane5 = new Product("pomme", "fresh", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane5 = new Product("pomme", "fresh", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
         banane5.insertProduct();
         /*Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
         banane6.insertProduct();
@@ -75,7 +75,7 @@ public class Initialisation
         //Product banane7 = new Product("Banane6", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane8 = new Product("Banane7", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
         //Product banane9 = new Product("Banane8", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
-        Product kiwi = new Product("Kiwi", "grocery", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
+        Product kiwi = new Product("Kiwi", "grocery", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.png");
         kiwi.insertProduct();
         //Product kiwi2 = new Product("Kiwi2", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
         //kiwi2.insertProduct();
@@ -136,7 +136,8 @@ public class Initialisation
             list2.add(new OrderedProduct(order2.getId(), 0, "Banane", 10, 0));
             list2.add(new OrderedProduct(order2.getId(), 0, "Kiwi", 11, 0));
             order2.setArrayList(list2);
-            order2.insertAllOrder();*/
+            order2.insertAllOrder();
+            */
             DAO dao = new DAO();  
             dao.getConnection();
             allProducts = dao.selectAllProducts();
@@ -146,8 +147,8 @@ public class Initialisation
             for(int i=1 ; i<=30 ; i++)
             {
                 int or = 0 + (int)(Math.random() * ((10 - 0) + 1));
-                //if(or == 0)
-                //{
+                if(or < 3)
+                {
                 Order ord = new Order("DefaultEmail");
                 if(i<10)
                     ord.setDate(createDate("0" + String.valueOf(i) + "/10/2020"));
@@ -156,7 +157,7 @@ public class Initialisation
                 
                 ord.setArrayList(aleaProduct(ord));
                 ord.insertAllOrder();
-               //}
+               }
             }
             for(int i=1 ; i<=30 ; i++)
             {
@@ -196,7 +197,10 @@ public class Initialisation
             {
                 int productNum = 0 + (int)(Math.random() * (((allProducts.size()-1) - 0) + 1));
                 int quantity = 1 + (int)(Math.random() * (((10) - 1) + 1));
-                list.add(new OrderedProduct(ord.getId(), 0, allProducts.get(productNum).getName(), quantity, 0));
+                
+                
+                
+                list.add(new OrderedProduct(ord.getId(), 0, allProducts.get(productNum).getName(), quantity, allProducts.get(productNum).getPrice()));
             }
         }
         catch(Exception e)

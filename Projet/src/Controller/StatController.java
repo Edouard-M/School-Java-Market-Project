@@ -45,15 +45,17 @@ public class StatController
     
     
     
-    public ArrayList<OrderedProduct> getPieData(String category)
+    public ArrayList<OrderedProduct> getPieData(String category, boolean load)
     {
         ArrayList<Product> productList = new ArrayList<>();
         ArrayList<OrderedProduct> allList = new ArrayList<>();
         ArrayList<OrderedProduct> filterList = new ArrayList<>();
         
+        System.out.println("1");
         dao.getConnection();
         try{
-            allList = dao.getAllOrderedProducts();
+            //if(load)
+                allList = dao.getAllOrderedProducts();
             productList = dao.selectAllProducts();
         }
         catch(Exception e)
@@ -62,7 +64,7 @@ public class StatController
         }
         dao.closeConnection();
         
-        
+        System.out.println("2");
         for(int i=0 ; i < productList.size() ; i++)
         {
             if(productList.get(i).getCategory().equals(category))
@@ -72,6 +74,7 @@ public class StatController
                         filterList.add(allList.get(j));
                 }
         }
+        System.out.println("3");
         
         return filterList;
     }
