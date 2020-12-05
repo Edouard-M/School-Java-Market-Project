@@ -92,12 +92,11 @@ public class Projet
         //Product kiwi3 = new Product("Kiwi3", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
         //kiwi3.insertProduct();
         Customer Marc = new Customer("Marc", "Dampierre", 23, "0640787637", " 6 rue jean mermoz rueil-malmaison 92500", "", "");
+        Marc.insertCustomer();
         Employee Fred = new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "", "");
         Fred.insertEmployee();
         Employee admin = new Employee("Fredo", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "admin@gmail.com", "ADMIN");
         admin.insertEmployee();
-        OrderedProduct OrderedBanane = new OrderedProduct(1, 1, "Banane", 10, 12);
-        OrderedProduct OrderedKiwi = new OrderedProduct(1, 2, "Kiwi", 5, 12);
         //Discount DiscountBanane = new Discount("Banane", 10, 9);
         kiwi.addDiscount(10, 25);
         //banane5.addDiscount(12, 20);
@@ -124,7 +123,7 @@ public class Projet
         dao.query("DROP TABLE OrderedProduct");
         dao.query("DROP TABLE Orders");
         dao.closeConnection();
-        System.out.println("All Table Droped");
+       // System.out.println("All Table Droped");
     }
     
     

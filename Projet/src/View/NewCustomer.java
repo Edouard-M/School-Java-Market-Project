@@ -75,7 +75,7 @@ public class NewCustomer extends javax.swing.JPanel
             //send the message  
             Transport.send(message);
 
-            System.out.println("message sent successfully...");
+            //System.out.println("message sent successfully...");
 
         } catch (MessagingException e)
         {
@@ -432,12 +432,10 @@ public class NewCustomer extends javax.swing.JPanel
         {
 
             int age = jComboBox1.getSelectedIndex() + 13;
-            System.out.println("OUIIII");
+           
             Customer customer = new Customer(jTextField2.getText(), jTextField1.getText(), age, jTextField4.getText(), jTextField5.getText(), jTextField3.getText(), jPasswordField1.getText());
-            System.out.println("OUIIII");
             myframe.setCustomer(customer);
             myframe.connection();
-            System.out.println("OUIIII");
             panelConnection.connect();
 
             sendmail(jTextField3.getText(), jTextField1.getText(), jTextField2.getText());

@@ -236,8 +236,8 @@ public class EmployeesConnection extends javax.swing.JPanel
             connected=true;
             eFrame.connection();
             eFrame.setEmployee(controller.findEmployee(jTextField1.getText()));
-            System.out.println("Get EMployee");
-            System.out.println("Employee Connection Accepted");
+           // System.out.println("Get EMployee");
+           // System.out.println("Employee Connection Accepted");
         }
     }//GEN-LAST:event_jLabel4MousePressed
 

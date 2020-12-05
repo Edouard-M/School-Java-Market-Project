@@ -136,7 +136,7 @@ public class MyOrders extends javax.swing.JPanel
         {
             int viewRow = jTable2.getSelectedRow();
             int quantity = 0;
-            System.out.println("VIEWING : " + viewRow);
+           // System.out.println("VIEWING : " + viewRow);
             if(viewRow >= 0)
                 buildProductTable(orders[viewRow]);
 

@@ -507,11 +507,7 @@ public class CreateEmployee extends javax.swing.JPanel
             columnModel.getColumn(4).setPreferredWidth(50);
         } catch (Exception ex)
         {
-            
-            
-         
-            System.out.println(ex.getMessage());
-            
+            System.out.println(ex.getMessage()); 
         }
          jTextField3.setText("");
             jTextField2.setText("");

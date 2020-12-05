@@ -377,7 +377,7 @@ public class Connection extends javax.swing.JPanel
             myframe.setCustomer(connectControl.findCustomer(jTextField2.getText()));
             myframe.connection();
             
-            System.out.println("Customer Find = " + connectControl.findCustomer(jTextField2.getText()).getFirstName());
+           // System.out.println("Customer Find = " + connectControl.findCustomer(jTextField2.getText()).getFirstName());
         } 
     }//GEN-LAST:event_jLabel10MousePressed
 

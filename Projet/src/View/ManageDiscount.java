@@ -113,7 +113,7 @@ private ManageDiscountController controller;
         columnModel2.getColumn(0).setPreferredWidth(100);
         columnModel2.getColumn(1).setPreferredWidth(50);
         columnModel2.getColumn(2).setPreferredWidth(150);
-        System.out.println("iciiii");
+        //("iciiii");
        
         setTableStyle(jTable2);
         jScrollPane2.setBackground(new Color(49,91,111));

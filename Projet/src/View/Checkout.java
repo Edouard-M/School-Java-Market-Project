@@ -54,7 +54,7 @@ public class Checkout extends javax.swing.JPanel
         try
         {
             String [] colNames = new String[] {"Quantity","Product","Cost (€)"};
-            System.out.println("Size : " + order.getOrderedProducts().size());
+            //System.out.println("Size : " + order.getOrderedProducts().size());
             String [][] data = new String [order.getOrderedProducts().size()][3];
             String [][] data2 = new String [3][order.getOrderedProducts().size()];
             

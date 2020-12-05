@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.font.TextAttribute;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -28,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import java.util.Map;
+
 /**
  *
  * @author Edoua
@@ -37,7 +39,6 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     final int WIDTH_WINDOW = 800;
     final int HEIGHT_WINDOW = 700;
-    
 
     private Order order;
     private String customerEmail;
@@ -82,6 +83,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private int y5;
 
     private Object[][] allData;
+    private Object[][] dataFilter;
     private HomeController controller;
 
     /**
@@ -110,8 +112,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         y4 = (int) jPanel24.getLocation().getY();
         x5 = (int) jPanel25.getLocation().getX();
         y5 = (int) jPanel25.getLocation().getY();
-        System.out.println("X1 = " + x1);
-        System.out.println("Y1 = " + y1);
+      
 
     }
 
@@ -167,7 +168,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         viewRow = 1;
 
         order = new Order("");
-        System.out.println("Date : " + order.getDate());
+        //System.out.println("Date : " + order.getDate());
         labelDate.setText(order.getDate().toString());
 
         timer.start();
@@ -271,156 +272,129 @@ public class Home extends javax.swing.JPanel implements ActionListener
         p24 = 3;
         p25 = 4;
 
-        String[][] data = controller.getData();
-
         String[] colNamesFilter =
         {
             "Name", "Category", "Description", "Stock", "Price (€)", "Image"
         };
-        String[][] dataFilter = new String[data.length][6];
-        allData = new Object[data.length][7];
-        int j = 0;
-        //allData =  "Name", "Category", "Description", "Stock", "Price (€)", "Image", "Discount"
-        if (!("".equals(recherche) || "Research".equals(recherche)))
-        {
 
-            for (int i = 0; i < data.length; i++)
-                if (selectedCategroy.equals("all"))
-                {
-                    if (data[i][0].contains(recherche))
-                    {
-                        dataFilter[j][0] = data[i][0];
-                        dataFilter[j][1] = data[i][1];
-                        dataFilter[j][2] = data[i][2];
-                        dataFilter[j][3] = data[i][4];
-                        dataFilter[j][4] = data[i][3];
-                        dataFilter[j][5] = data[i][6];
-
-                        allData[j][0] = data[i][0];
-                        allData[j][1] = data[i][1];
-                        allData[j][2] = data[i][2];
-                        allData[j][3] = data[i][4];
-                        allData[j][4] = data[i][3];
-                        allData[j][5] = resize((String) dataFilter[j][5], 100, 100);
-                        allData[j][6] = controller.findDiscount((String) allData[j][0]);
-                        j++;
-                    }
-                } else if (data[i][0].contains(recherche) && data[i][1].equals(selectedCategroy))
-                {
-                    dataFilter[j][0] = data[i][0];
-                    dataFilter[j][1] = data[i][1];
-                    dataFilter[j][2] = data[i][2];
-                    dataFilter[j][3] = data[i][4];
-                    dataFilter[j][4] = data[i][3];
-                    dataFilter[j][5] = data[i][6];
-
-                    allData[j][0] = data[i][0];
-                    allData[j][1] = data[i][1];
-                    allData[j][2] = data[i][2];
-                    allData[j][3] = data[i][4];
-                    allData[j][4] = data[i][3];
-                    allData[j][5] = resize((String) dataFilter[j][5], 100, 100);
-                    allData[j][6] = controller.findDiscount((String) allData[j][0]);
-                    j++;
-                }
-
-            tableSize = j;
-        } else
-        {
-
+            
+            int j = 0;
             //allData =  "Name", "Category", "Description", "Stock", "Price (€)", "Image", "Discount"
-            for (int i = 0; i < data.length; i++)
-                if (selectedCategroy.equals("all"))
+            if (!("".equals(recherche) || "Research".equals(recherche)))
+            {
+
+                for (int i = 0; i < allData.length; i++)
                 {
-
-                    dataFilter[j][0] = data[i][0];
-                    dataFilter[j][1] = data[i][1];
-                    dataFilter[j][2] = data[i][2];
-                    dataFilter[j][3] = data[i][4];
-                    dataFilter[j][4] = data[i][3];
-                    dataFilter[j][5] = data[i][6];
-
-                    allData[j][0] = data[i][0];
-                    allData[j][1] = data[i][1];
-                    allData[j][2] = data[i][2];
-                    allData[j][3] = data[i][4];
-                    allData[j][4] = data[i][3];
-                    allData[j][5] = resize((String) dataFilter[j][5], 100, 100);
-                    allData[j][6] = controller.findDiscount((String) allData[j][0]);
-                    j++;
-
-                } else
-                    if (data[i][1].equals(selectedCategroy))
+                    if (selectedCategroy.equals("all"))
                     {
-                        dataFilter[j][0] = data[i][0];
-                        dataFilter[j][1] = data[i][1];
-                        dataFilter[j][2] = data[i][2];
-                        dataFilter[j][3] = data[i][4];
-                        dataFilter[j][4] = data[i][3];
-                        dataFilter[j][5] = data[i][6];
+                        if (allData[i][0].toString().contains(recherche))
+                        {
+                            dataFilter[j][0] = allData[i][0];
+                            dataFilter[j][1] = allData[i][1];
+                            dataFilter[j][2] = allData[i][2];
+                            dataFilter[j][3] = allData[i][3];
+                            dataFilter[j][4] = allData[i][4];
+                            dataFilter[j][5] = allData[i][5];
+                            dataFilter[j][6] = allData[i][6];
 
-                        allData[j][0] = data[i][0];
-                        allData[j][1] = data[i][1];
-                        allData[j][2] = data[i][2];
-                        allData[j][3] = data[i][4];
-                        allData[j][4] = data[i][3];
-                        allData[j][5] = resize((String) dataFilter[j][5], 100, 100);
-                        allData[j][6] = controller.findDiscount((String) allData[j][0]);
+                            j++;
+                        }
+                    } else if (allData[i][0].toString().contains(recherche) && allData[i][1].toString().equals(selectedCategroy))
+                    {
+                        dataFilter[j][0] = allData[i][0];
+                        dataFilter[j][1] = allData[i][1];
+                        dataFilter[j][2] = allData[i][2];
+                        dataFilter[j][3] = allData[i][3];
+                        dataFilter[j][4] = allData[i][4];
+                        dataFilter[j][5] = allData[i][5];
+                        dataFilter[j][6] = allData[i][6];
                         j++;
                     }
-            tableSize = j;
+            }
+                tableSize = j;
+            } else
+            {
+
+                //allData =  "Name", "Category", "Description", "Stock", "Price (€)", "Image", "Discount"
+                for (int i = 0; i < allData.length; i++)
+                { if (selectedCategroy.equals("all"))
+                    {
+
+                        dataFilter[j][0] = allData[i][0];
+                        dataFilter[j][1] = allData[i][1];
+                        dataFilter[j][2] = allData[i][2];
+                        dataFilter[j][3] = allData[i][3];
+                        dataFilter[j][4] = allData[i][4];
+                        dataFilter[j][5] = allData[i][5];
+                        dataFilter[j][6] =  allData[i][6];
+                        j++;
+
+                    } else if (allData[i][1].toString().equals(selectedCategroy))
+                    {
+                        dataFilter[j][0] = allData[i][0];
+                        dataFilter[j][1] = allData[i][1];
+                        dataFilter[j][2] = allData[i][2];
+                        dataFilter[j][3] = allData[i][3];
+                        dataFilter[j][4] = allData[i][4];
+                        dataFilter[j][5] = allData[i][5];
+                        dataFilter[j][6] = allData[i][6];
+                        j++;
+                    }
+                }
+                tableSize =j;
+            }
+
+            tableModel = (DefaultTableModel) table.getModel();
+                tableModel.setDataVector(dataFilter, colNamesFilter);
+ 
+            if (tableSize < 5)
+            {
+                if (p21 < tableSize && p21 >= 0)
+                    enablePanel(jPanel21);
+                else
+                    disablePanel(jPanel21);
+
+                if (p22 < tableSize && p22 >= 0)
+                    enablePanel(jPanel22);
+                else
+                    disablePanel(jPanel22);
+
+                if (p23 < tableSize && p23 >= 0)
+                    enablePanel(jPanel23);
+                else
+                    disablePanel(jPanel23);
+
+                if (p24 < tableSize && p24 >= 0)
+                    enablePanel(jPanel24);
+                else
+                    disablePanel(jPanel24);
+
+                if (p25 < tableSize && p25 >= 0)
+                    enablePanel(jPanel25);
+                else
+                    disablePanel(jPanel25);
+            } else
+            {
+                if (p21 < tableSize && p21 >= 0)
+                    enablePanel(jPanel21);
+                if (p22 < tableSize && p22 >= 0)
+                    enablePanel(jPanel22);
+                if (p23 < tableSize && p23 >= 0)
+                    enablePanel(jPanel23);
+                if (p24 < tableSize && p24 >= 0)
+                    enablePanel(jPanel24);
+                if (p25 < tableSize && p25 >= 0)
+                    enablePanel(jPanel25);
+            }
+
+            setScrollItem();
+            resetColor();
+            resetPosition();
+            table.setVisible(false);
+            table.getTableHeader().setVisible(false);
         }
 
-        tableModel = (DefaultTableModel) table.getModel();
-
-        tableModel.setDataVector(dataFilter, colNamesFilter);
-
-        if (tableSize < 5)
-        {
-            if (p21 < tableSize && p21 >= 0)
-                enablePanel(jPanel21);
-            else
-                disablePanel(jPanel21);
-
-            if (p22 < tableSize && p22 >= 0)
-                enablePanel(jPanel22);
-            else
-                disablePanel(jPanel22);
-
-            if (p23 < tableSize && p23 >= 0)
-                enablePanel(jPanel23);
-            else
-                disablePanel(jPanel23);
-
-            if (p24 < tableSize && p24 >= 0)
-                enablePanel(jPanel24);
-            else
-                disablePanel(jPanel24);
-
-            if (p25 < tableSize && p25 >= 0)
-                enablePanel(jPanel25);
-            else
-                disablePanel(jPanel25);
-        } else
-        {
-            if (p21 < tableSize && p21 >= 0)
-                enablePanel(jPanel21);
-            if (p22 < tableSize && p22 >= 0)
-                enablePanel(jPanel22);
-            if (p23 < tableSize && p23 >= 0)
-                enablePanel(jPanel23);
-            if (p24 < tableSize && p24 >= 0)
-                enablePanel(jPanel24);
-            if (p25 < tableSize && p25 >= 0)
-                enablePanel(jPanel25);
-        }
-
-        setScrollItem();
-        resetColor();
-        resetPosition();
-        table.setVisible(false);
-        table.getTableHeader().setVisible(false);
-    }
+    
 
     public void discountUpdate() throws Exception
     {
@@ -430,38 +404,31 @@ public class Home extends javax.swing.JPanel implements ActionListener
         p24 = 3;
         p25 = 4;
 
-        String[][] data = controller.getData();
-        String[][] dataDiscount = controller.getDataDiscount();
+
         String[] colNamesFilter =
         {
             "Name", "Category", "Description", "Stock", "Price (€)", "Image"
         };
-        String[][] dataFilter = new String[dataDiscount.length][6];
-        allData = new Object[data.length][7];
+        
 
         //allData =  "Name", "Category", "Description", "Stock", "Price (€)", "Image", "Discount"
-        for (int j = 0; j < dataDiscount.length; j++)
-            for (int i = 0; i < data.length; i++)
-                if (dataDiscount[j][0].equals(data[i][0]))
+       int j=0;
+            for (int i = 0; i < allData.length; i++)
+                if (allData[i][6]!=null)
                 {
-                    dataFilter[j][0] = data[i][0];
-                    dataFilter[j][1] = data[i][1];
-                    dataFilter[j][2] = data[i][2];
-                    dataFilter[j][3] = data[i][4];
-                    dataFilter[j][4] = data[i][3];
-                    dataFilter[j][5] = data[i][6];
-
-                    allData[j][0] = data[i][0];
-                    allData[j][1] = data[i][1];
-                    allData[j][2] = data[i][2];
-                    allData[j][3] = data[i][4];
-                    allData[j][4] = data[i][3];
-                    allData[j][5] = resize((String) dataFilter[j][5], 100, 100);
-                    allData[j][6] = controller.findDiscount((String) allData[j][0]);
-
+                    dataFilter[j][0] = allData[i][0];
+                    dataFilter[j][1] = allData[i][1];
+                    dataFilter[j][2] = allData[i][2];
+                    dataFilter[j][3] = allData[i][3];
+                    dataFilter[j][4] = allData[i][4];
+                    dataFilter[j][5] = allData[i][5];
+                    dataFilter[j][6] = allData[i][6];
+                    j++;
+                  
+                    
                 }
 
-        tableSize = dataDiscount.length;
+        tableSize = j;
 
         tableModel = (DefaultTableModel) table.getModel();
 
@@ -533,12 +500,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel3.setFont(font.deriveFont(attributes));
         jLabel7.setFont(font.deriveFont(attributes));
         String[][] data = controller.getData();
-
+        dataFilter = new Object[data.length][7];
         String[] colNamesFilter =
         {
             "Name", "Category", "Description", "Stock", "Price (€)", "Image"
         };
-        String[][] dataFilter = new String[data.length][6];
         allData = new Object[data.length][7];
         //allData =  "Name", "Category", "Description", "Stock", "Price (€)", "Image", "Discount"
         for (int i = 0; i < data.length; i++)
@@ -548,15 +514,16 @@ public class Home extends javax.swing.JPanel implements ActionListener
             dataFilter[i][2] = data[i][2];
             dataFilter[i][3] = data[i][4];
             dataFilter[i][4] = data[i][3];
-            dataFilter[i][5] = data[i][6];
+            dataFilter[i][5] = resize((String) data[i][6], 100, 100);
+            dataFilter[i][6] = controller.findDiscount((String) data[i][0]);
 
-            allData[i][0] = data[i][0];
-            allData[i][1] = data[i][1];
-            allData[i][2] = data[i][2];
-            allData[i][3] = data[i][4];
-            allData[i][4] = data[i][3];
-            allData[i][5] = resize((String) dataFilter[i][5], 100, 100);
-            allData[i][6] = controller.findDiscount((String) allData[i][0]);
+            allData[i][0] = dataFilter[i][0];
+            allData[i][1] = dataFilter[i][1];
+            allData[i][2] = dataFilter[i][2];
+            allData[i][3] = dataFilter[i][3];
+            allData[i][4] = dataFilter[i][4];
+            allData[i][5] = dataFilter[i][5];
+            allData[i][6] = dataFilter[i][6];
 
             /* System.out.println("AllData [i][0] = " + (String) allData[i][0]);
             if(controller.findDiscount((String) allData[i][0]) != null)
@@ -647,7 +614,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 dTexte3.setVisible(true);
 
                 dTexte1.setText(Integer.toString(discount.getQuantity()));
-                dTexte3.setText(Double.toString(discount.getPrice())+" €");
+                dTexte3.setText(Double.toString(discount.getPrice()) + " €");
 
             } else
             {
@@ -667,7 +634,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         if (p21 >= 0 && p21 < tableSize)
         {
             //image21.setIcon(resize((String) (table.getValueAt(p21, 5)), 100, 100));
-            image21.setIcon((ImageIcon) allData[p21][5]);
+            image21.setIcon((ImageIcon) dataFilter[p21][5]);
             jLabel21.setText((String) table.getValueAt(p21, 0));
             jLabel211.setText((String) table.getValueAt(p21, 4) + " €");
             jLabel21D.setText((String) table.getValueAt(p21, 2));
@@ -676,18 +643,18 @@ public class Home extends javax.swing.JPanel implements ActionListener
             else
                 jPanel21.setBackground(new Color(23, 35, 55));
 
-            setDiscount(discountTriangle1, d21Text1, d21Text2, d21Text3, (Discount) allData[p21][6]);
-            
-            if(Integer.parseInt( String.valueOf(table.getValueAt(p21,3))) == 0)
+            setDiscount(discountTriangle1, d21Text1, d21Text2, d21Text3, (Discount) dataFilter[p21][6]);
+
+            if (Integer.parseInt(String.valueOf(table.getValueAt(p21, 3))) == 0)
                 jLabel21OUTOFSTOCK.setVisible(true);
             else
                 jLabel21OUTOFSTOCK.setVisible(false);
-            
+
         }
         if (p22 >= 0 && p22 < tableSize)
         {
             //image22.setIcon(resize((String) (table.getValueAt(p22, 5)), 100, 100));
-            image22.setIcon((ImageIcon) allData[p22][5]);
+            image22.setIcon((ImageIcon) dataFilter[p22][5]);
             jLabel22.setText((String) table.getValueAt(p22, 0));
             jLabel222.setText((String) table.getValueAt(p22, 4) + " €");
             jLabel22D.setText((String) table.getValueAt(p22, 2));
@@ -696,9 +663,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             else
                 jPanel22.setBackground(new Color(23, 35, 55));
 
-            setDiscount(discountTriangle2, d22Text1, d22Text2, d22Text3, (Discount) allData[p22][6]);
-            
-            if(Integer.parseInt( String.valueOf(table.getValueAt(p22,3))) == 0)
+            setDiscount(discountTriangle2, d22Text1, d22Text2, d22Text3, (Discount) dataFilter[p22][6]);
+
+            if (Integer.parseInt(String.valueOf(table.getValueAt(p22, 3))) == 0)
                 jLabel22OUTOFSTOCK.setVisible(true);
             else
                 jLabel22OUTOFSTOCK.setVisible(false);
@@ -706,7 +673,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         if (p23 >= 0 && p23 < tableSize)
         {
             //image23.setIcon(resize((String) (table.getValueAt(p23, 5)), 100, 100));
-            image23.setIcon((ImageIcon) allData[p23][5]);
+            image23.setIcon((ImageIcon) dataFilter[p23][5]);
             jLabel23.setText((String) table.getValueAt(p23, 0));
             jLabel233.setText((String) table.getValueAt(p23, 4) + " €");
             jLabel23D.setText((String) table.getValueAt(p23, 2));
@@ -715,9 +682,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             else
                 jPanel23.setBackground(new Color(23, 35, 55));
 
-            setDiscount(discountTriangle3, d23Text1, d23Text2, d23Text3, (Discount) allData[p23][6]);
-            
-            if(Integer.parseInt( String.valueOf(table.getValueAt(p23,3))) == 0)
+            setDiscount(discountTriangle3, d23Text1, d23Text2, d23Text3, (Discount) dataFilter[p23][6]);
+
+            if (Integer.parseInt(String.valueOf(table.getValueAt(p23, 3))) == 0)
                 jLabel23OUTOFSTOCK.setVisible(true);
             else
                 jLabel23OUTOFSTOCK.setVisible(false);
@@ -725,7 +692,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         if (p24 >= 0 && p24 < tableSize)
         {
             //image24.setIcon(resize((String) (table.getValueAt(p24, 5)), 100, 100));
-            image24.setIcon((ImageIcon) allData[p24][5]);
+            image24.setIcon((ImageIcon) dataFilter[p24][5]);
             jLabel24.setText((String) table.getValueAt(p24, 0));
             jLabel244.setText((String) table.getValueAt(p24, 4) + " €");
             jLabel24D.setText((String) table.getValueAt(p24, 2));
@@ -734,9 +701,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             else
                 jPanel24.setBackground(new Color(23, 35, 55));
 
-            setDiscount(discountTriangle4, d24Text1, d24Text2, d24Text3, (Discount) allData[p24][6]);
-            
-            if(Integer.parseInt( String.valueOf(table.getValueAt(p24,3))) == 0)
+            setDiscount(discountTriangle4, d24Text1, d24Text2, d24Text3, (Discount) dataFilter[p24][6]);
+
+            if (Integer.parseInt(String.valueOf(table.getValueAt(p24, 3))) == 0)
                 jLabel24OUTOFSTOCK.setVisible(true);
             else
                 jLabel24OUTOFSTOCK.setVisible(false);
@@ -744,7 +711,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         if (p25 >= 0 && p25 < tableSize)
         {
             //image25.setIcon(resize((String) (table.getValueAt(p25, 5)), 100, 100));
-            image25.setIcon((ImageIcon) allData[p25][5]);
+            image25.setIcon((ImageIcon) dataFilter[p25][5]);
             jLabel25.setText((String) table.getValueAt(p25, 0));
             jLabel255.setText((String) table.getValueAt(p25, 4) + " €");
             jLabel25D.setText((String) table.getValueAt(p25, 2));
@@ -753,9 +720,9 @@ public class Home extends javax.swing.JPanel implements ActionListener
             else
                 jPanel25.setBackground(new Color(23, 35, 55));
 
-            setDiscount(discountTriangle5, d25Text1, d25Text2, d25Text3, (Discount) allData[p25][6]);
-            
-            if(Integer.parseInt( String.valueOf(table.getValueAt(p25,3))) == 0)
+            setDiscount(discountTriangle5, d25Text1, d25Text2, d25Text3, (Discount) dataFilter[p25][6]);
+
+            if (Integer.parseInt(String.valueOf(table.getValueAt(p25, 3))) == 0)
                 jLabel25OUTOFSTOCK.setVisible(true);
             else
                 jLabel25OUTOFSTOCK.setVisible(false);
@@ -1759,7 +1726,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
                 Discount discount = controller.findDiscount(currentName);
                 double total;
-                
+
                 if (discount != null && discount.getQuantity() <= quantity)
                 {
 
@@ -1769,7 +1736,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 } else
                     total = quantity * unitPrice;
                 total = Math.round(total * 100.0) / 100.0;
-                
+
                 jLabel10.setText(String.valueOf(total) + " €");
             } catch (Exception ex)
             {
@@ -2125,7 +2092,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         {
             jPanel5.setBackground(new Color(113, 168, 255));
             onlydiscount = false;
-            System.out.println(evt.getActionCommand());
+            //(evt.getActionCommand());
 
             researchUpdate(evt.getActionCommand());
 
@@ -2137,38 +2104,38 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
-        System.out.println("Finish Order");
+       
         myFrame.checkout();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MouseClicked
     {//GEN-HEADEREND:event_jLabel5MouseClicked
-    
+
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MouseClicked
     {//GEN-HEADEREND:event_jLabel2MouseClicked
-    
+
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseClicked
     {//GEN-HEADEREND:event_jLabel3MouseClicked
-         // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel4MouseClicked
     {//GEN-HEADEREND:event_jLabel4MouseClicked
-         // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel7MouseClicked
     {//GEN-HEADEREND:event_jLabel7MouseClicked
-       // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MousePressed
     {//GEN-HEADEREND:event_jLabel2MousePressed
-         try
+        try
         {
             Font font = jLabel5.getFont();
             Map attributes = font.getAttributes();
@@ -2185,12 +2152,12 @@ public class Home extends javax.swing.JPanel implements ActionListener
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
-        }   
+        }
     }//GEN-LAST:event_jLabel2MousePressed
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MousePressed
     {//GEN-HEADEREND:event_jLabel3MousePressed
-     try
+        try
         {
             Font font = jLabel5.getFont();
             Map attributes = font.getAttributes();
@@ -2212,7 +2179,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel4MousePressed
     {//GEN-HEADEREND:event_jLabel4MousePressed
-       try
+        try
         {
             Font font = jLabel5.getFont();
             Map attributes = font.getAttributes();
@@ -2234,7 +2201,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     private void jLabel7MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel7MousePressed
     {//GEN-HEADEREND:event_jLabel7MousePressed
-     try
+        try
         {
             Font font = jLabel5.getFont();
             Map attributes = font.getAttributes();

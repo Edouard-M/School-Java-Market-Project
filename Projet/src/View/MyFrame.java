@@ -109,10 +109,10 @@ public class MyFrame extends javax.swing.JFrame
     {
         resetColor();
         setColor(button2,bt2);
-        System.out.println("Ca bug ?");
-        System.out.println("Customer email = " + customer.getEmail());
+       // System.out.println("Ca bug ?");
+        //System.out.println("Customer email = " + customer.getEmail());
         panel2.setNewOrder(customer.getEmail());
-        System.out.println("Customer email = " + customer.getEmail());
+        //("Customer email = " + customer.getEmail());
         panel1.setVisible(false);
         panel0.setVisible(false);
         panel4.setVisible(false);

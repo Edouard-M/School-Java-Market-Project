@@ -91,7 +91,7 @@ public class DAO
             create.executeUpdate();
             create = con.prepareStatement("CREATE TABLE IF NOT EXISTS Discount( name varchar(255), quantity int, price double, PRIMARY KEY(name))");
             create.executeUpdate();
-            System.out.println("All Table Created");
+            //("All Table Created");
         } catch (Exception e)
         {
             System.out.println(e);

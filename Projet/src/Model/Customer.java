@@ -25,7 +25,7 @@ public class Customer extends Person
         super(name, firstName, age, phone, address, email, password);
         fidelityPoint = 0;
         dao = new DAO();
-        insertCustomer();
+        //insertCustomer();
     }
 
     public void insertCustomer() throws Exception
