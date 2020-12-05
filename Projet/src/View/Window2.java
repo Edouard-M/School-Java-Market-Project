@@ -104,7 +104,6 @@ public class Window2 extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            System.out.println("test");
             //if(e.getSource() == calcButton)
          
         }
@@ -134,7 +133,6 @@ public class Window2 extends JFrame
 			}
 			label.setText(""); // on efface le texte
  
-                            System.out.println("Non test");
 			return component;
 		}
  

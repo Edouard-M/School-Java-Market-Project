@@ -23,7 +23,9 @@ import javax.swing.text.DateFormatter;
 public class Projet
 {
 
-    public static void main(String[] args) throws Exception
+    private static ArrayList<Product> allProducts;
+    
+    public  static void main(String[] args) throws Exception
     {
         
         
@@ -109,7 +111,6 @@ public class Projet
         
         
         addOrdersDefault();
-        System.out.println("test");
     }
 
     public static void dropAllTable()
@@ -131,21 +132,60 @@ public class Projet
     public static void addOrdersDefault()
     {
         try{
+            /*
             Order order = new Order("DefaultEmail");
-            order.setDate(createDate("02/12/2020"));
-            ArrayList<OrderedProduct> list = new ArrayList<>();
-            list.add(new OrderedProduct(order.getId(), 0, "Banane", 10, 0));
-            list.add(new OrderedProduct(order.getId(), 0, "Kiwi", 10, 0));
-            order.setArrayList(list);
+            order.setDate(createDate("02/11/2020"));
+            ArrayList<OrderedProduct> list1 = new ArrayList<>();
+            list1.add(new OrderedProduct(order.getId(), 0, "Banane", 10, 0));
+            list1.add(new OrderedProduct(order.getId(), 0, "Kiwi", 10, 0));
+            order.setArrayList(list1);
             order.insertAllOrder();
+            */
             
-            Order order2 = new Order("DefaultEmail");
-            order.setDate(createDate("03/12/2020"));
+            /*Order order2 = new Order("DefaultEmail");
+            order2.setDate(createDate("03/10/2020"));
             ArrayList<OrderedProduct> list2 = new ArrayList<>();
-            list.add(new OrderedProduct(order.getId(), 0, "Banane", 10, 0));
-            list.add(new OrderedProduct(order.getId(), 0, "Kiwi", 11, 0));
-            order.setArrayList(list);
-            order.insertAllOrder();
+            list2.add(new OrderedProduct(order2.getId(), 0, "Banane", 10, 0));
+            list2.add(new OrderedProduct(order2.getId(), 0, "Kiwi", 11, 0));
+            order2.setArrayList(list2);
+            order2.insertAllOrder();*/
+            DAO dao = new DAO();  
+            dao.getConnection();
+            allProducts = dao.selectAllProducts();
+            dao.closeConnection();
+            
+            for(int i=1 ; i<=30 ; i++)
+            {
+                int or = 0 + (int)(Math.random() * ((2 - 0) + 1));
+                if(or == 0)
+                {
+                Order ord = new Order("DefaultEmail");
+                if(i<10)
+                    ord.setDate(createDate("0" + String.valueOf(i) + "/10/2020"));
+                else
+                    ord.setDate(createDate(String.valueOf(i) + "/10/2020"));
+                
+                ord.setArrayList(aleaProduct(ord));
+                ord.insertAllOrder();
+                }
+            }
+            for(int i=1 ; i<=30 ; i++)
+            {
+                int or = 0 + (int)(Math.random() * ((2 - 0) + 1));
+                if(or == 0)
+                {
+                Order ord = new Order("DefaultEmail");
+                if(i<10)
+                    ord.setDate(createDate("0" + String.valueOf(i) + "/11/2020"));
+                else
+                    ord.setDate(createDate(String.valueOf(i) + "/11/2020"));
+                
+                ord.setArrayList(aleaProduct(ord));
+                ord.insertAllOrder();
+                }
+            }
+            
+        
             
             
         }
@@ -153,6 +193,28 @@ public class Projet
         {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public  static ArrayList<OrderedProduct> aleaProduct(Order ord)
+    {
+        ArrayList<OrderedProduct> list = new ArrayList<>();
+        int orderAmount = 0 + (int)(Math.random() * ((2 - 0) + 1));
+        
+        try{
+        
+            for(int i=0 ; i<orderAmount ; i++)
+            {
+                int productNum = 0 + (int)(Math.random() * (((allProducts.size()-1) - 0) + 1));
+                int quantity = 1 + (int)(Math.random() * (((10) - 1) + 1));
+                list.add(new OrderedProduct(ord.getId(), 0, allProducts.get(productNum).getName(), quantity, 0));
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        
+        return list;
     }
     
     public static Date createDate(String str)

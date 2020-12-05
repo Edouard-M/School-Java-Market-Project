@@ -26,7 +26,6 @@ private DAO dao;
     public boolean ConnectButton(String text1,String text2)
     {
         boolean bool=false;
-        System.out.println("OUI");
         try
         {
             

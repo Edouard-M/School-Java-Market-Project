@@ -81,7 +81,7 @@ private ManageDiscountController controller;
         jTable1.getSelectionModel().addListSelectionListener(new ManageDiscount.TableListener());
         
         columnModel = jTable1.getColumnModel();
-          columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(0).setPreferredWidth(100);
         columnModel.getColumn(1).setPreferredWidth(100);
         columnModel.getColumn(2).setPreferredWidth(220);
         columnModel.getColumn(3).setPreferredWidth(50);
@@ -91,7 +91,7 @@ private ManageDiscountController controller;
         setTableStyle(jTable1);
          jScrollPane1.setBackground(new Color(53,63,74));
         
-        jTable1.setPreferredSize(new Dimension(310, 284));
+        jTable1.setPreferredSize(new Dimension(310, 285));
         jTable1.getTableHeader().setBackground(new Color(53,63,74));
         jTable1.getTableHeader().setForeground(new Color(255,255,255));
         jTable1.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
@@ -118,7 +118,7 @@ private ManageDiscountController controller;
         setTableStyle(jTable2);
         jScrollPane2.setBackground(new Color(49,91,111));
         
-        jTable2.setPreferredSize(new Dimension(310, 294));
+        jTable2.setPreferredSize(new Dimension(310, 295));
         jTable2.getTableHeader().setBackground(new Color(49,91,111));
         jTable2.getTableHeader().setForeground(new Color(255,255,255));
         jTable2.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
@@ -202,27 +202,43 @@ private ManageDiscountController controller;
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(53, 63, 74)));
+
         jTable1.setBackground(new java.awt.Color(53, 63, 74));
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String []
             {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "null"
             }
-        ));
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setSelectionBackground(new java.awt.Color(49, 91, 111));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setShowHorizontalLines(false);
+        jTable1.setShowVerticalLines(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(610, 140, 453, 310);
+        jScrollPane1.setBounds(610, 140, 452, 310);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -336,6 +352,8 @@ private ManageDiscountController controller;
         jPanel1.add(jLabel7);
         jLabel7.setBounds(590, 560, 360, 30);
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 91, 111)));
+
         jTable2.setBackground(new java.awt.Color(49, 91, 111));
         jTable2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable2.setForeground(new java.awt.Color(255, 255, 255));
@@ -351,9 +369,23 @@ private ManageDiscountController controller;
             {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jTable2.setSelectionBackground(new java.awt.Color(53, 63, 74));
         jTable2.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTable2.setShowHorizontalLines(false);
+        jTable2.setShowVerticalLines(false);
+        jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2);

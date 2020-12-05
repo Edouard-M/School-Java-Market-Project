@@ -127,7 +127,7 @@ public class StatController
                 monthName = "June";
             break;
             case 7 :
-                monthName = "Jully";
+                monthName = "July";
             break;
             case 8 :
                 monthName = "August";

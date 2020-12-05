@@ -317,7 +317,6 @@ public class DAO
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
         String name, firstName, phone, adress, mail, password;
         int age;
-        System.out.println("ebGRQINIJBQPOFNBQJ");
         ResultSet result = statement.executeQuery();
         if (result.next())
         {   
@@ -611,7 +610,6 @@ public class DAO
                 String productName = result.getString("productName");
                 int quantity = result.getInt("quantity");
                 double unitPrice = searchProduct(productName).getPrice();
-                
                 ordProduct = new OrderedProduct(orderId, 0, productName, quantity, unitPrice);
                 list.add(ordProduct);
             }
@@ -696,7 +694,6 @@ public class DAO
                 String email = result.getString("email");
                 int orderID = result.getInt("id");
                 Date date = result.getDate("date");
-
                 order = new Order(email);
                 order.setId(orderID);
                 order.setDate(date);

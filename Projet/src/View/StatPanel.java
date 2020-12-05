@@ -37,18 +37,21 @@ import org.jfree.data.general.PieDataset;
 import org.jfree.data.xy.IntervalXYDataset;
 import org.jfree.data.xy.XYDataset;
 
-/**
- *
- * @author dwans
- */
+
 public class StatPanel extends javax.swing.JPanel
 {
     private StatController controller;
+    private int memory1;
+    private int memory2;
+    private int memory3;
     
     public StatPanel()
     {
         controller = new  StatController();
         initComponents();
+        memory1 = jComboBox2.getSelectedIndex();
+        memory2 = jComboBox3.getSelectedIndex();
+        memory3 = jComboBox4.getSelectedIndex();
         setData();
     }
     
@@ -60,15 +63,10 @@ public class StatPanel extends javax.swing.JPanel
         
         JFreeChart chart = ChartFactory.createPieChart3D("", dataset);
         
-        
-        
-        
         chart.setBackgroundPaint(new Color(54, 63, 73));
         chart.setBorderVisible(false);
         chart.setBorderPaint(new Color(54, 63, 73));
         chart.getLegend().setBackgroundPaint(new Color(54, 63, 73));
-        
-
         
         PiePlot3D plot = (PiePlot3D) chart.getPlot();
         plot.setOutlineVisible(false);
@@ -86,17 +84,7 @@ public class StatPanel extends javax.swing.JPanel
         plot.setLabelShadowPaint(new Color(53,63,74));
         plot.setLabelOutlinePaint(new Color(53,63,74));
         
-        
-
-                
-        //LegendTitle legend = new LegendTitle(plot);
-        //Font font = new Font("Segoe UI",0,12);
-        //legend.setItemFont(font);
-        //legend.setPosition(RectangleEdge.BOTTOM);
-        //legend.setItemPaint(new Color(255, 255, 255));
         chart.removeLegend();
-        //chart.addLegend(legend);
-        
         
         ChartPanel cp = new ChartPanel(chart);
         cp.setBackground(new Color(54, 63, 73));
@@ -106,7 +94,6 @@ public class StatPanel extends javax.swing.JPanel
     
     public PieDataset createPieDataset(String category)
     {
-        
         ArrayList<OrderedProduct> list = controller.getPieData(category);
        
         DefaultPieDataset dataset = new DefaultPieDataset();
@@ -121,18 +108,7 @@ public class StatPanel extends javax.swing.JPanel
         else
             panelGraph1.setVisible(false);
         
-        
-        /*
-        dataset.insertValue(0, "Banane 30%", 75);
-        dataset.insertValue(1, "Kiwi 15%", 25);
-        dataset.insertValue(2, "Pomme 20%", 35);
-        dataset.insertValue(3, "Poire 25%", 45);
-        dataset.insertValue(4, "Pêche 15%", 25);
-        */
-        
-        
         return dataset;
-        
     }
     
     
@@ -157,7 +133,6 @@ public class StatPanel extends javax.swing.JPanel
         CategoryAxis domainAxis = plot.getDomainAxis();
         ValueAxis valAxis = plot.getRangeAxis();
         
-        
         valAxis.setLabel("Sales (€)");
         valAxis.setLabelPaint(new Color(255,255,255));
         valAxis.setTickMarkPaint(new Color(255,255,255));
@@ -177,7 +152,6 @@ public class StatPanel extends javax.swing.JPanel
         
         panelGraph.add(cp, BorderLayout.CENTER);
         panelGraph.validate();
-        
     }
     
     public DefaultCategoryDataset createAreaDataset(int month1, int month2, int month3)
@@ -190,13 +164,17 @@ public class StatPanel extends javax.swing.JPanel
         String month2Name = controller.findMonth(month2);
         String month3Name = controller.findMonth(month3);
         
-        
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        
+        System.out.println("get orders");
         controller.getOrders();
         listMonth1 = controller.getAreaOrders(month1);
         listMonth2 = controller.getAreaOrders(month2);
         listMonth3 = controller.getAreaOrders(month3);
+        System.out.println("finish");
+        
+        boolean présent=false;
+        double total =0;
+        
         if(listMonth1!=null)
             for(int i=1 ; i<=30 ; i++)
             {
@@ -209,16 +187,19 @@ public class StatPanel extends javax.swing.JPanel
                     
                     if(day.equals(String.valueOf(i)))
                     {
-                        System.out.println("TOTAL PRICE DU JOUR " + i + " = " + listMonth1.get(j).totalCost());
-                        System.out.println("La date : " + listMonth1.get(j).getDate().toString());
-                        System.out.println("Order ID = " + listMonth1.get(j).getId());
-                        dataset.addValue(listMonth1.get(j).totalCost(), month1Name, ""+ String.valueOf(i));
+                        total += listMonth1.get(j).totalCost();
+                        //dataset.addValue(listMonth1.get(j).totalCost(), month1Name, ""+ String.valueOf(i));
+                        présent = true;
                     }
-                    else
-                        dataset.addValue(0, month1Name, ""+ String.valueOf(i));
                 }
+                if(présent == false)
+                    dataset.addValue(0, month1Name, ""+ String.valueOf(i));
+                else
+                    dataset.addValue(total, month1Name, ""+ String.valueOf(i));
+                présent = false;
+                total = 0;
             }
-        
+        total=0;
         if(listMonth2!=null)
             for(int i=1 ; i<=30 ; i++)
             {
@@ -231,15 +212,19 @@ public class StatPanel extends javax.swing.JPanel
                     
                     if(day.equals(String.valueOf(i)))
                     {
-                        //System.out.println("TOTAL PRICE DU JOUR " + i + " = " + listMonth1.get(j).totalCost());
-                        //System.out.println("La date : " + listMonth1.get(j).getDate().toString());
-                        dataset.addValue(listMonth2.get(j).totalCost(), month2Name, ""+ String.valueOf(i));
+                        total += listMonth2.get(j).totalCost();
+                        //dataset.addValue(listMonth2.get(j).totalCost(), month2Name, ""+ String.valueOf(i));
+                        présent = true;
                     }
-                    else
-                        dataset.addValue(0, month2Name, ""+ String.valueOf(i));
                 }
+                if(présent == false)
+                    dataset.addValue(0, month2Name, ""+ String.valueOf(i));
+                else
+                    dataset.addValue(total, month2Name, ""+ String.valueOf(i));
+                présent = false;
+                total=0;
             }
-        
+        total=0;
         if(listMonth3!=null)
             for(int i=1 ; i<=30 ; i++)
             {
@@ -252,34 +237,18 @@ public class StatPanel extends javax.swing.JPanel
                     
                     if(day.equals(String.valueOf(i)))
                     {
-                        //System.out.println("TOTAL PRICE DU JOUR " + i + " = " + listMonth1.get(j).totalCost());
-                        //System.out.println("La date : " + listMonth1.get(j).getDate().toString());
-                        dataset.addValue(listMonth3.get(j).totalCost(), month3Name, ""+ String.valueOf(i));
+                        total += listMonth3.get(j).totalCost();
+                        //dataset.addValue(listMonth3.get(j).totalCost(), month3Name, ""+ String.valueOf(i));
+                        présent = true;
                     }
-                    else
-                        dataset.addValue(0, month3Name, ""+ String.valueOf(i));
                 }
+                if(présent == false)
+                    dataset.addValue(0, month3Name, ""+ String.valueOf(i));
+                else
+                    dataset.addValue(total, month3Name, ""+ String.valueOf(i));
+                présent = false;
+                total=0;
             }
-        
-        
-        
-        
-        /*for(int i=1 ; i<=30 ; i++)
-        {
-            int nombreAleatoire = 1 + (int)(Math.random() * ((20 - 1) + 1));
-            dataset.addValue(nombreAleatoire, "Novembre", ""+ String.valueOf(i));
-        }
-        for(int i=1 ; i<=30 ; i++)
-        {
-            int nombreAleatoire = 1 + (int)(Math.random() * ((20 - 1) + 1));
-            dataset.addValue(nombreAleatoire, "Décembre", ""+ String.valueOf(i));
-        }
-        for(int i=1 ; i<=30 ; i++)
-        {
-            int nombreAleatoire = 1 + (int)(Math.random() * ((20 - 1) + 1));
-            dataset.addValue(nombreAleatoire, "Janvier", ""+ String.valueOf(i));
-        }*/
-        
         
         return dataset;
     }
@@ -300,7 +269,7 @@ public class StatPanel extends javax.swing.JPanel
     {
         panelGraph.removeAll();
         panelGraph1.removeAll();
-        buildAreaChart(12,12,12);
+        buildAreaChart(jComboBox2.getSelectedIndex()+1,jComboBox3.getSelectedIndex()+1,jComboBox4.getSelectedIndex()+1);
         buildPieChart(category);
     }
     
@@ -335,7 +304,7 @@ public class StatPanel extends javax.swing.JPanel
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Fruits");
+        jLabel2.setText("Category");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 310, 350, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -352,7 +321,8 @@ public class StatPanel extends javax.swing.JPanel
         jComboBox2.setBackground(new java.awt.Color(53, 63, 74));
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "Fabuary", "March", "April", "May", "Jun", "Jully", "August", "September", "October", "November", "December" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        jComboBox2.setSelectedIndex(9);
         jComboBox2.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -378,7 +348,8 @@ public class StatPanel extends javax.swing.JPanel
         jComboBox3.setBackground(new java.awt.Color(53, 63, 74));
         jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "Fabuary", "March", "April", "May", "Jun", "Jully", "August", "September", "October", "November", "December" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        jComboBox3.setSelectedIndex(10);
         jComboBox3.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -391,7 +362,8 @@ public class StatPanel extends javax.swing.JPanel
         jComboBox4.setBackground(new java.awt.Color(53, 63, 74));
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "Fabuary", "March", "April", "May", "Jun", "Jully", "August", "September", "October", "November", "December" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        jComboBox4.setSelectedIndex(11);
         jComboBox4.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -415,6 +387,11 @@ public class StatPanel extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jComboBox2ActionPerformed
         if (jComboBox2.getSelectedIndex() >= 0)
         {
+            if(jComboBox2.getSelectedIndex() == jComboBox3.getSelectedIndex() || jComboBox2.getSelectedIndex() == jComboBox4.getSelectedIndex())
+            {
+                jComboBox2.setSelectedIndex(memory1);
+            }
+            memory1 = jComboBox2.getSelectedIndex();
             updateArea();
         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
@@ -423,6 +400,11 @@ public class StatPanel extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jComboBox3ActionPerformed
         if (jComboBox3.getSelectedIndex() >= 0)
         {
+            if(jComboBox3.getSelectedIndex() == jComboBox2.getSelectedIndex() || jComboBox3.getSelectedIndex() == jComboBox4.getSelectedIndex())
+            {
+                jComboBox3.setSelectedIndex(memory2);
+            }
+            memory2 = jComboBox3.getSelectedIndex();
             updateArea();
         }
     }//GEN-LAST:event_jComboBox3ActionPerformed
@@ -431,6 +413,11 @@ public class StatPanel extends javax.swing.JPanel
     {//GEN-HEADEREND:event_jComboBox4ActionPerformed
         if (jComboBox4.getSelectedIndex() >= 0)
         {
+            if(jComboBox4.getSelectedIndex() == jComboBox2.getSelectedIndex() || jComboBox4.getSelectedIndex() == jComboBox3.getSelectedIndex())
+            {
+                jComboBox4.setSelectedIndex(memory3);
+            }
+            memory3 = jComboBox4.getSelectedIndex();
             updateArea();
         }
     }//GEN-LAST:event_jComboBox4ActionPerformed

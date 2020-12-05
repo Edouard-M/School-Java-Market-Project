@@ -97,7 +97,7 @@ public class CreateEmployee extends javax.swing.JPanel
         setTableStyle(jTable1);
         jScrollPane1.setBackground(new Color(49,91,111));
         
-        jTable1.setPreferredSize(new Dimension(310, 324));
+        jTable1.setPreferredSize(new Dimension(310, 325));
         jTable1.getTableHeader().setBackground(new Color(49,91,111));
         jTable1.getTableHeader().setForeground(new Color(255,255,255));
         jTable1.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
@@ -149,7 +149,7 @@ public class CreateEmployee extends javax.swing.JPanel
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -229,7 +229,7 @@ public class CreateEmployee extends javax.swing.JPanel
         jComboBox1.setBackground(new java.awt.Color(53, 63, 74));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setBorder(null);
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, -1, -1));
 
@@ -360,7 +360,7 @@ public class CreateEmployee extends javax.swing.JPanel
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fondEmployee.png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1130, 650));
 
-        jScrollPane1.setBorder(null);
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 91, 111)));
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
         jTable1.setBackground(new java.awt.Color(49, 91, 111));
@@ -369,18 +369,32 @@ public class CreateEmployee extends javax.swing.JPanel
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String []
             {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "null", "null", "null"
             }
-        ));
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setSelectionBackground(new java.awt.Color(53, 63, 74));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setShowHorizontalLines(false);
+        jTable1.setShowVerticalLines(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 350));

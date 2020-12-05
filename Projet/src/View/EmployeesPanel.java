@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
@@ -84,17 +85,18 @@ public class EmployeesPanel extends javax.swing.JPanel
         columnModel.getColumn(3).setPreferredWidth(50);
         columnModel.getColumn(4).setPreferredWidth(50);
 
-        setTableStyle(jTable1);
+        setTableStyle(jTable1, jScrollPane1, new Color(49,91,111), new Color(0,0,0));
+        //setTableStyle(jTable1);
          jScrollPane1.setBackground(new Color(49,91,111));
         
-        jTable1.setPreferredSize(new Dimension(310, 364));
+        //jTable1.setPreferredSize(new Dimension(310, 390-22));
         jTable1.getTableHeader().setBackground(new Color(49,91,111));
         jTable1.getTableHeader().setForeground(new Color(255,255,255));
         jTable1.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 14));
 
     }
 
-    public void setTableStyle(JTable tableStyle)
+    /*public void setTableStyle(JTable tableStyle)
     {
         tableHeader = tableStyle.getTableHeader();
         tableHeader.setOpaque(true);
@@ -109,6 +111,33 @@ public class EmployeesPanel extends javax.swing.JPanel
         tableStyle.setFont(new Font("Sergeo UI", Font.PLAIN, 12));
 
         tableHeader.setBorder(border3);
+    }*/
+    
+    public void setTableStyle(JTable tableStyle, JScrollPane scrollStyle, Color colorFond, Color colorHeader)
+    {
+        TableColumnModel cartColumnModel = tableStyle.getColumnModel();
+        cartColumnModel.getColumn(0).setPreferredWidth(70);
+        cartColumnModel.getColumn(1).setPreferredWidth(100);
+        cartColumnModel.getColumn(2).setPreferredWidth(75);
+        
+        JTableHeader tableHeader=tableStyle.getTableHeader();
+        tableHeader.setOpaque(true);
+        tableHeader.setBackground(new Color(255, 255, 255));
+        tableHeader.setForeground(new Color(0, 0, 0));
+        Border lineborder = BorderFactory.createLineBorder(Color.WHITE, 1); 
+        Border border = BorderFactory.createRaisedSoftBevelBorder();
+        Border border2 = BorderFactory.createBevelBorder(1, new Color(235,235,235), new Color(255,255,255));
+        Border border3 = BorderFactory.createEtchedBorder(new Color(235,235,235), new Color(255,255,255));
+        tableHeader.setFont(new Font("Sergoe UI", Font.PLAIN, 12));
+        tableStyle.setFont(new Font("Sergeo UI", Font.PLAIN, 12));
+        tableHeader.setBorder(border3);
+        tableStyle.getTableHeader().setBackground(colorHeader);
+        //tableStyle.getTableHeader().setBackground(new Color(23,35,55));
+        tableStyle.getTableHeader().setForeground(new Color(255,255,255));
+        tableStyle.getTableHeader().setFont(new Font("Sergoe UI", Font.PLAIN, 12));
+        
+        tableStyle.setPreferredSize(new Dimension(310, 387-22));
+        scrollStyle.setBackground(colorFond);
     }
 
     public class TableListener implements ListSelectionListener
@@ -320,24 +349,37 @@ public class EmployeesPanel extends javax.swing.JPanel
         jLabel3.setText("Create A New Product ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 260, 30));
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 91, 111)));
+
         jTable1.setBackground(new java.awt.Color(49, 91, 111));
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String []
             {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "null", "null"
             }
-        ));
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setSelectionBackground(new java.awt.Color(53, 63, 74));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setShowHorizontalLines(false);
+        jTable1.setShowVerticalLines(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 450, 390));
@@ -521,7 +563,7 @@ public class EmployeesPanel extends javax.swing.JPanel
         add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 160, 20));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fondEmployee.png"))); // NOI18N
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1130, 660));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -10, 1130, 660));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel3MouseMoved(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel3MouseMoved
