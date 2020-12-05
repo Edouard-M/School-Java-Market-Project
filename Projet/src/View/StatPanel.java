@@ -52,7 +52,7 @@ public class StatPanel extends javax.swing.JPanel
         memory1 = jComboBox2.getSelectedIndex();
         memory2 = jComboBox3.getSelectedIndex();
         memory3 = jComboBox4.getSelectedIndex();
-        setData();
+        set();
     }
     
 
@@ -279,6 +279,13 @@ public class StatPanel extends javax.swing.JPanel
         if(categories!=null)
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(categories));
         update((String) jComboBox1.getItemAt(0));
+    }
+    
+    public void set()
+    {
+        String[] categories = controller.getCategories();
+        if(categories!=null)
+            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(categories));
     }
 
    
