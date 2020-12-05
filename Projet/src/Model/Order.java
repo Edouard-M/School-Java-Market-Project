@@ -92,6 +92,24 @@ public class Order
             System.out.println(e.getMessage());
         }
     }
+    public void insertAllOrder()
+    {
+        try
+        {
+            dao.getConnection();
+            dao.query("INSERT INTO Orders ( id, email, date) VALUES ('" + id + "', '" + email + "','" + date + "')");
+            dao.closeConnection();
+            dao.getConnection();
+            for(int i=0 ; i < orderedProducts.size() ; i++)
+            {
+                orderedProducts.get(i).insertQuery(dao);
+            }
+            dao.closeConnection();
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public void addOrderedProduct(OrderedProduct orderedProduct) throws Exception
     {

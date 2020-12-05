@@ -75,6 +75,16 @@ public class OrderedProduct
             System.out.println(e);
         }
     }
+    public void insertQuery(DAO daos) throws Exception
+    {
+        try
+        {
+            daos.query("INSERT INTO OrderedProduct ( orderID, productName, quantity) VALUES ('" + orderID + "', '" + productName + "', '" + quantity + "')");
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
 
     public String getProductName()
     {

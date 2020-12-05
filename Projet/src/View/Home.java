@@ -12,33 +12,22 @@ import Model.Order;
 import Model.OrderedProduct;
 import Model.Product;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Rectangle;
-import static java.awt.SystemColor.window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.font.TextAttribute;
-import java.net.URL;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
-import java.sql.Date;
 import java.util.Map;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 /**
  *
  * @author Edoua
@@ -2142,7 +2131,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         } catch (Exception ex)
         {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
@@ -2195,7 +2184,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             researchUpdate(jTextField1.getText());
         } catch (Exception ex)
         {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }   
     }//GEN-LAST:event_jLabel2MousePressed
 
@@ -2217,7 +2206,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             researchUpdate(jTextField1.getText());// TODO add your handling code here:
         } catch (Exception ex)
         {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_jLabel3MousePressed
 
@@ -2239,7 +2228,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
             researchUpdate(jTextField1.getText());// TODO add your handling code here:
         } catch (Exception ex)
         {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MousePressed
 
@@ -2261,18 +2250,18 @@ public class Home extends javax.swing.JPanel implements ActionListener
             researchUpdate(jTextField1.getText());// TODO add your handling code here:
         } catch (Exception ex)
         {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MousePressed
 
     private void jLabel5MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MousePressed
     {//GEN-HEADEREND:event_jLabel5MousePressed
-           if (onlydiscount == false)
+        if (onlydiscount == false)
             try
             {
+                onlydiscount = true;
                 jPanel5.setBackground(new Color(23, 35, 55));
                 discountUpdate();
-                onlydiscount = true;
                 Font font = jLabel5.getFont();
                 Map attributes = font.getAttributes();
                 attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
@@ -2283,17 +2272,19 @@ public class Home extends javax.swing.JPanel implements ActionListener
                 jLabel7.setFont(font.deriveFont(attributes));
             } catch (Exception ex)
             {
-                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getMessage());
             }
         else
             try
             {
-                jPanel5.setBackground(new Color(113, 168, 255));
                 onlydiscount = false;
-                updateTable();
-            } catch (Exception ex)
+                selectedCategroy = "all";
+                researchUpdate("");
+                jPanel5.setBackground(new Color(113, 168, 255));
+                //updateTable();
+            } catch (Exception e)
             {
-                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(e.getMessage());
             } // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MousePressed
 

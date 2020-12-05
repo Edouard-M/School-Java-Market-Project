@@ -636,6 +636,8 @@ public class FrameEmployee extends javax.swing.JFrame
             panel5.setVisible(false);
             panel6.setVisible(true);
             
+            panel6.setData();
+            
         }  // TODO add your handling code here:
     }//GEN-LAST:event_button6MousePressed
 

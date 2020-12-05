@@ -6,8 +6,14 @@ import View.Window2;
 import View.MyFrame;
 import java.net.PasswordAuthentication;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Properties;
+import javax.swing.text.DateFormatter;
 //import javax.mail.*;
 
 /**
@@ -19,6 +25,8 @@ public class Projet
 
     public static void main(String[] args) throws Exception
     {
+        
+        
         DAO dao = new DAO();
         dropAllTable();
         dao.getConnection();
@@ -95,6 +103,13 @@ public class Projet
         //banane5.addDiscount(12, 20);
 
        // Order order1 = new Order("marc.damp@gmail.com");
+        
+        
+        
+        
+        
+        
+        addOrdersDefault();
         System.out.println("test");
     }
 
@@ -110,6 +125,53 @@ public class Projet
         dao.query("DROP TABLE Orders");
         dao.closeConnection();
         System.out.println("All Table Droped");
+    }
+    
+    
+    
+    public static void addOrdersDefault()
+    {
+        try{
+            Order order = new Order("DefaultEmail");
+            order.setDate(createDate("02/12/2020"));
+            ArrayList<OrderedProduct> list = new ArrayList<>();
+            list.add(new OrderedProduct(order.getId(), 0, "Banane", 10, 0));
+            list.add(new OrderedProduct(order.getId(), 0, "Kiwi", 10, 0));
+            order.setArrayList(list);
+            order.insertAllOrder();
+            
+            Order order2 = new Order("DefaultEmail");
+            order.setDate(createDate("03/12/2020"));
+            ArrayList<OrderedProduct> list2 = new ArrayList<>();
+            list.add(new OrderedProduct(order.getId(), 0, "Banane", 10, 0));
+            list.add(new OrderedProduct(order.getId(), 0, "Kiwi", 11, 0));
+            order.setArrayList(list);
+            order.insertAllOrder();
+            
+            
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static Date createDate(String str)
+    {
+        java.util.Date date = null;
+        try
+        {
+            date = new SimpleDateFormat("dd/MM/yyyy").parse(str);
+        } 
+        catch (ParseException e)
+        {
+            System.out.println("Error date");
+            System.out.println(e.getMessage());
+        }
+        
+        Date dateSQL = new java.sql.Date(date.getTime()); 
+        
+        return dateSQL;
     }
 
 }

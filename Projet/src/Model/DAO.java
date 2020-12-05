@@ -625,5 +625,93 @@ public class DAO
     }
     
     
+    public ArrayList<String> getCategories()
+    {
+        ArrayList<String> list = new ArrayList<>();
+        boolean duplicate = false;
+        
+        try{
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Product");
+            ResultSet result = statement.executeQuery();
+            
+            while(result.next())
+            {
+                String category = result.getString("category");
+                for(int i=0 ; i < list.size() ; i++)
+                {
+                    if(category.equals(list.get(i)))
+                        duplicate = true;
+                }
+                if(duplicate == false)
+                    list.add(category);
+                duplicate = false;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    public ArrayList<OrderedProduct> getAllOrderedProducts()
+    {
+        ArrayList<OrderedProduct> list = new ArrayList<>();
+        OrderedProduct product;
+        
+        try{
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM OrderedProduct");
+            ResultSet result = statement.executeQuery();
+            
+            while(result.next())
+            {
+                int orderID = result.getInt("orderID");
+                int id =result.getInt("id");
+                String productName = result.getString("productName");
+                int quantity =result.getInt("quantity");
+
+                product = new OrderedProduct(orderID, id, productName, quantity, 0);
+                list.add(product);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    
+    public ArrayList<Order> getOrders()
+    {
+        ArrayList<Order> list = new ArrayList<>();
+        Order order;
+        
+        try{
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Orders");
+            ResultSet result = statement.executeQuery();
+            
+            while(result.next())
+            {
+                String email = result.getString("email");
+                int orderID = result.getInt("id");
+                Date date = result.getDate("date");
+
+                order = new Order(email);
+                order.setId(orderID);
+                order.setDate(date);
+                order.setArrayList(this.getOrderedProducts(orderID));
+                list.add(order);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    
+    
 
 }
