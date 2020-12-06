@@ -1118,7 +1118,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel21D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21D.setText("jLabel2");
         jPanel21.add(jLabel21D);
-        jLabel21D.setBounds(170, 60, 240, 50);
+        jLabel21D.setBounds(170, 60, 250, 50);
 
         discountTriangle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel21.add(discountTriangle1);
@@ -1209,7 +1209,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel22D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22D.setText("jLabel2");
         jPanel22.add(jLabel22D);
-        jLabel22D.setBounds(170, 60, 240, 50);
+        jLabel22D.setBounds(170, 60, 250, 50);
 
         discountTriangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel22.add(discountTriangle2);
@@ -1299,7 +1299,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel23D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23D.setText("jLabel2");
         jPanel23.add(jLabel23D);
-        jLabel23D.setBounds(170, 66, 240, 50);
+        jLabel23D.setBounds(170, 66, 250, 50);
 
         discountTriangle3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel23.add(discountTriangle3);
@@ -1389,7 +1389,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel24D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24D.setText("jLabel2");
         jPanel24.add(jLabel24D);
-        jLabel24D.setBounds(170, 60, 240, 50);
+        jLabel24D.setBounds(170, 60, 250, 50);
 
         discountTriangle4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel24.add(discountTriangle4);
@@ -1479,7 +1479,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel25D.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25D.setText("jLabel2");
         jPanel25.add(jLabel25D);
-        jLabel25D.setBounds(170, 60, 240, 50);
+        jLabel25D.setBounds(170, 60, 250, 50);
 
         discountTriangle5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/D2.png"))); // NOI18N
         jPanel25.add(discountTriangle5);

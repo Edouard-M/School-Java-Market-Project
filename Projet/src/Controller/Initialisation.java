@@ -33,54 +33,48 @@ public class Initialisation
     
     public void testDB() throws Exception
     {
-        Product banane = new Product("banane", "fresh", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
+        Product banane = new Product("biere volkan", "alcohol", "<html>seigle grillé et miel léger<br> une palette savoureuse 5%</html>", 3.9, 226, null, "biere.png");
         banane.insertProduct();
-        Product banane2 = new Product("orange", "alcohol", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
+        Product banane2 = new Product("tsipouro", "alcohol", "<html>le tsipouro sans anis Apostolaki<br> est sans doute le plus connu.40%<html>", 21.90, 33, null, "tsipouro.png");
         banane2.insertProduct();
-        Product banane3 = new Product("poire", "grocery", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
+        Product banane3 = new Product("mastic tears", "alcohol", "<html>version classique de la liqueur <br>de mastika traditionelles 47%</html>", 19.90, 52, null, "mastictears.png");
         banane3.insertProduct();
-        Product banane4 = new Product("peche", "alcohol", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
+        Product banane4 = new Product("ouzo", "alcohol", "<html>La véritable âme de la Grèce,<br> c est L ouzo le plus ivre du monde</html>", 16.00, 44, null, "ouzo.png");
         banane4.insertProduct();
-        Product banane5 = new Product("pomme", "fresh", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.png");
+        Product banane5 = new Product("vin Blanc Assyrtiko", "alcohol", "<html>Canava du domaine de<br> Tselepos santorin 13.5%</html>", 38.00, 50, null, "vinblanc.png");
         banane5.insertProduct();
-        /*Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane6 = new Product("huile extra vierge", "grocery", "Lucius l excellence de l huile grec 5L", 24.00, 32, null, "huile.png");
         banane6.insertProduct();
-         Product banane7 = new Product("Banane6", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane7 = new Product("miel de fleurs", "grocery", "Le miel de fleurs sauvages en coffret cadeau", 12.2, 40, null, "miel.png");
         banane7.insertProduct();
-        Product banane8 = new Product("Banane7", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane8 = new Product("loukoumi", "grocery", "Variété de loukoumia greques aromatisée", 3.90, 54, null, "loukoumi.png");
         banane8.insertProduct();
-        Product banane9 = new Product("Banane8", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane9 = new Product("riz dolmadakia", "grocery", "<html>Dolmadakia avec des feuilles de vigne,<br> farcie de riz<html>", 4.29, 92, null, "dolma.png");
         banane9.insertProduct();
-        Product banane10 = new Product("Banane9", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
-        banane10.insertProduct();
-        Product banane1 = new Product("Banane10", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
-        banane1.insertProduct();
-        Product banane12 = new Product("Banane11", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane12 = new Product("capres", "grocery", "<html>Câpres sauvages du sol <br>volcanique anhydre de Santorin<html>", 5.39, 127, null, "capres.png");
         banane12.insertProduct();
-         Product banane13 = new Product("Banane12", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane10 = new Product("kefir olympus", "fresh", "yaourt grec 1% au kéfir.", 4.25, 42, null, "kefir.png");
+        banane10.insertProduct();
+        Product banane11 = new Product("moussaka", "fresh", "<html>la moussaka est un plat riche <br>et traditionnellement grec.</html>", 6.50, 22, null, "moussaka.png");
+        banane11.insertProduct();
+        Product banane13 = new Product("soutzouki", "fresh", "<html>Le délicieux soutzouki, <br>prêt à être coupé en tranches et dégusté.<html>", 9.99,67 , null, "soutzouki.png");
         banane13.insertProduct();
-        Product banane14 = new Product("Banane13", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane14 = new Product("feta", "fresh", "La feta grecque AOP de 400g!", 5.50, 34, null, "feta.png");
         banane14.insertProduct();
-        Product banane15 = new Product("Banane14", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
+        Product banane15 = new Product("pastrami", "fresh", "<html>Le pastrami exquis coupé en tranches<br>et prêt à être apprécié!</html>", 7.99, 52, null, "pastrami.png");
         banane15.insertProduct();
-        Product banane16 = new Product("Banane15", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
-        banane16.insertProduct();
-        Product banane17 = new Product("Banane16", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
-        banane17.insertProduct();
-        Product banane18 = new Product("Banane17", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "BananeImg.jpg");
-        banane18.insertProduct();*/
-        //Product banane4 = new Product("Banane3", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
-        //Product banane5 = new Product("Banane4", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
-        //Product banane6 = new Product("Banane5", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
-        //Product banane7 = new Product("Banane6", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
-        //Product banane8 = new Product("Banane7", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
-        //Product banane9 = new Product("Banane8", "Fruit", "Une banane de 22cm !", 2.50, 45, null, "image");
-        Product kiwi = new Product("Kiwi", "grocery", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.png");
-        kiwi.insertProduct();
-        //Product kiwi2 = new Product("Kiwi2", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
-        //kiwi2.insertProduct();
-        //Product kiwi3 = new Product("Kiwi3", "Fruit", "Un bon gros Kiwi !", 3.99, 35, null, "KiwiImg.jpg");
-        //kiwi3.insertProduct();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         Customer Marc = new Customer("Marc", "Dampierre", 23, "0640787637", " 6 rue jean mermoz rueil-malmaison 92500", "", "");
         Marc.insertCustomer();
         Employee Fred = new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "", "");
@@ -88,7 +82,7 @@ public class Initialisation
         Employee admin = new Employee("Fredo", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "admin@gmail.com", "ADMIN");
         admin.insertEmployee();
         //Discount DiscountBanane = new Discount("Banane", 10, 9);
-        kiwi.addDiscount(10, 25);
+        //kiwi.addDiscount(10, 25);
         //banane5.addDiscount(12, 20);
 
        // Order order1 = new Order("marc.damp@gmail.com");
