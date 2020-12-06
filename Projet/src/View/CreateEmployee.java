@@ -12,8 +12,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -563,7 +561,7 @@ public class CreateEmployee extends javax.swing.JPanel
             }// TODO add your handling code here:
         } catch (Exception ex)
         {
-            Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_jLabel14MousePressed
 

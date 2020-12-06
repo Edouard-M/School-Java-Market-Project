@@ -64,9 +64,10 @@ public class Initialisation
         Product banane15 = new Product("pastrami", "fresh", "<html>Le pastrami exquis coupé en tranches<br>et prêt à être apprécié!</html>", 7.99, 52, null, "pastrami.png");
         banane15.insertProduct();
         
-        
-        
-        
+        banane14.addDiscount(10, 45);
+        banane.addDiscount(6, 20);
+        banane7.addDiscount(4, 35);
+        banane3.addDiscount(3, 50);
         
         
         

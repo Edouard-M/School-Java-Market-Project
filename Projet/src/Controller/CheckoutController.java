@@ -8,11 +8,6 @@ package Controller;
 import Model.Customer;
 import Model.DAO;
 import Model.Order;
-import Model.OrderedProduct;
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

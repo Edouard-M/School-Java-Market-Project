@@ -35,6 +35,7 @@ public class FrameEmployee extends javax.swing.JFrame
      */
     public FrameEmployee()
     {
+        setTitle("Wondershop Employee");
         initComponents();
         setVisible(true);
         

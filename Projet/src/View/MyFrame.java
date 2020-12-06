@@ -9,8 +9,6 @@ import Model.Customer;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -34,6 +32,7 @@ public class MyFrame extends javax.swing.JFrame
     
     public MyFrame() throws Exception
     {
+        setTitle("Wondershop");
         initComponents();
         setVisible(true);
         
@@ -620,7 +619,7 @@ public class MyFrame extends javax.swing.JFrame
                     new MyFrame().setVisible(true);
                 } catch (Exception ex)
                 {
-                    Logger.getLogger(MyFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
                 }
             }
         });

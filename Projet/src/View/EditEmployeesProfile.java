@@ -8,8 +8,6 @@ package View;
 import Controller.EditEmpController;
 import Model.Employee;
 import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 

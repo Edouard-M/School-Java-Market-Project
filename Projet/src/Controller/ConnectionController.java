@@ -7,9 +7,6 @@ package Controller;
 
 import Model.Customer;
 import Model.DAO;
-import View.MyFrame;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
