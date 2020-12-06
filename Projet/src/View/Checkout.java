@@ -29,9 +29,9 @@ import javax.swing.table.TableColumnModel;
  */
 public class Checkout extends javax.swing.JPanel
 {
-    private MyFrame myFrame;
+    private final MyFrame myFrame;
     private Order order;
-    private CheckoutController controller;
+    private final CheckoutController controller;
     /**
      * Creates new form Checkout
      */
@@ -312,7 +312,7 @@ public class Checkout extends javax.swing.JPanel
         try
         {
             Desktop.getDesktop().browse(new URI("https://www.paypal.com/signin"));
-        } catch (Exception e)
+        } catch (IOException | URISyntaxException e)
         {
             System.out.println(e.getMessage());
         }

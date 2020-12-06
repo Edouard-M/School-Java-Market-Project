@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 public class EditCustomer extends javax.swing.JPanel
 {
 private String email;
-private MyFrame eFrame;
+private final MyFrame eFrame;
     EditCustomerController controller;
     /**
      * Creates new form EditCustomer

@@ -20,13 +20,13 @@ public class FrameEmployee extends javax.swing.JFrame
 {
    private Employee employee;
     
-   private GridBagLayout layout = new GridBagLayout();
-   private EmployeesConnection panel1;
-   private EmployeesPanel panel2; 
-   private CreateEmployee panel3; 
-   private EditEmployeesProfile panel4;
-   private ManageDiscount panel5;
-   private StatPanel panel6;
+   private final GridBagLayout layout = new GridBagLayout();
+   private final EmployeesConnection panel1;
+   private final EmployeesPanel panel2; 
+   private final CreateEmployee panel3; 
+   private final EditEmployeesProfile panel4;
+   private final ManageDiscount panel5;
+   private final StatPanel panel6;
    
    
 

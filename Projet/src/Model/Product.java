@@ -1,25 +1,19 @@
 
 package Model;
-
-import Model.DAO;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 /**
  * @author Edouard MIGNIEN
  * @author Clément BOUVARD
  */
 public class Product
 {
-    private String name;
-    private String category;
-    private String description;
-    private double price;
-    private int stock;
-    private String image;
+    private final String name;
+    private final String category;
+    private final String description;
+    private final double price;
+    private final int stock;
+    private final String image;
     private Discount discount;
-    private DAO dao;
+    private final DAO dao;
     
     public Product(String Name, String Category, String Description, double Price, int Stock, Discount Discount, String Image) throws Exception
     {

@@ -3,10 +3,6 @@ package View;
 
 import Model.Customer;
 import java.awt.Color;
-import java.net.PasswordAuthentication;
-import java.util.Properties;
-//import javax.mail.Authenticator;
-//import javax.mail.Session;
 import javax.swing.ImageIcon;
 import java.util.Properties;
 import javax.mail.Message;

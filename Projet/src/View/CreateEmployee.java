@@ -7,11 +7,9 @@ package View;
 
 import Controller.EmpCreationController;
 import Model.Employee;
-import Model.Product;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -21,7 +19,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
-import jdk.nashorn.internal.ir.BreakNode;
 
 /**
  *
@@ -31,9 +28,9 @@ public class CreateEmployee extends javax.swing.JPanel
 {
     private DefaultTableModel tableModel;
     private String currentMail;
-    private FrameEmployee eFrame;
+    private final FrameEmployee eFrame;
     private Employee employee;
-    private EmpCreationController controller;
+    private final EmpCreationController controller;
     /**
      * Creates new form CreateEmployee
      */

@@ -68,6 +68,8 @@ public class Initialisation
         banane.addDiscount(6, 20);
         banane7.addDiscount(4, 35);
         banane3.addDiscount(3, 50);
+        banane11.addDiscount(4,22);
+        banane8.addDiscount(10,30);
         
         
         
@@ -76,12 +78,35 @@ public class Initialisation
         
         
         
-        Customer Marc = new Customer("Marc", "Dampierre", 23, "0640787637", " 6 rue jean mermoz rueil-malmaison 92500", "", "");
-        Marc.insertCustomer();
-        Employee Fred = new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "", "");
-        Fred.insertEmployee();
-        Employee admin = new Employee("Fredo", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "admin@gmail.com", "ADMIN");
+        Customer gaga = new Customer("Gaetan", "Bouchy", 23, "0678461259", "3 impasse des chemin rébus briis sous forges 91111", "gaetan.bouchy@edu.ece.fr", "pass123");
+        gaga.insertCustomer();
+        Customer arno = new Customer("Arnaud", "Lambert", 34, "06953342576", " 8 rue eugene sue rueil-malmaison 92500", "arnaud.lambert@edu.ece.fr", "pass123");
+        arno.insertCustomer();
+        Customer benji = new Customer("Benjamin", "Léocadio", 47, "0671345621", " 112 rue de Geneve Alfortville 94140", "benjamin.leocadio@edu.ece.fr", "pass123");
+        benji.insertCustomer();
+        Customer mathias = new Customer("Mathias", "Sericola", 63, "0645321578", " 30  boulevard Albin Durand Chalon-sur-saone 71100 ", "mathias.sericola@edu.ece.fr", "pass123");
+        mathias.insertCustomer();
+        Customer cherine = new Customer("Cherine", "Seo", 19, "0678953645", "57 avenue voltaire Malakoff 92240", "cherine.seo@edu.ece.fr", "pass123");
+        cherine.insertCustomer();
+        Customer antoine= new Customer("Antoine", "Stutzmann", 43, "0768241239", " 107  rue Pierre De Coubertin Toulouse 31100", "antoine.stutzmann@edu.ece.fr", "pass123");
+        antoine.insertCustomer();
+        
+        
+        
+        
+        Employee emp1 = new Employee("Matilda", "Dufresne", 28, "0645648423", "120  rue de Raymond Poincaré Nantes 44200", "matilda.dufresne@wondershop.com", "pass123");
+        emp1.insertEmployee();
+        Employee admin = new Employee("Fred", "Blanchard", 33, "0678964572", "3 rue des moulins maison lafittes", "admin@gmail.com", "ADMIN");
         admin.insertEmployee();
+        Employee emp2 = new Employee("Apolline", "Tremblay", 40, "0645691230", "112 rue Sadi Carnot Auch 32000", "apolline.tremblay@wondershop.com", "pass123");
+        emp2.insertEmployee();
+        Employee emp3 = new Employee("Henry", "Tougas", 24, "0796472313", "26  place Maurice-Charretier Chartres 28000", "henry.tougas@wondershop.com", "pass123");
+        emp3.insertEmployee();
+        Employee emp4 = new Employee("Clement", "Bouvard", 20, "0640787637", "38 quai de grenelle Paris 75015", "clement.bouvard@edu.ece.fr", "pass123");
+        emp4.insertEmployee();
+        Employee emp5 = new Employee("Edouard", "Mignien", 20, "0645648423", "4 avenue du général de Gaulle Poitiers 86000", "edouard.mignien@edu.ece.fr", "pass123");
+        emp5.insertEmployee();
+        
         //Discount DiscountBanane = new Discount("Banane", 10, 9);
         //kiwi.addDiscount(10, 25);
         //banane5.addDiscount(12, 20);

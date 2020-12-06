@@ -10,7 +10,6 @@ import Model.Order;
 import Model.OrderedProduct;
 import Model.Product;
 import java.util.ArrayList;
-import java.sql.Date;
 
 /**
  *
@@ -18,7 +17,7 @@ import java.sql.Date;
  */
 public class StatController
 {
-    private DAO dao;
+    private final DAO dao;
     private ArrayList<Order> allOrders;
     
     public StatController()

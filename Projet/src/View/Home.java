@@ -44,7 +44,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private DefaultTableModel cartModel;
     private DefaultTableModel tableModel;
 
-    private MyFrame myFrame;
+    private final MyFrame myFrame;
     private JPanel panel;
     //private JTable table;
     private JLabel label;
@@ -69,26 +69,26 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     private int viewRow;
 
-    private int x1;
-    private int y1;
-    private int x2;
-    private int y2;
-    private int x3;
-    private int y3;
-    private int x4;
-    private int y4;
-    private int x5;
-    private int y5;
+    private final int x1;
+    private final int y1;
+    private final int x2;
+    private final int y2;
+    private final int x3;
+    private final int y3;
+    private final int x4;
+    private final int y4;
+    private final int x5;
+    private final int y5;
 
     private Object[][] allData;
     private Object[][] dataFilter;
-    private HomeController controller;
+    private final HomeController controller;
     
-    private ImageIcon selectImage;
-    private ImageIcon resetImage;
+    private final ImageIcon selectImage;
+    private final ImageIcon resetImage;
 
-    private ImageIcon button;
-    private ImageIcon buttonClicked;
+    private final ImageIcon button;
+    private final ImageIcon buttonClicked;
     
     /**
      * Creates new form Home

@@ -14,7 +14,7 @@ import Model.DAO;
  */
 public class ConnectionController
 {
-private DAO dao;
+private final DAO dao;
     public ConnectionController()
     {
         dao = new DAO();

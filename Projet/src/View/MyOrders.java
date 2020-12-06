@@ -3,7 +3,6 @@
 package View;
 
 import Controller.MyOrdersController;
-import Model.Discount;
 import Model.Order;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,8 +22,8 @@ import javax.swing.table.TableColumnModel;
  */
 public class MyOrders extends javax.swing.JPanel
 {
-    private MyOrdersController controller;
-    private MyFrame myFrame;
+    private final MyOrdersController controller;
+    private final MyFrame myFrame;
     private Order[] orders;
     
     public MyOrders(MyFrame myFrame)

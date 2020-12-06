@@ -15,7 +15,7 @@ import Model.Order;
  */
 public class CheckoutController
 {
-    private DAO dao;
+    private final DAO dao;
     private Customer cust;
     
     public CheckoutController()

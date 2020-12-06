@@ -13,7 +13,6 @@ import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
@@ -36,7 +35,7 @@ public class EmployeesPanel extends javax.swing.JPanel
     private int quantity;
     private TableColumnModel columnModel;
     private JTableHeader tableHeader;
-    private EmpPanelController controller;
+    private final EmpPanelController controller;
 
     /**
      * Creates new form EmployeesPanel
@@ -118,7 +117,7 @@ public class EmployeesPanel extends javax.swing.JPanel
         cartColumnModel.getColumn(1).setPreferredWidth(100);
         cartColumnModel.getColumn(2).setPreferredWidth(75);
         
-        JTableHeader tableHeader=tableStyle.getTableHeader();
+        tableHeader=tableStyle.getTableHeader();
         tableHeader.setOpaque(true);
         tableHeader.setBackground(new Color(255, 255, 255));
         tableHeader.setForeground(new Color(0, 0, 0));

@@ -7,7 +7,6 @@ package View;
 
 import Controller.EditEmpController;
 import Model.Employee;
-import java.awt.Color;
 import javax.swing.ImageIcon;
 
 
@@ -18,7 +17,7 @@ import javax.swing.ImageIcon;
 public class EditEmployeesProfile extends javax.swing.JPanel
 {
     private String email;
-    private FrameEmployee eFrame;
+    private final FrameEmployee eFrame;
     public EditEmpController controller;
 
     /**

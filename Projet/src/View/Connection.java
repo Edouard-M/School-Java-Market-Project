@@ -7,13 +7,7 @@ package View;
 
 import Controller.ConnectionController;
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -25,9 +19,9 @@ public class Connection extends javax.swing.JPanel
     /**
      * Creates new form NewJPanel
      */
-    private MyFrame myframe;
+    private final MyFrame myframe;
     private boolean connected;
-    private ConnectionController connectControl;
+    private final ConnectionController connectControl;
 
     public Connection(MyFrame myFrame)
     {

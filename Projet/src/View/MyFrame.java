@@ -18,13 +18,13 @@ import javax.swing.JPanel;
 public class MyFrame extends javax.swing.JFrame
 {
    private Customer customer;
-   private GridBagLayout layout = new GridBagLayout();
-   private NewCustomer panel0; 
-   private Connection panel1; 
-   private Home panel2;
-   private EditCustomer panel3;
-   private Checkout panel4;
-   private MyOrders panel5;
+   private final GridBagLayout layout = new GridBagLayout();
+   private final NewCustomer panel0; 
+   private final Connection panel1; 
+   private final Home panel2;
+   private final EditCustomer panel3;
+   private final Checkout panel4;
+   private final MyOrders panel5;
    
    //private Test2 panel2;
     

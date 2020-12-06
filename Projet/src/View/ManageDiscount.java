@@ -7,7 +7,6 @@ package View;
 
 import Controller.ManageDiscountController;
 import Model.Discount;
-import Model.Employee;
 import Model.Product;
 import java.awt.Color;
 import java.awt.Dimension;

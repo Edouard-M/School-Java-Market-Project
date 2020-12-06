@@ -14,8 +14,8 @@ import javax.swing.ImageIcon;
 public class EmployeesConnection extends javax.swing.JPanel
 {
     private boolean connected;
-    private FrameEmployee eFrame;
-    private EmployeesConnectionController controller;
+    private final FrameEmployee eFrame;
+    private final EmployeesConnectionController controller;
     /**
      * Creates new form EmployeesConnection
      */
