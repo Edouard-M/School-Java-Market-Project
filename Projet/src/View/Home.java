@@ -48,14 +48,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
     private JPanel panel;
     //private JTable table;
     private JLabel label;
-    private ImageIcon imageIcon;
     JScrollPane scrollTable;
 
     private ImageIcon currentImageIcon;
     private String currentImage;
     private String currentName;
 
-    private final Timer timer = new Timer(1, this);
+
     private boolean onlydiscount;
     private String selectedCategroy;
     private boolean clicked;
@@ -180,10 +179,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
         viewRow = 1;
 
         order = new Order("");
-        //System.out.println("Date : " + order.getDate());
       
-
-        timer.start();
 
         panel = new JPanel();
         allProductsList = controller.searchAllProductsList();

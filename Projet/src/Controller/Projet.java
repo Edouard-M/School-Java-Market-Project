@@ -17,12 +17,12 @@ public class Projet
         Initialisation init = new Initialisation();
         
         DAO dao = new DAO();
-        init.dropAllTable();
-        dao.getConnection();
-        dao.createAllTable();
-        dao.closeConnection();
+       // init.dropAllTable();
+        //dao.getConnection();
+        //dao.createAllTable();
+        //dao.closeConnection();
 
-        init.testDB();
+       // init.testDB();
         
         MyFrame frame = new MyFrame();
         

@@ -101,7 +101,6 @@ public class NewCustomer extends javax.swing.JPanel
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         panel1 = new javax.swing.JPanel();
-        jPasswordField2 = new javax.swing.JPasswordField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -228,12 +227,6 @@ public class NewCustomer extends javax.swing.JPanel
         panel1.setMinimumSize(new java.awt.Dimension(1130, 650));
         panel1.setPreferredSize(new java.awt.Dimension(1130, 650));
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPasswordField2.setEditable(false);
-        jPasswordField2.setBackground(new java.awt.Color(62, 120, 207));
-        jPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPasswordField2.setBorder(null);
-        panel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 183, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -428,9 +421,16 @@ public class NewCustomer extends javax.swing.JPanel
             int age = jComboBox1.getSelectedIndex() + 13;
            
             Customer customer = new Customer(jTextField2.getText(), jTextField1.getText(), age, jTextField4.getText(), jTextField5.getText(), jTextField3.getText(), jPasswordField1.getText());
+            customer.insertCustomer();
             myframe.setCustomer(customer);
             myframe.connection();
             panelConnection.connect();
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jPasswordField1.setText("");
 
             sendmail(jTextField3.getText(), jTextField1.getText(), jTextField2.getText());
 //Window3 wind= new Window3();
@@ -472,7 +472,6 @@ public class NewCustomer extends javax.swing.JPanel
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
