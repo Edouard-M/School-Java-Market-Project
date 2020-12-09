@@ -74,6 +74,7 @@ public class MyFrame extends javax.swing.JFrame
     public void setCustomer(Customer customer)
     {
         this.customer=customer;
+        System.out.println("Customer set to = " + customer.getEmail());
     }
             
     public void createAccount()
@@ -108,9 +109,22 @@ public class MyFrame extends javax.swing.JFrame
     {
         resetColor();
         setColor(button2,bt2);
+        
+            
+        
+        
+        
+        
        // System.out.println("Ca bug ?");
         //System.out.println("Customer email = " + customer.getEmail());
         panel2.setNewOrder(customer.getEmail());
+        try
+        {
+            panel2.updateTable();
+        } catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
         //("Customer email = " + customer.getEmail());
         panel1.setVisible(false);
         panel0.setVisible(false);
@@ -503,6 +517,9 @@ public class MyFrame extends javax.swing.JFrame
         {
             resetColor();
             setColor(button2, bt2);
+            /// TEST
+            panel2.setNewOrder(customer.getEmail());
+            /// TEST
         
             try
             {
@@ -544,13 +561,14 @@ public class MyFrame extends javax.swing.JFrame
         {
             resetColor();
             setColor(button4, bt4);
+            panel5.update();
         
             panel1.setVisible(false);
             panel2.setVisible(false);
             panel3.setVisible(false);
             panel4.setVisible(false);
             panel5.setVisible(true);
-            panel5.buildTable();
+            //panel5.buildTable();
         }
         
     }//GEN-LAST:event_button4MousePressed

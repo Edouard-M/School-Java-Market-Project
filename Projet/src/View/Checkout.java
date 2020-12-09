@@ -111,7 +111,9 @@ public class Checkout extends javax.swing.JPanel
     
     public void setOrder(Order ord)
     {
+        
         this.order = ord;
+        System.out.println("On set le Chekout Order to " + order.getEmail());
         buildTable(jTable1);
         
         labelCost.setText(labelTotal.getText());
@@ -318,7 +320,7 @@ public class Checkout extends javax.swing.JPanel
         }
         
         
-        
+        System.out.println("On insert la order de : " + order.getEmail());
         controller.insertAllOrder(order);
         controller.updateStock(order);
         

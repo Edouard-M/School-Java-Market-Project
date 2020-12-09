@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Person;
 import Model.Customer;
 import Model.DAO;
 import Model.Order;

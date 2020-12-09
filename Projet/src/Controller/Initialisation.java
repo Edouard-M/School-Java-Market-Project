@@ -91,8 +91,10 @@ public class Initialisation
         Customer antoine= new Customer("Antoine", "Stutzmann", 43, "0768241239", " 107  rue Pierre De Coubertin Toulouse 31100", "antoine.stutzmann@edu.ece.fr", "pass123");
         antoine.insertCustomer();
         
-        
-        
+        Customer ZEG= new Customer("Antoine", "Stutzmann", 43, "0768241239", " 107  rue Pierre De Coubertin Toulouse 31100", "", "");
+        ZEG.insertCustomer();
+        Employee emp10 = new Employee("Matilda", "Dufresne", 28, "0645648423", "120  rue de Raymond Poincaré Nantes 44200", "", "");
+        emp10.insertEmployee();
         
         Employee emp1 = new Employee("Matilda", "Dufresne", 28, "0645648423", "120  rue de Raymond Poincaré Nantes 44200", "matilda.dufresne@wondershop.com", "pass123");
         emp1.insertEmployee();

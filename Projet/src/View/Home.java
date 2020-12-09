@@ -170,6 +170,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     public void setNewOrder(String email)
     {
         this.customerEmail = email;
+        System.out.println("Order HOME de " + email);
         order = new Order(email);
     }
 
@@ -236,7 +237,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
     {
         //cartTable.removeAll();
 
-        order = new Order("");
+        order = new Order(customerEmail);
         try
         {
             String[] colNames = new String[]
@@ -1678,6 +1679,13 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Checkout");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                jLabel8MousePressed(evt);
+            }
+        });
         jPanel7.add(jLabel8);
         jLabel8.setBounds(-6, -7, 160, 60);
 
@@ -2387,6 +2395,11 @@ public class Home extends javax.swing.JPanel implements ActionListener
             }
         }
     }//GEN-LAST:event_addButtonMousePressed
+
+    private void jLabel8MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel8MousePressed
+    {//GEN-HEADEREND:event_jLabel8MousePressed
+        myFrame.checkout();
+    }//GEN-LAST:event_jLabel8MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

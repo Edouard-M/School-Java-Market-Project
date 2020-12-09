@@ -46,9 +46,23 @@ public class MyOrders extends javax.swing.JPanel
         
         buildOrderTable();
         
-        
+        DefaultTableModel tableMode1 = (DefaultTableModel) jTable1.getModel();
+        tableMode1.setDataVector(new String [orders.length][3],  new String[] {"Id","Date","Cost (€)"}); 
         
     }
+    
+    public void update()
+    {
+        orders = controller.findOrders(myFrame.getCustomer().getEmail());
+        System.out.println("Order de : " + myFrame.getCustomer().getEmail());
+        
+        buildOrderTable();
+        
+        DefaultTableModel tableMode1 = (DefaultTableModel) jTable1.getModel();
+        tableMode1.setDataVector(new String [orders.length][3],  new String[] {"Id","Date","Cost (€)"});
+       
+    }
+    
     
     public void buildOrderTable()
     {

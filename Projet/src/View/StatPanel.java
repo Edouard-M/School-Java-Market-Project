@@ -7,6 +7,9 @@ import Model.OrderedProduct;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import org.jfree.chart.*;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.ValueAxis;
@@ -241,30 +244,125 @@ public class StatPanel extends javax.swing.JPanel
     
     public void updatePie(String category)
     {
-        panelGraph1.removeAll();
-        buildPieChart(category, true);
+        
+        
+        
+        
+        
+        
+        new Thread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    try
+                    {
+                        panelGraph1.setBackground(new Color(53,63,74));
+                        panelGraph1.revalidate();
+                        panelGraph1.repaint();
+                        panelGraph1.removeAll();
+                        buildPieChart(category, true);
+        
+                    }  catch (Throwable ex)
+                    {
+                        
+                    }
+                    setVisible(true);
+                }
+            }).start();
+         
     }
     
     public void updateArea()
     {
-        panelGraph.removeAll();
-        buildAreaChart(jComboBox2.getSelectedIndex()+1,jComboBox3.getSelectedIndex()+1,jComboBox4.getSelectedIndex()+1);
+        new Thread(new Runnable()
+            {
+
+                @Override
+                public void run()
+                {
+                    
+                    try
+                    {
+                        panelGraph.removeAll();
+                        buildAreaChart(jComboBox2.getSelectedIndex()+1,jComboBox3.getSelectedIndex()+1,jComboBox4.getSelectedIndex()+1);
+                    
+                    }  catch (Throwable ex)
+                    {
+                       
+                    }
+                    setVisible(true);
+                }
+            }).start();
+        
+        
+        
+        
     }
     
     public void update(String category)
     {
-        panelGraph.removeAll();
-        panelGraph1.removeAll();
-        buildAreaChart(jComboBox2.getSelectedIndex()+1,jComboBox3.getSelectedIndex()+1,jComboBox4.getSelectedIndex()+1);
-        buildPieChart(category, false);
+        
+        new Thread(new Runnable()
+            {
+
+                @Override
+                public void run()
+                {
+                    
+                    try
+                    {
+                        panelGraph.removeAll();
+                        panelGraph1.removeAll();
+                        buildAreaChart(jComboBox2.getSelectedIndex()+1,jComboBox3.getSelectedIndex()+1,jComboBox4.getSelectedIndex()+1);
+                        buildPieChart(category, false);
+                    
+                    }  catch (Throwable ex)
+                    {
+                        
+                    }
+                    setVisible(true);
+                }
+            }).start();
+        
+        
     }
     
     public void setData()
     {
-        String[] categories = controller.getCategories();
-        if(categories!=null)
-            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(categories));
-        update((String) jComboBox1.getItemAt(0));
+        
+        new Thread(new Runnable()
+            {
+
+                @Override
+                public void run()
+                {
+                    
+                    try
+                    {
+                        panelGraph.setBackground(new Color(53,63,74));
+                        panelGraph.revalidate();
+                        panelGraph.repaint();
+                        panelGraph1.setBackground(new Color(53,63,74));
+                        panelGraph1.revalidate();
+                        panelGraph1.repaint();
+                        String[] categories = controller.getCategories();
+                            if(categories!=null)
+                            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(categories));
+                                update((String) jComboBox1.getItemAt(0));
+        
+                    }  catch (Throwable ex)
+                    {
+                       
+                    }
+                    setVisible(true);
+                }
+            }).start();
+        
+        
+        
+        
+        
     }
     
     public void set()
