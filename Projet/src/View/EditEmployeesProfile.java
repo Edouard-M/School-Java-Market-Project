@@ -11,8 +11,8 @@ import javax.swing.ImageIcon;
 
 
 /**
- *
- * @author Edoua
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
 public class EditEmployeesProfile extends javax.swing.JPanel
 {

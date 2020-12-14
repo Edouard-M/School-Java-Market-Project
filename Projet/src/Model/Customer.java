@@ -11,15 +11,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- *
- * @author dwans
- */
+  * Classe Customer (un Client de l'application)
+  * Contient : - Le DAO
+  *            - des points de fidélité
+  * Extends de la classe "Person"
+  */
 public class Customer extends Person
 {
 
     private int fidelityPoint;
     private DAO dao;
 
+    // Constructeur initialisant le nom/ prénom/ age/ téléphone/ l'adresse/ l'email/ le mdp du client
     public Customer(String name, String firstName, int age, String phone, String address, String email, String password) throws Exception
     {
         super(name, firstName, age, phone, address, email, password);
@@ -28,6 +31,7 @@ public class Customer extends Person
         //insertCustomer();
     }
 
+    // Insert un client dans la BDD
     public void insertCustomer() throws Exception
     {
         try
@@ -41,6 +45,7 @@ public class Customer extends Person
         }
     }
 
+    // Getters
     public String getName()
     {
         return name;

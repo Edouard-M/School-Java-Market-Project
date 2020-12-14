@@ -11,9 +11,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- *
- * @author dwans
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
+/**
+  * Classe OrderedProduct (Classe modele, d'une produit commandé)
+  *     Utilisé pour la BDD stocker les produits liés aux commandes sans avoir à recharger les images etc.. contrairement à la classe "Produit"
+  * Contient : - le DAO
+  *            - un identifiant id (clé primaire)
+  *            - un identifiant de commande auquel le produit est lié
+  *            - un nom de produit
+  *            - une quantité de ce produit commandé
+  *            - un prix total (calcule par rapport à la quantitié)
+  *            - un prix unitaire
+  */
 public class OrderedProduct
 {
 
@@ -25,6 +36,8 @@ public class OrderedProduct
     private double unitPrice;
     private DAO dao;
 
+    
+    // Constructeur
     public OrderedProduct(int OrderID, int ID, String ProductName, int Quantity, double UnitPrice) throws Exception
     {
         dao = new DAO();
@@ -37,6 +50,7 @@ public class OrderedProduct
         //insertOrderedProduct();
     }
 
+    // Calcul du prix
     public double calculatePrice() throws Exception
     {
         dao.getConnection();
@@ -57,12 +71,14 @@ public class OrderedProduct
         return total;
     }
 
+    // Ajout d'une quantité de produit commandé
     public void addQuantity(int quantityToAdd) throws Exception
     {
         quantity += quantityToAdd;
         price = calculatePrice();
     }
 
+    // Insert du produit dans la BDD
     public void insertOrderedProduct() throws Exception
     {
         try
@@ -75,6 +91,8 @@ public class OrderedProduct
             System.out.println(e);
         }
     }
+    
+    // Insert du produit dans la BDD
     public void insertQuery(DAO daos) throws Exception
     {
         try
@@ -86,6 +104,7 @@ public class OrderedProduct
         }
     }
 
+    // Getter
     public String getProductName()
     {
         return productName;

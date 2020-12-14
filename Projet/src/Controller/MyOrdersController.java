@@ -10,17 +10,21 @@ import Model.Order;
 import java.util.ArrayList;
 
 /**
- * @author Edoua
- */
+  * Classe controller pour le Panel "MyOrders" (page permettant de visualiser toutes ses commandes)
+  * Contient : - Le DAO
+  */
 public class MyOrdersController
 {
     private DAO dao;
     
+    // Constructeur initiant le DAO
     public MyOrdersController()
     {
         dao = new DAO();
     }
     
+    // Recherche de toutes les commande du client
+    // Return tableau de commandes
     public Order[] findOrders(String email)
     {
         Order[] orders=null;

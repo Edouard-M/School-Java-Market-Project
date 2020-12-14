@@ -11,9 +11,17 @@ import java.sql.Date;
 //import sun.util.calendar.LocalGregorianCalendar.*;
 
 /**
- *
- * @author Edoua
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
+/**
+  * Classe Order (Classe modele, d'une commande)
+  * Contient : - le DAO
+  *            - un identifiant id (clé primaire)
+  *            - un email
+  *            - un total dépensé
+  *            - une liste des produits achetés
+  */
 public class Order
 {
 
@@ -25,7 +33,7 @@ public class Order
     private ArrayList<OrderedProduct> orderedProducts;
     private DAO dao;
     
-
+    // Constructeur (l'email correspondant à un client)
     public Order(String Email)
     {
         dao = new DAO();
@@ -42,21 +50,24 @@ public class Order
         //insertOrder();
     }
     
+    // Setter de l'arrayList de produits commandés
     public void setArrayList(ArrayList<OrderedProduct> list)
     {
         orderedProducts = list;
     }
     
+         // Setter de l'ID
     public void setId(int id)
     {
         this.id = id;
     }
-    
+        // Setter de la date
     public void setDate(Date date)
     {
         this.date = date;
     }
-    
+        
+           // Obtenir la date actuelle
     public Date getTodayDate()  // Methode pour obtenir la date actuelle
     {  
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
@@ -75,12 +86,14 @@ public class Order
         }
         return theDate;
     }
-    
+        
+        //Getter de date
     public Date getDate()
     {
         return date;
     }
 
+        // Insert la commande dans la BDD
     public void insertOrder()
     {
         try
@@ -94,6 +107,8 @@ public class Order
             System.out.println(e.getMessage());
         }
     }
+            
+        // Insert toutes les commandes dans la BDD
     public void insertAllOrder()
     {
         try
@@ -115,7 +130,7 @@ public class Order
     }
     
     
-
+        // Ajoute un produit commandé dans la commande en cours
     public void addOrderedProduct(OrderedProduct orderedProduct) throws Exception
     {
         boolean ordered = false;
@@ -129,6 +144,8 @@ public class Order
             orderedProducts.add(orderedProduct);
     }
 
+    
+        // Retire un prduit de la liste de commande
     public void removeOrderedProduct(String name)
     {
         for (int i = 0; i < orderedProducts.size(); i++)
@@ -136,6 +153,7 @@ public class Order
                 orderedProducts.remove(i);
     }
 
+        // Calcul le prix total de la commande
     public double totalCost()
     {
         double totalCost = 0;
@@ -148,6 +166,7 @@ public class Order
         return totalCost;
     }
     
+        // Calcul le prix total de la commande
     public double totalCostCalcul()
     {
         double totalCost = 0;
@@ -166,6 +185,7 @@ public class Order
         return totalCost;
     }
     
+        // Getters
     public double getTotal()
     {
         return total;

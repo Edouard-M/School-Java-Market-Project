@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 import Model.DAO;
@@ -10,19 +6,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author dwans
- */
+  * Classe controller pour le Panel "EmpCreationController" (Création d'un nouvel employé)
+  * Contient : - Le DAO
+  */
 public class EmpCreationController
 {
 
-    DAO dao;
+    private DAO dao;
 
+    // Constructeur initiant le DAO
     public EmpCreationController()
     {
         dao = new DAO();
     }
 
+    // Recherche des attributs de la jTable
+    // Return un tableau de ces attributs
+    // Passe par le DAO
     public String[] findColName()
     {
         String[] colNames = null;
@@ -38,6 +38,10 @@ public class EmpCreationController
         dao.closeConnection();
         return colNames;
     }
+    
+    // Recherche les données de la jTable
+    // Return un tableau à 2 dimensions de ces données
+    // Passe par le DAO
  public String[][] findData()
     {
         String[][] data = null;
@@ -52,6 +56,9 @@ public class EmpCreationController
         dao.closeConnection();
         return data;
     }
+ 
+ // Suppression d'un employé par la recherche de son email (clé primaire)
+ // Appel le DAO
  public void deleteEmp(String mail)
  {
      dao.getConnection();

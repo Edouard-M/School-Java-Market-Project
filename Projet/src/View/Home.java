@@ -29,8 +29,8 @@ import javax.swing.table.TableColumnModel;
 import java.util.Map;
 
 /**
- *
- * @author Edoua
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
 public class Home extends javax.swing.JPanel implements ActionListener
 {
@@ -1852,6 +1852,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
         if (order.getOrderedProducts().size() > 0 && cartTable.getSelectedRow() >= 0)
         {
+            int test = viewRow;
+            
             viewRow = cartTable.getSelectedRow();
             currentName = (String) cartTable.getValueAt(viewRow, 1);
             order.removeOrderedProduct(currentName);
@@ -1888,6 +1890,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
             {
                 System.out.println(e.getMessage());
             }
+            
+            viewRow = test;
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed

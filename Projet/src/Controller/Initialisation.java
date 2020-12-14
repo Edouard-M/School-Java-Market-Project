@@ -17,20 +17,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- *
- * @author Edoua
- */
+  * Classe d'Initialisation
+  * Détruit et réinitialise la Base De données
+  * Permet de générer aléatoirement des commandes (pour les graphes jolis)
+  */
 public class Initialisation
 {
     private static ArrayList<Product> allProducts;
     
+    // Constructeur 
     public Initialisation()
     {
-        
-        
-        
     }
     
+    // Remplissage de le BDD
     public void testDB() throws Exception
     {
         Product banane = new Product("biere volkan", "alcohol", "<html>seigle grillé et miel léger<br> une palette savoureuse 5%</html>", 3.9, 226, null, "biere.png");
@@ -91,10 +91,10 @@ public class Initialisation
         Customer antoine= new Customer("Antoine", "Stutzmann", 43, "0768241239", " 107  rue Pierre De Coubertin Toulouse 31100", "antoine.stutzmann@edu.ece.fr", "pass123");
         antoine.insertCustomer();
         
-        Customer ZEG= new Customer("Antoine", "Stutzmann", 43, "0768241239", " 107  rue Pierre De Coubertin Toulouse 31100", "", "");
-        ZEG.insertCustomer();
-        Employee emp10 = new Employee("Matilda", "Dufresne", 28, "0645648423", "120  rue de Raymond Poincaré Nantes 44200", "", "");
-        emp10.insertEmployee();
+        //Customer vide= new Customer("Antoine", "Stutzmann", 43, "0768241239", " 107  rue Pierre De Coubertin Toulouse 31100", "", "");
+        //vide.insertCustomer();
+        Employee empVide = new Employee("Matilda", "Dufresne", 28, "0645648423", "120  rue de Raymond Poincaré Nantes 44200", "", "");
+        empVide.insertEmployee();
         
         Employee emp1 = new Employee("Matilda", "Dufresne", 28, "0645648423", "120  rue de Raymond Poincaré Nantes 44200", "matilda.dufresne@wondershop.com", "pass123");
         emp1.insertEmployee();
@@ -123,6 +123,7 @@ public class Initialisation
         addOrdersDefault();
     }
 
+    // SUppression de la BDD
     public void dropAllTable()
     {
         DAO dao = new DAO();

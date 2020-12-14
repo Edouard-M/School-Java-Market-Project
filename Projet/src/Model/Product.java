@@ -1,9 +1,22 @@
 
 package Model;
+
 /**
  * @author Edouard MIGNIEN
  * @author Clément BOUVARD
  */
+/**
+  * Classe product (Classe modele, d'une Persone)
+  *
+  * Contient : - un nom
+  *            - une catégorie
+  *            - une description
+  *            - un prix
+  *            - un stock
+  *            - une image (string du nom de l'image dans le dossier)
+  *            - une réduction
+  *            - le DAO
+  */
 public class Product
 {
     private final String name;
@@ -15,6 +28,7 @@ public class Product
     private Discount discount;
     private final DAO dao;
     
+        // Constructeur
     public Product(String Name, String Category, String Description, double Price, int Stock, Discount Discount, String Image) throws Exception
     {
         dao= new DAO();
@@ -27,12 +41,14 @@ public class Product
         image = Image;
     }
     
+        // Ajout d'une réduction liée au Produit
     public void addDiscount(int discountQuantity, double discountPrice) throws Exception
     {
         discount = new Discount(name, discountQuantity, discountPrice);
         discount.insertDiscount();
     }
     
+        // Insert du produit dans la BDD
     public void insertProduct() throws Exception
     {
         try{
@@ -43,7 +59,7 @@ public class Product
         catch(Exception e){System.out.println(e);}
     }
     
-    
+    // Getters
     
     public String getName()
     {

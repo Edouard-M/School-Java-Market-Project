@@ -8,8 +8,8 @@ package View;
 import Controller.EmployeesConnectionController;
 import javax.swing.ImageIcon;
 /**
- *
- * @author Edoua
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
 public class EmployeesConnection extends javax.swing.JPanel
 {

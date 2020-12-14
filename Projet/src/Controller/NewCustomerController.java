@@ -12,8 +12,9 @@ import Model.DAO;
  */
 public class NewCustomerController
 {
-    public DAO dao;
+    private DAO dao;
     
+    // Constructeur initiant le DAO
     public NewCustomerController()
     {
         dao = new DAO();

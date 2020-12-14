@@ -11,8 +11,8 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author dwans
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
 public class EditCustomer extends javax.swing.JPanel
 {

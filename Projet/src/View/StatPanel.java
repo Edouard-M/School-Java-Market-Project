@@ -21,6 +21,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
+/**
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
+ */
 
 public class StatPanel extends javax.swing.JPanel
 {

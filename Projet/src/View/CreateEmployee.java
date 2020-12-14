@@ -21,8 +21,8 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 
 /**
- *
- * @author dwans
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
 public class CreateEmployee extends javax.swing.JPanel
 {

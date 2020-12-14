@@ -18,6 +18,16 @@ import java.util.ArrayList;
  * @author Edouard MIGNIEN
  * @author Clément BOUVARD
  */
+/**
+ *  BASE DE DONNEES HEBERGEE EN LIGNE VIA  "AWS"
+ * 
+  * Classe DAO (gérant toutes les informations et recherches de la BDD)
+  * Contient : - driver de connexion
+  *            - l'url de connexion
+  *            - le nom de l'utilisateur
+  *            - le mot de passe de connexion à la BDD
+  *            - la connexion "con"
+  */
 public class DAO
 {
     private final String driver = "com.mysql.cj.jdbc.Driver";
@@ -27,7 +37,7 @@ public class DAO
     private  Connection con;
 
 
-
+       // Ouverture de Connexion à la BDD
     public void getConnection()
     {
         try
@@ -42,6 +52,8 @@ public class DAO
         }
 
     }
+    
+       // Fermeture de Connexion à la BDD
     public void closeConnection() 
     {
         try
@@ -57,6 +69,7 @@ public class DAO
 
     }
 
+       // Query d'update à envoyé à la BDD
     public  PreparedStatement query(String query)
     {
         try
@@ -73,6 +86,7 @@ public class DAO
         return null;
     }
 
+        // Création / Initialosation des Tables de la BDD
     public  void createAllTable() throws Exception
     {
         try
@@ -97,7 +111,10 @@ public class DAO
             System.out.println(e);
         }
     }
-
+    
+        // Recherche d'un produit par sa clé primaire "son nom"
+       // Return le Produit en question
+       // Sinon return NULL
     public Product searchProduct(String search) throws Exception
     {
         String name, category, description, image;
@@ -120,24 +137,32 @@ public class DAO
         } else
             return null;
     }
+    
+        // Suppression d'un Produit
     public void productDelete(String name) throws Exception
     {
         
         PreparedStatement statement = con.prepareStatement("DELETE FROM Product WHERE name = '" +name+ "'");
          statement.executeUpdate();
     }
+    
+        // Suppression d'une réduction
     public  void discountDelete(String name) throws Exception
     {
         
         PreparedStatement statement = con.prepareStatement("DELETE FROM Discount WHERE name = '" +name+ "'");
          statement.executeUpdate();
     }
+    
+      // Suppression d'un employé
     public void employeeDelete(String email) throws Exception
     {
        
         PreparedStatement statement = con.prepareStatement("DELETE FROM Employee WHERE email = '" +email+ "'");
          statement.executeUpdate();
     }
+    
+        // Diminution du Stock d'un Produit
      public  void productAddStock(String name,int addToStock) throws Exception
     {
         int stock;
@@ -153,6 +178,7 @@ public class DAO
         statement.executeUpdate();
         }
     }
+        // Recherche d'une réduction en particulier (par le nom du produit en question)
     public Discount searchDiscount(String search) throws Exception
     {
         String name = "";
@@ -175,6 +201,7 @@ public class DAO
             return null;
     }
 
+        // Recherche si un Client existe
     public boolean searchCustomer(String enteredemail, String enteredpassword) throws Exception
     {
         
@@ -191,6 +218,7 @@ public class DAO
             return false;
     }
 
+            // recherche si un employee existe
     public  boolean searchEmployee(String enteredemail, String enteredpassword) throws Exception
     {
         
@@ -205,6 +233,7 @@ public class DAO
             return false;
     }
     
+            // recherche d'un employé en question
     public Employee getEmployee(String email) throws Exception
     {
        
@@ -226,6 +255,7 @@ public class DAO
         return null;
     }
 
+            // recherche du nom d'un employé
     public  String getEmployeeName(String email) throws Exception
     {
         
@@ -239,6 +269,7 @@ public class DAO
         return "";
     }
 
+            // recherche du prénom d'un employé
     public String getEmployeeFirstName(String email) throws Exception
     {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
@@ -251,6 +282,7 @@ public class DAO
         return "";
     }
 
+            // recherche de l'adresse d'un employé
     public String getEmployeeAddress(String email) throws Exception
     {
         
@@ -264,6 +296,7 @@ public class DAO
         return "";
     }
 
+        // recherche du téléphone d'un employé
     public String getEmployeePhone(String email) throws Exception
     {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Employee WHERE email = '" + email + "'");
@@ -276,6 +309,7 @@ public class DAO
         return "";
     }
 
+            // recherche du mdp d'un employé
     public String getEmployeePassword(String email) throws Exception
     {
 
@@ -289,6 +323,7 @@ public class DAO
         return "";
     }
 
+        // recherche de l'age d'un employé
     public int getEmployeeAge(String email) throws Exception
     {
         
@@ -301,6 +336,7 @@ public class DAO
         }
         return 0;
     }
+        // Update du compte de l'employé
     public void EditEmployee(String email,String firstname, String name,String address,String phone,int age,String password) throws Exception
     {
         PreparedStatement statement;
@@ -311,7 +347,7 @@ public class DAO
     }
     
     
-    
+        // Recherche d'un client par sa clée primaire
      public Customer getCustomer(String email) throws Exception
     {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
@@ -331,6 +367,8 @@ public class DAO
         }
         return null;
     }
+     
+        // recherche du nom d'un client
     public String getCustomerName(String email) throws Exception
     {
 
@@ -344,6 +382,7 @@ public class DAO
         return "";
     }
 
+            // recherche du prénom d'un client
     public String getCustomerFirstName(String email) throws Exception
     {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
@@ -356,6 +395,7 @@ public class DAO
         return "";
     }
 
+        // recherche de l'adresse d'un client
     public String getCustomerAddress(String email) throws Exception
     {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
@@ -368,6 +408,7 @@ public class DAO
         return "";
     }
 
+            // recherche du téléphone d'un client
     public String getCustomerPhone(String email) throws Exception
     {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
@@ -380,6 +421,7 @@ public class DAO
         return "";
     }
 
+            // recherche du mdp d'un client
     public String getCustomPassword(String email) throws Exception
     {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
@@ -392,6 +434,7 @@ public class DAO
         return "";
     }
 
+            // recherche de l'age d'un client
     public int getCustomerAge(String email) throws Exception
     {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM Customer WHERE email = '" + email + "'");
@@ -403,6 +446,8 @@ public class DAO
         }
         return 0;
     }
+    
+            // Update des inforamtions d'un client
     public void EditCustomerdata(String email,String firstname, String name,String address,String phone,int age,String password) throws Exception
     {
         PreparedStatement statement;
@@ -411,6 +456,8 @@ public class DAO
         statement = con.prepareStatement("UPDATE Customer SET firstname = '"+firstname+"' ,name='"+name+"', address = '"+address+"', phone = '"+phone+"', age= "+age+" ,password = '"+password+"' WHERE email = '"+email+"'");
         statement.executeUpdate();
     }
+    
+            // Recherche de tous les produits
     public ArrayList<Product> selectAllProducts() throws Exception
     {
         try
@@ -435,6 +482,7 @@ public class DAO
         }
         return null;
     }
+            // recherche de toutes les réductions
         public ArrayList<Discount> selectAllDiscount() throws Exception
     {
         try
@@ -460,6 +508,7 @@ public class DAO
         }
         return null;
     }
+            // recherche de tous les employés
     public  ArrayList<Employee> selectAllEmployees() throws Exception
     {
         try
@@ -486,6 +535,7 @@ public class DAO
         return null;
     }
 
+            // recherche de la taille d'une jTable (taille des données)
     public  int getRowSize(String tableName) throws Exception
     {
         ArrayList<String> array = new ArrayList<>();
@@ -501,6 +551,8 @@ public class DAO
         return array.size();
     }
 
+    
+            // recherche de la taille d'une jTable (taille des colonnes/ atributs)
     public  String[] getCol(String tableName) throws Exception
     {
         String[] col;
@@ -519,6 +571,7 @@ public class DAO
         return col;
     }
 
+        // recherche des données d'une jTable 
     public  String[][] getLines(String tableName) throws Exception
     {
         int numRows = getRowSize(tableName);
@@ -544,6 +597,7 @@ public class DAO
         return lines;
     }
     
+        // Recherche du numéro ID d'une commande
     public int findIdOrder()
     {
          int id=0;
@@ -567,6 +621,7 @@ public class DAO
          return id+1;
     }
     
+         // recherche des commmande d'un client 
     public ArrayList<Order> getCustOrders(String email)
     {
         Order order=null;
@@ -596,6 +651,7 @@ public class DAO
         return list;
     }
     
+            // Recherche des produits commandés lors d'une commande
     public ArrayList<OrderedProduct> getOrderedProducts(int orderId)
     {
         ArrayList<OrderedProduct> list = new ArrayList<>();
@@ -622,7 +678,7 @@ public class DAO
         return list;
     }
     
-    
+             // Recherche des catégories d'une jTable
     public ArrayList<String> getCategories()
     {
         ArrayList<String> list = new ArrayList<>();
@@ -652,6 +708,7 @@ public class DAO
         return list;
     }
     
+             // recherche de tous les produits commandés 
     public ArrayList<OrderedProduct> getAllOrderedProducts()
     {
         ArrayList<OrderedProduct> list = new ArrayList<>();
@@ -679,7 +736,7 @@ public class DAO
         return list;
     }
     
-    
+             // recherche de toutes les commandes 
     public ArrayList<Order> getOrders()
     {
         ArrayList<Order> list = new ArrayList<>();

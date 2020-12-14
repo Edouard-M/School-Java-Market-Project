@@ -13,8 +13,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- *
- * @author Edoua
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
 public class NewCustomer extends javax.swing.JPanel
 {

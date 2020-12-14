@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 import Model.Customer;
@@ -11,19 +7,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author dwans
- */
+  * Classe controller pour le Panel "EditCustomer" (page d'édition du du compte client)
+  * Contient : - Le DAO
+  */
 public class EditCustomerController
 {
 
-    DAO dao;
+    private DAO dao;
 
+    // Constructeur initiant le DAO
     public EditCustomerController()
     {
         dao = new DAO();
     }
 
+    // Recherche d'un Customer par son mail
+    // return le client en question
+    // passe par le DAO
     public Customer findCustomer(String email)
     {
         dao.getConnection();
@@ -41,6 +41,7 @@ public class EditCustomerController
         return customer;
     }
 
+    // Edit les informations du customer, en appelant le DAO
     public void EditCustomer(String email, String text1, String text6, String text2, String text3,int index1,String text4)
     {
         dao.getConnection();

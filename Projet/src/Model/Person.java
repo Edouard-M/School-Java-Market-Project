@@ -6,9 +6,20 @@
 package Model;
 
 /**
- *
- * @author dwans
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
+/**
+  * Classe Abstraite Person (Classe modele, d'une Persone)
+  *
+  * Contient : - un nom
+  *            - un prénom
+  *            - un age
+  *            - un téléphone
+  *            - une adresse
+  *            - un email
+  *            - un mot de passe
+  */
 public abstract class Person
 {
     protected final String name;
@@ -19,6 +30,8 @@ public abstract class Person
     protected final String email;
     protected String password;
 
+    
+    // Constructeur
     public Person(String name, String firstName, int age, String phone, String address, String email, String password)
     {
         this.name = name;
@@ -30,6 +43,7 @@ public abstract class Person
         this.password = password;
     }
 
+    // Getteurs
     public String getName()
     {
         return name;

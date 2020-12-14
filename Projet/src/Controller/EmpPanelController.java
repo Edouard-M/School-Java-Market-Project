@@ -10,12 +10,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author dwans
- */
+  * Classe controller pour le Panel "EditCustomer" (page d'édition du du compte client)
+  * Contient : - Le DAO
+  */
 public class EmpPanelController
 {
-    public DAO dao;
+    private DAO dao;
+    
+    // Constructeur initiant le DAO
     public EmpPanelController()
     {
         dao=new DAO();

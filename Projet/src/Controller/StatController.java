@@ -12,20 +12,27 @@ import Model.Product;
 import java.util.ArrayList;
 
 /**
- *
- * @author Edoua
- */
+  * Classe controller pour le Panel "StatPanel" (page coté employé permettant voir les statistiques
+  *                                               sous forme de JFreeChart )
+  * Contient : - Le DAO
+  *            - la liste de toutes les commandes sur la plateforme
+  */
 public class StatController
 {
+    
+    // DAO
     private final DAO dao;
+    // Liste de toutes les commandes
     private ArrayList<Order> allOrders;
     
+    // Constructeur initiant le DAO
     public StatController()
     {
         dao = new DAO();
     }
     
     
+    // Recherche des catégories pour le JFreeChart
     public String[] getCategories()
     {
         ArrayList<String> list;
@@ -43,6 +50,7 @@ public class StatController
     }
     
     
+    // REcherche des produits commandés pour le camembert
     
     public ArrayList<OrderedProduct> getPieData(String category, boolean load)
     {
@@ -78,6 +86,7 @@ public class StatController
         return filterList;
     }
     
+    // Getter des orders vis la BDD
     public void getOrders()
     {
         dao.getConnection();
@@ -85,7 +94,7 @@ public class StatController
         dao.closeConnection();
     }
     
-    
+    // Recherche des commandes pour le graphique 
     public ArrayList<Order> getAreaOrders(int month)
     {
         ArrayList<Order> list= new ArrayList<>();
@@ -105,6 +114,7 @@ public class StatController
         return list;
     }
     
+    // Recherche du mois en question
     public String findMonth(int month)
     {
         String monthName="";

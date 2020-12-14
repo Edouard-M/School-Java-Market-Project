@@ -12,8 +12,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 /**
- *
- * @author Edoua
+ * @author Edouard MIGNIEN
+ * @author Clément BOUVARD
  */
 public class MyFrame extends javax.swing.JFrame
 {

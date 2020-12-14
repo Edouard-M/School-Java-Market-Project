@@ -9,19 +9,21 @@ import Model.DAO;
 import Model.Employee;
 
 /**
- *
- * @author Edoua
- */
+  * Classe controller pour le Panel "EmployeesConnection" (page de connection du compte employé)
+  * Contient : - Le DAO
+  */
 public class EmployeesConnectionController
 {
-    public DAO dao;
+    private DAO dao;
     
+    // Constructeur initiant le DAO
     public EmployeesConnectionController()
     {
         dao = new DAO();
     }
     
-    
+    // Recherche de la connection d'un employé par son email et mdp
+    // Return le boolean de connexion (true si les donneés rentrées sont bonnes)
     public boolean isEmployee(String text1, String password)
     {
         boolean bool = false;
@@ -39,6 +41,8 @@ public class EmployeesConnectionController
         return bool;
     }
     
+    // Recherche un employé par son email
+    // Return l'employé en question
     public Employee findEmployee(String text)
     {
         Employee emp=null;

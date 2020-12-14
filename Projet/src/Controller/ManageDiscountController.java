@@ -10,16 +10,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author dwans
- */
+  * Classe controller pour le Panel "ManageDiscount" (page coté employé permettant de gérer (ajouter / supprimer) les réductions)
+  * Contient : - Le DAO
+  */
 public class ManageDiscountController
 {
-    public DAO dao;
+    private DAO dao;
+    
+    // Constructeur initiant le DAO
     public ManageDiscountController()
     {
         dao=new DAO();
     }
+    
+    // Recherche des produits construisant le jTable product
+    // return un tableau de String à 2 dimensions
     public String[][] findDataProduct()
     {
         String[][] data = null;
@@ -34,6 +39,9 @@ public class ManageDiscountController
         dao.closeConnection();
         return data;
     }
+    
+    // Recherche des produits construisant le jTable de discount
+    // return un tableau de String à 2 dimensions
      public String[][] findDataDiscount()
     {
         String[][] data = null;
@@ -48,6 +56,9 @@ public class ManageDiscountController
         dao.closeConnection();
         return data;
     }
+     
+     // Recherche des attributs construisant le jTable de discount
+    // return un tableau de String à 1 dimension
       public String[] findColNameDiscount()
     {
         String[] colNames = null;
@@ -63,6 +74,8 @@ public class ManageDiscountController
         dao.closeConnection();
         return colNames;
     }
+      
+      // Supprime une discount (choisie par clé primaire : cson nom)
         public void EraseDiscount(String name)
     {
         dao.getConnection();

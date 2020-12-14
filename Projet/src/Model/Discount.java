@@ -9,14 +9,25 @@ import java.sql.ResultSet;
  * @author Edouard MIGNIEN
  * @author Clément BOUVARD
  */
+/**
+  * Classe Discount (CLasse modele, d'une réduction)
+  * Contient : - une quantitée
+  *            - un prix de réuction
+  *            - un nom de produit
+  *            - le DAO
+  */
 public class Discount
 {
-
+    // quantitée
     private int quantity;
+    // un prix de réuction
     private double price;
+    // nom de produit
     private String name;
+    // DAO
     private DAO dao;
 
+    // Constructeur
     public Discount(String Name, int Quantity, double Price) throws Exception
     {
         dao = new DAO();
@@ -26,6 +37,7 @@ public class Discount
         //insertDiscount();
     }
 
+    // Insertion de la réduction dans la BDD
     public void insertDiscount() throws Exception
     {
         try
@@ -39,6 +51,7 @@ public class Discount
         }
     }
 
+    // Getters
     public int getQuantity()
     {
         return quantity;
