@@ -1,4 +1,7 @@
+
+
 //Source MAIL : https://www.javatpoint.com/example-of-sending-email-using-java-mail-api
+
 package View;
 
 import Model.Customer;
@@ -425,6 +428,9 @@ public class NewCustomer extends javax.swing.JPanel
             myframe.setCustomer(customer);
             myframe.connection();
             panelConnection.connect();
+            
+            sendmail(jTextField3.getText(), jTextField1.getText(), jTextField2.getText());
+            
             jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
@@ -432,7 +438,7 @@ public class NewCustomer extends javax.swing.JPanel
             jTextField5.setText("");
             jPasswordField1.setText("");
 
-            sendmail(jTextField3.getText(), jTextField1.getText(), jTextField2.getText());
+            
 //Window3 wind= new Window3();
         } catch (Exception ex)
         {

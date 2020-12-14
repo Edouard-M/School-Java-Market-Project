@@ -27,7 +27,8 @@ public class Projet
         dao.createAllTable();
         dao.closeConnection();
         init.testDB();
-        */
+        */       
+        
         MyFrame frame = new MyFrame();
         
     }

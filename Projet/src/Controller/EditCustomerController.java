@@ -40,7 +40,7 @@ public class EditCustomerController
         dao.closeConnection();
         return customer;
     }
-
+    
     // Edit les informations du customer, en appelant le DAO
     public void EditCustomer(String email, String text1, String text6, String text2, String text3,int index1,String text4)
     {
@@ -50,7 +50,7 @@ public class EditCustomerController
             if(!"".equals(text4))
             dao.EditCustomerdata(email, text1, text6, text2, text3, index1, text4);
             else 
-                dao.EditCustomerdata(email, text1, text6, text2, text3, index1, dao.getEmployeePassword(email));
+                dao.EditCustomerdata(email, text1, text6, text2, text3, index1, dao.getCustomPassword(email));
         } catch (Exception ex)
         {
             Logger.getLogger(EditCustomerController.class.getName()).log(Level.SEVERE, null, ex);

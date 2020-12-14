@@ -597,6 +597,8 @@ public class Home extends javax.swing.JPanel implements ActionListener
         table.getTableHeader().setVisible(false);
 
         deleteCart();
+        
+        jScrollPane1.setVisible(false);
 
     }
 
@@ -1681,6 +1683,14 @@ public class Home extends javax.swing.JPanel implements ActionListener
         jLabel8.setText("Checkout");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter()
         {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                jLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                jLabel8MouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt)
             {
                 jLabel8MousePressed(evt);
@@ -2323,7 +2333,7 @@ public class Home extends javax.swing.JPanel implements ActionListener
 
     private void jPanel7MousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel7MousePressed
     {//GEN-HEADEREND:event_jPanel7MousePressed
-        
+        myFrame.checkout();
     }//GEN-LAST:event_jPanel7MousePressed
 
     private void addButtonMouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_addButtonMouseEntered
@@ -2404,6 +2414,16 @@ public class Home extends javax.swing.JPanel implements ActionListener
     {//GEN-HEADEREND:event_jLabel8MousePressed
         myFrame.checkout();
     }//GEN-LAST:event_jLabel8MousePressed
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel8MouseEntered
+    {//GEN-HEADEREND:event_jLabel8MouseEntered
+        jLabel13.setIcon(new ImageIcon("src/Image/buttonClicked.png"));   
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel8MouseExited(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel8MouseExited
+    {//GEN-HEADEREND:event_jLabel8MouseExited
+        jLabel13.setIcon(new ImageIcon("src/Image/button.png"));
+    }//GEN-LAST:event_jLabel8MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
