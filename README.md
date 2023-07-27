@@ -1,7 +1,2 @@
-# PAS-GITKRAKEN-PROJECT
-ICI C'EST PAS GITKRAKEN
-salut
-
-edouard est roux
-Clement a une petite kekette
- srdtfyguhij
+# School Java Market Project
+Java project for fullstack courses, including UI in Java FX and a AWS Database
